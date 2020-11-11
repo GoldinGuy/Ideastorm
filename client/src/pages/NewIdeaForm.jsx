@@ -64,10 +64,10 @@ export default class NewIdeaForm extends Component {
 	render() {
 		const { name, description, tags } = this.state;
 		return (
-			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-16 mx-auto text-gray-900  md:grid-cols-1 md:px-12 lg:px-32 xl:px-64">
+			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-12 mx-auto text-gray-900  md:grid-cols-1 md:px-12 lg:px-32 xl:px-64">
 				<div>
 					<div>
-						<h2 className="mb-8 text-center text-3xl leading-9 font-extrabold text-gray-900">
+						<h2 className="mb-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
 							What's Your Idea?
 						</h2>
 						<span className="text-sm font-bold text-gray-600 uppercase">
@@ -98,38 +98,36 @@ export default class NewIdeaForm extends Component {
 						<span className="text-sm font-bold text-gray-600 uppercase">
 							Tag It!
 						</span>
-						<div className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline">
-							<ul className="">
-								{tags.map((tag, i) => (
-									<button
-										type="button"
-										className="no-outline"
-										onClick={() => {
-											this.removeTag(i);
-										}}
+						{/* <div className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"> */}
+
+						<ul className="w-full">
+							{tags.map((tag, i) => (
+								<button
+									type="button"
+									className="no-outline"
+									onClick={() => {
+										this.removeTag(i);
+									}}
+								>
+									<li
+										key={tag}
+										className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4"
 									>
-										<li
-											key={tag}
-											className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 "
-										>
-											{"#" + tag}
-										</li>
-									</button>
-								))}
-								<li className="inline-block">
-									<input
-										type="text"
-										placeholder="Tag it!"
-										style={{ alignSelf: "stretch" }}
-										className="w-full text-gray-900 bg-gray-300 rounded-lg  no-outline"
-										onKeyDown={this.inputKeyDown}
-										ref={c => {
-											this.tagInput = c;
-										}}
-									/>
-								</li>
-							</ul>
-						</div>
+										{"#" + tag}
+									</li>
+								</button>
+							))}
+							<li className="inline-block w-full">
+								<input
+									className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
+									type="text"
+									onKeyDown={this.inputKeyDown}
+									ref={c => {
+										this.tagInput = c;
+									}}
+								/>
+							</li>
+						</ul>
 					</div>
 				</div>
 

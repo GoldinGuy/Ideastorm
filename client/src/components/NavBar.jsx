@@ -109,7 +109,11 @@ class NavBar extends Component {
 							</Link>
 
 							<SearchBar />
-							<Link to="/ideas/create" className="relative mb-5 sm:mb-0 ml-10">
+							<Link
+								to="/ideas/create"
+								className="relative mb-5 sm:mb-0 ml-10"
+								onClick={e => this.setPage(5)}
+							>
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
 									SHARE AN IDEA
