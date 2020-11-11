@@ -64,91 +64,86 @@ export default class NewIdeaForm extends Component {
 	render() {
 		const { name, description, tags } = this.state;
 		return (
-			<div className="mt-24 flex items-center justify-center bg-gray-50 py-12 px-4 sm:px-6 lg:px-8">
-				<div className="max-w-md w-full">
+			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-16 mx-auto text-gray-900  md:grid-cols-1 md:px-12 lg:px-32 xl:px-64">
+				<div>
 					<div>
-						{/* <img
-						className="mx-auto h-12 w-auto"
-						src="https://tailwindui.com/img/logos/v1/workflow-mark-on-white.svg"
-						alt="Workflow"
-					/> */}
-						<h2 className="mt-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
+						<h2 className="mb-8 text-center text-3xl leading-9 font-extrabold text-gray-900">
 							What's Your Idea?
 						</h2>
+						<span className="text-sm font-bold text-gray-600 uppercase">
+							Title
+						</span>
+						<input
+							className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
+							type="text"
+							onChange={this.handleChangeInputName}
+							value={name}
+							placeholder="An Awesome Idea"
+						/>
 					</div>
-					<form className="mt-8" action="#" method="POST">
-						<input type="hidden" name="remember" defaultValue="true" />
-						<div className="rounded-md shadow-sm">
-							<div>
-								<input
-									required
-									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-									onChange={this.handleChangeInputName}
-									type="text"
-									value={name}
-									placeholder="An Awesome Idea"
-								/>
-							</div>
-							<div className="-mt-px">
-								<textarea
-									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-									type="text"
-									value={description}
-									placeholder="A descriptively descriptive description"
-									onChange={this.handleChangeInputDescription}
-									rows="7"
-								/>
-							</div>
-							<div className="-mt-px">
-								<div
-									className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:shadow-outline-blue focus:border-blue-300 focus:z-10 sm:text-sm sm:leading-5"
-									style={{ alignItems: "stretch" }}
-								>
-									<ul className="">
-										{tags.map((tag, i) => (
-											<button
-												type="button"
-												className="no-outline"
-												onClick={() => {
-													this.removeTag(i);
-												}}
-											>
-												<li
-													key={tag}
-													className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 "
-												>
-													{tag}
-												</li>
-											</button>
-										))}
-										<li className="inline-block">
-											<input
-												type="text"
-												placeholder="Tag it!"
-												style={{ alignSelf: "stretch" }}
-												className="no-outline"
-												onKeyDown={this.inputKeyDown}
-												ref={c => {
-													this.tagInput = c;
-												}}
-											/>
-										</li>
-									</ul>
-								</div>
-							</div>
-						</div>
 
-						<div className="mt-6">
-							<button
-								type="button"
-								onClick={this.handleIncludeIdea}
-								className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm leading-5 font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-							>
-								Share Idea!
-							</button>
+					<div className="mt-6">
+						<span className="text-sm font-bold text-gray-600 uppercase">
+							Details
+						</span>
+						<textarea
+							className="w-full h-32 p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
+							defaultValue={""}
+							onChange={this.handleChangeInputDescription}
+							value={description}
+							placeholder="A Descriptively Descriptive Description"
+						/>
+					</div>
+					<div className="mt-6">
+						<span className="text-sm font-bold text-gray-600 uppercase">
+							Tag It!
+						</span>
+						<div className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline">
+							<ul className="">
+								{tags.map((tag, i) => (
+									<button
+										type="button"
+										className="no-outline"
+										onClick={() => {
+											this.removeTag(i);
+										}}
+									>
+										<li
+											key={tag}
+											className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 "
+										>
+											{"#" + tag}
+										</li>
+									</button>
+								))}
+								<li className="inline-block">
+									<input
+										type="text"
+										placeholder="Tag it!"
+										style={{ alignSelf: "stretch" }}
+										className="w-full text-gray-900 bg-gray-300 rounded-lg  no-outline"
+										onKeyDown={this.inputKeyDown}
+										ref={c => {
+											this.tagInput = c;
+										}}
+									/>
+								</li>
+							</ul>
 						</div>
-					</form>
+					</div>
 				</div>
+
+				<div className="relative flex flex-col items-start justify-center w-full mb-10 sm:w-5/6 sm:w-1/3 sm:mb-0 sm:pr-10"></div>
+				<button
+					type="button"
+					className="relative"
+					onClick={this.handleIncludeIdea}
+				>
+					<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
+					<span className="relative inline-block w-full h-full px-5 py-3 text-lg font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-500 hover:text-white">
+						SHARE IDEA!
+					</span>
+				</button>
 			</div>
 		);
 	}

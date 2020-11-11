@@ -11,7 +11,7 @@ class IdeasHome extends Component {
 						<div className="flex flex-col items-center w-5/6 md:items-start sm:w-1/2 lg:w-3/8 lg:mt-10">
 							<div className="relative">
 								<h1 className="relative mb-4 text-4xl font-black leading-none text-center text-black lg:text-5xl xl:text-6xl md:text-left">
-									Master the Art of Marketing
+									The Evolution of Thinking
 								</h1>
 								<svg
 									className="absolute top-0 right-0 hidden w-20 -mt-16 -mr-10 transform rotate-90 lg:block xl:-mr-8 xl:-mt-12"
@@ -50,14 +50,13 @@ class IdeasHome extends Component {
 								</svg>
 							</div>
 							<p className="my-3 text-base text-center text-gray-600 xl:text-xl md:text-left">
-								Leverage our powerful tools to take advantage of the
-								ground-breaking marketing strategies built for designers and
-								developers.
+								Whether you're looking for a cool new project, or you have an
+								awesome idea to share - you've come to the right place.
 							</p>
 							<a href="#_" className="relative mt-5">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-8 py-3 text-base font-bold bg-white border-2 border-black rounded hover:bg-yellow-400 xl:text-xl fold-bold">
-									Signup Today!
+									Explore Ideas
 								</span>
 							</a>
 						</div>
@@ -230,16 +229,25 @@ class IdeasHome extends Component {
 					<div className="container flex flex-col items-center justify-center h-full max-w-6xl mx-auto sm:flex-row sm:justify-between">
 						<div className="relative flex flex-col items-start justify-center w-full mb-10 sm:w-5/6 sm:w-1/3 sm:mb-0 sm:pr-10">
 							<h2 className="mb-5 text-2xl font-black leading-tight xl:text-4xl">
-								Easily Add Your Own Screenshots
+								Together, Anything Is Possible
 							</h2>
 							<p className="mb-8 text-base text-yellow-900 xl:text-xl md:max-w-lg">
-								You can easily customize this design by replacing your image
-								with the image on the right. Cool, right?
+								Imagine if one person shared the ideas they have but will never
+								pursue - things that could improve their lives, or humanity as a
+								whole? What if everyone did?
+							</p>
+							<p className="mb-8 text-base text-yellow-900 xl:text-xl md:max-w-lg">
+								<strong>
+									A collective hive-mind of potential that anyone can contribute
+									to.
+								</strong>{" "}
+								That is our goal. That is Brainstorm. And all ideas, big or
+								small, are welcome.
 							</p>
 							<a href="#_" className="relative">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-5 py-3 text-lg font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-500 hover:text-white">
-									GET STARTED
+									SHARE AN IDEA
 								</span>
 							</a>
 						</div>
