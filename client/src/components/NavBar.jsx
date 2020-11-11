@@ -1,10 +1,23 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
-
+import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
 
 class NavBar extends Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			currentPage: 1
+		};
+	}
+	// TODO: better pagination system
+	setPage(pageNum) {
+		this.setState({ currentPage: pageNum });
+	}
+
 	render() {
+		const { currentPage } = this.state;
+
 		return (
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
@@ -55,29 +68,48 @@ class NavBar extends Component {
 							<Link
 								to="/ideas"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								onClick={e => this.setPage(1)}
 							>
 								Home
-								<span className="absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full" />
+								<span
+									className={
+										currentPage === 1
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
 							</Link>
 							<Link
+								onClick={e => this.setPage(2)}
 								to="/ideas/list"
-								className="px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Explore Ideas
+								<span
+									className={
+										currentPage === 2
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
 							</Link>
 							<Link
+								onClick={e => this.setPage(3)}
 								to="/ideas/table"
-								className="px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Browse Table
+								<span
+									className={
+										currentPage === 3
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
 							</Link>
-							<Link
-								href="#_"
-								className="px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-							>
-								About
-							</Link>
-							<Link to="/ideas/create" className="relative mb-5 sm:mb-0">
+
+							<SearchBar />
+							<Link to="/ideas/create" className="relative mb-5 sm:mb-0 ml-10">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
 									SHARE AN IDEA
