@@ -1,8 +1,8 @@
-import IdeasList from './IdeasList'
+import IdeasTable from './IdeasTable'
 import IdeasInsert from './IdeasInsert'
 import IdeasUpdate from './IdeasUpdate'
-import IdeasAccordian from './IdeasAccordian'
+import IdeasStream from './IdeasStream'
 import NewIdeaForm from './NewIdeaForm'
 import IdeasHome from './HomePage'
 
-export { IdeasList, IdeasInsert, IdeasUpdate, IdeasAccordian, NewIdeaForm, IdeasHome }
+export { IdeasTable as IdeasList, IdeasInsert, IdeasUpdate, IdeasStream, NewIdeaForm, IdeasHome }

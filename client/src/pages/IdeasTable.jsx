@@ -50,7 +50,7 @@ class DeleteIdea extends Component {
 	}
 }
 
-class IdeasList extends Component {
+class IdeasTable extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -73,7 +73,7 @@ class IdeasList extends Component {
 
 	render() {
 		const { ideas, isLoading } = this.state;
-		console.log("TCL: IdeasList -> render -> ideas", ideas);
+		// console.log("TCL: IdeasList -> render -> ideas", ideas);
 
 		const columns = [
 			{
@@ -91,11 +91,12 @@ class IdeasList extends Component {
 				accessor: "description",
 				filterable: true
 			},
+
 			{
 				Header: "Tags",
 				accessor: "tags",
 				filterable: true,
-				Cell: props => <span>{props.value.join(" / ")}</span>
+				Cell: props => <span>{props.value.join(" , ")}</span>
 			},
 			{
 				Header: "",
@@ -143,4 +144,4 @@ class IdeasList extends Component {
 	}
 }
 
-export default IdeasList;
+export default IdeasTable;

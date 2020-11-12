@@ -1,8 +1,11 @@
 import React, { Component } from "react";
+import TimeAgo from "javascript-time-ago";
+import ReactTimeAgo from "react-time-ago";
 
+import en from "javascript-time-ago/locale/en";
 import api from "../api";
 
-class IdeasAccordian extends Component {
+class IdeasStream extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -20,6 +23,10 @@ class IdeasAccordian extends Component {
 				isLoading: false
 			});
 		});
+	};
+
+	dateFromObjectId = function (objectId) {
+		return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 	};
 
 	generateIdeaCards(ideas) {
@@ -43,6 +50,8 @@ class IdeasAccordian extends Component {
 	}
 
 	generateIdeaCard(idea) {
+		TimeAgo.addLocale(en);
+
 		let rColor;
 		switch (Math.floor(Math.random() * 5) + 1) {
 			case 1:
@@ -80,7 +89,7 @@ class IdeasAccordian extends Component {
 						<p
 							className={`mt-1 mb-1 text-xs font-medium uppercase text-${rColor}`}
 						>
-							SHARED 5 Days ago
+							<ReactTimeAgo date={this.dateFromObjectId(idea._id)} />
 						</p>
 						<p className="mb-2 text-gray-600">{idea.description}</p>
 						<h5 class="flex-wrap flex">
@@ -150,4 +159,4 @@ class IdeasAccordian extends Component {
 	}
 }
 
-export default IdeasAccordian;
+export default IdeasStream;

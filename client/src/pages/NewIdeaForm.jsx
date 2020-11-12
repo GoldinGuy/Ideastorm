@@ -54,7 +54,7 @@ export default class NewIdeaForm extends Component {
 			) {
 				return;
 			}
-			this.setState({ tags: [...this.state.tags, val] });
+			this.setState({ tags: [...this.state.tags, val.replaceAll(" ", "-")] });
 			this.tagInput.value = null;
 		} else if (e.key === "Backspace" && !val) {
 			this.removeTag(this.state.tags.length - 1);

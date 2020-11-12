@@ -19,9 +19,10 @@ const Idea = new Schema(
             imgs: { type: [String], required: false },
         },
         meta: {
-            uv: { type: String, required: false },
-            dv: { type: String, required: false },
+            uv: { type: Number, required: false },
+            dv: { type: Number, required: false },
             suggestions: { type: [String], required: false },
+            exists: { type: Boolean, required: false },
         }
     },
     { timestamps: true },
