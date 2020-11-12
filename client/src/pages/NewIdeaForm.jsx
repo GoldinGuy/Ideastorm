@@ -88,10 +88,9 @@ export default class NewIdeaForm extends Component {
 						</span>
 						<textarea
 							className="w-full h-32 p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
-							defaultValue={""}
 							onChange={this.handleChangeInputDescription}
 							value={description}
-							placeholder="A Descriptively Descriptive Description"
+							placeholder="A Descriptively Descriptive Description. Supports Markdown"
 						/>
 					</div>
 					<div className="mt-6">
@@ -121,6 +120,7 @@ export default class NewIdeaForm extends Component {
 								<input
 									className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
 									type="text"
+									placeholder="website. app. foodies. science-fair. tech. art-project."
 									onKeyDown={this.inputKeyDown}
 									ref={c => {
 										this.tagInput = c;
@@ -130,18 +130,18 @@ export default class NewIdeaForm extends Component {
 						</ul>
 					</div>
 				</div>
-
-				<div className="relative flex flex-col items-start justify-center w-full mb-10 sm:w-5/6 sm:w-1/3 sm:mb-0 sm:pr-10"></div>
-				<button
-					type="button"
-					className="relative"
-					onClick={this.handleIncludeIdea}
-				>
-					<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
-					<span className="relative inline-block w-full h-full px-5 py-3 text-lg font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-500 hover:text-white">
-						SHARE IDEA!
-					</span>
-				</button>
+				<div className="relative flex items-center  flex-col  justify-center w-full mb-10 sm:mb-0 sm:pr-10">
+					<button
+						type="button"
+						className="relative "
+						onClick={this.handleIncludeIdea}
+					>
+						<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
+						<span className="relative inline-block w-full h-full  px-16  py-3 text-lg font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-500 hover:text-white">
+							SHARE IDEA!
+						</span>
+					</button>
+				</div>
 			</div>
 		);
 	}
