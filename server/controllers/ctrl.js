@@ -51,8 +51,8 @@ updateIdea = async (req, res) => {
             })
         }
         idea.name = body.name
-        idea.time = body.time
-        idea.rating = body.rating
+        idea.description = body.description
+        idea.tags = body.tags
         idea
             .save()
             .then(() => {
@@ -110,7 +110,50 @@ getIdeas = async (req, res) => {
         if (!ideas.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Idea not found` })
+                .json({ success: false, error: `Ideas not found` })
+        }
+        return res.status(200).json({ success: true, data: ideas })
+    }).catch(err => console.log(err))
+}
+
+getIdeasByTag = async (req, res) => {
+    await Idea.find({ tags: { $in: req.params.tags }}, (err, ideas) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!ideas.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Ideas not found` })
+        }
+        return res.status(200).json({ success: true, data: ideas })
+    }).catch(err => console.log(err))
+}
+
+getLatestIdeas = async (req, res) => {
+    await Idea.find({}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!ideas.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Ideas not found` })
+        }
+        return res.status(200).json({ success: true, data: ideas })
+    }).catch(err => console.log(err))
+}
+
+// TODO: figure out what trending means 
+getTrendingIdeas = async (req, res) => {
+    await Idea.find({}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!ideas.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Ideas not found` })
         }
         return res.status(200).json({ success: true, data: ideas })
     }).catch(err => console.log(err))
@@ -122,4 +165,5 @@ module.exports = {
     deleteIdea,
     getIdeas,
     getIdeaById,
+    getIdeasByTag,
 }

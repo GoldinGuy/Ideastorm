@@ -9,6 +9,7 @@ export const getAllIdeas = () => api.get(`/ideas`)
 export const updateIdeaById = (id, payload) => api.put(`/idea/${id}`, payload)
 export const deleteIdeaById = id => api.delete(`/idea/${id}`)
 export const getIdeaById = id => api.get(`/idea/${id}`)
+export const getIdeasByTag = tags => api.get(`/ideasByTag/${tags}`)
 
 const apis = {
      insertIdea,
@@ -16,6 +17,7 @@ const apis = {
     updateIdeaById,
     deleteIdeaById,
     getIdeaById,
+    getIdeasByTag
 }
 
 export default apis

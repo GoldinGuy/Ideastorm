@@ -17,7 +17,13 @@ class IdeasStream extends Component {
 	componentDidMount = async () => {
 		this.setState({ isLoading: true });
 
-		await api.getAllIdeas().then(ideas => {
+		// await api.getAllIdeas().then(ideas => {
+		// 	this.setState({
+		// 		ideas: ideas.data.data,
+		// 		isLoading: false
+		// 	});
+		// });
+		await api.getIdeasByTag(["todd-chavez"]).then(ideas => {
 			this.setState({
 				ideas: ideas.data.data,
 				isLoading: false

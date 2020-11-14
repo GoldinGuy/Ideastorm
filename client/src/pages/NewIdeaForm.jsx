@@ -54,7 +54,12 @@ export default class NewIdeaForm extends Component {
 			) {
 				return;
 			}
-			this.setState({ tags: [...this.state.tags, val.replaceAll(" ", "-")] });
+			this.setState({
+				tags: [
+					...this.state.tags,
+					val.toLowerCase().trim().replaceAll(" ", "-")
+				]
+			});
 			this.tagInput.value = null;
 		} else if (e.key === "Backspace" && !val) {
 			this.removeTag(this.state.tags.length - 1);
@@ -64,7 +69,7 @@ export default class NewIdeaForm extends Component {
 	render() {
 		const { name, description, tags } = this.state;
 		return (
-			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-12 mx-auto text-gray-900  md:grid-cols-1 md:px-12 lg:px-32 xl:px-64">
+			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-12 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5">
 				<div>
 					<div>
 						<h2 className="mb-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
