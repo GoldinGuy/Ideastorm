@@ -61,6 +61,11 @@ const IdeaCard = ({ idea }) => {
 								{"#" + tag}
 							</span>
 						))}
+						{/* {idea.tags.map((tag, index) => (
+							<div className="text-sm px-3 bg-gray-200 text-gray-800 rounded-full m-1">
+								{"#" + tag}
+							</div>
+						))} */}
 					</h5>
 				</div>
 			</div>

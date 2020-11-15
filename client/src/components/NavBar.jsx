@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
-import { Link } from "react-router-dom";
+import { BrowserRouter, Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class NavBar extends Component {
@@ -21,11 +21,11 @@ class NavBar extends Component {
 
 	getCurrentPage(path) {
 		switch (path) {
-			case "/ideas":
+			case "":
 				return 1;
-			case "/ideas/explore":
+			case "/explore":
 				return 2;
-			case "/ideas/table":
+			case "/table":
 				return 3;
 			default:
 				return 0;
@@ -82,7 +82,7 @@ class NavBar extends Component {
 					>
 						<nav className="flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0">
 							<Link
-								to="/ideas"
+								to="/"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Home
@@ -95,7 +95,7 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								to="/ideas/explore"
+								to="/explore"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Explore Ideas
@@ -108,7 +108,7 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								to="/ideas/table"
+								to="/table"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Browse Table
@@ -121,8 +121,11 @@ class NavBar extends Component {
 								/>
 							</Link>
 
-							<SearchBar searchHandler={this.props.searchHandler} />
-							<Link to="/ideas/create" className="relative mb-5 sm:mb-0 ml-10">
+							<SearchBar
+								searchHandler={this.props.searchHandler}
+								history={this.props.history}
+							/>
+							<Link to="/create" className="relative mb-5 sm:mb-0 ml-10">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
 									SHARE AN IDEA

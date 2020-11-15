@@ -1,7 +1,9 @@
 import React, { Component } from "react";
+import { useHistory } from "react-router-dom";
 
-const SearchBar = ({ searchHandler }) => {
+const SearchBar = ({ searchHandler, history }) => {
 	const [query, setQuery] = React.useState("");
+	// const history = useHistory();
 
 	const inputKeyDown = async event => {
 		if (event.key === "Enter") {
@@ -13,6 +15,12 @@ const SearchBar = ({ searchHandler }) => {
 
 	const search = term => {
 		term = term.toLowerCase().trim().replaceAll(" ", "-");
+		history.push("/explore");
+		// history.push({
+		// 	pathname: "/explore",
+		// 	search: "?query=" + term,
+		// 	state: term
+		// });
 		console.log(term);
 		searchHandler(term);
 		setQuery("");
