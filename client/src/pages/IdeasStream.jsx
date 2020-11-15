@@ -10,6 +10,7 @@ class IdeasStream extends Component {
 		super(props);
 		this.state = {
 			ideas: [],
+			searchTerm: "",
 			isLoading: false
 		};
 	}
@@ -23,12 +24,21 @@ class IdeasStream extends Component {
 		// 		isLoading: false
 		// 	});
 		// });
-		await api.getIdeasByTag(["todd-chavez"]).then(ideas => {
-			this.setState({
-				ideas: ideas.data.data,
-				isLoading: false
+		if (this.state.searchTerm.length === 0) {
+			await api.getLatestIdeas().then(ideas => {
+				this.setState({
+					ideas: ideas.data.data,
+					isLoading: false
+				});
 			});
-		});
+		} else {
+			await api.getIdeasByTag(this.state.searchTerm).then(ideas => {
+				this.setState({
+					ideas: ideas.data.data,
+					isLoading: false
+				});
+			});
+		}
 	};
 
 	dateFromObjectId = function (objectId) {

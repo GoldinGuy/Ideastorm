@@ -131,7 +131,7 @@ getIdeasByTag = async (req, res) => {
 }
 
 getLatestIdeas = async (req, res) => {
-    await Idea.find({}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
+    await Idea.find({}, null, {sort: {$natural: -1}},  (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -146,7 +146,7 @@ getLatestIdeas = async (req, res) => {
 
 // TODO: figure out what trending means 
 getTrendingIdeas = async (req, res) => {
-    await Idea.find({}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
+    await Idea.find({}, {limit:18}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -166,4 +166,6 @@ module.exports = {
     getIdeas,
     getIdeaById,
     getIdeasByTag,
+    getLatestIdeas,
+    getTrendingIdeas
 }

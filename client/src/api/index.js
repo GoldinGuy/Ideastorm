@@ -10,6 +10,8 @@ export const updateIdeaById = (id, payload) => api.put(`/idea/${id}`, payload)
 export const deleteIdeaById = id => api.delete(`/idea/${id}`)
 export const getIdeaById = id => api.get(`/idea/${id}`)
 export const getIdeasByTag = tags => api.get(`/ideasByTag/${tags}`)
+export const getTrendingIdeas = () => api.get(`/trendingIdeas`)
+export const getLatestIdeas = () => api.get(`/latestIdeas`)
 
 const apis = {
      insertIdea,
@@ -17,7 +19,9 @@ const apis = {
     updateIdeaById,
     deleteIdeaById,
     getIdeaById,
-    getIdeasByTag
+    getIdeasByTag,
+    getLatestIdeas,
+    getTrendingIdeas
 }
 
 export default apis

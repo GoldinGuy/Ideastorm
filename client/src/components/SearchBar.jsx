@@ -22,7 +22,10 @@ class SearchBar extends Component {
 								spellCheck="false"
 								className="px-6 py-2 -mr-8 font-sans transition-colors duration-300 transform bg-gray-200 border-none rounded-full focus:outline-none focus:bg-gray-300"
 							/>
-							<button className="transform border-none" aria-label="Submit">
+							<button
+								className="transform border-none focus:border-0 focus:outline-none "
+								aria-label="Submit"
+							>
 								<svg
 									className="text-gray-500 duration-200 fill-current hover:text-gray-700 focus:text-gray-700"
 									version="1.1"

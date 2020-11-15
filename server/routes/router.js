@@ -10,5 +10,7 @@ router.delete('/idea/:id', IdeaCtrl.deleteIdea)
 router.get('/idea/:id', IdeaCtrl.getIdeaById)
 router.get('/ideas', IdeaCtrl.getIdeas)
 router.get('/ideasByTag/:tags', IdeaCtrl.getIdeasByTag)
+router.get('/latestIdeas', IdeaCtrl.getLatestIdeas)
+router.get('/trendingIdeas', IdeaCtrl.getTrendingIdeas)
 
 module.exports = router
