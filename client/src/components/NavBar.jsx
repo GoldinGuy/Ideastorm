@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
@@ -85,7 +84,6 @@ class NavBar extends Component {
 							<Link
 								to="/ideas"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-								// onClick={() => pageHandler(1)}
 							>
 								Home
 								<span
@@ -97,7 +95,6 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								// onClick={() => pageHandler(2)}
 								to="/ideas/explore"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
@@ -111,7 +108,6 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								// onClick={() => pageHandler(3)}
 								to="/ideas/table"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
@@ -128,11 +124,7 @@ class NavBar extends Component {
 								Tesdt
 							</button>
 							<SearchBar searchHandler={this.props.searchHandler} />
-							<Link
-								to="/ideas/create"
-								className="relative mb-5 sm:mb-0 ml-10"
-								// onClick={() => pageHandler(5)}
-							>
+							<Link to="/ideas/create" className="relative mb-5 sm:mb-0 ml-10">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
 									SHARE AN IDEA
@@ -149,172 +141,6 @@ class NavBar extends Component {
 					</div>
 				</div>
 			</div>
-
-			// <nav className="bg-gray-800">
-			// 	<div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
-			// 		<div className="relative flex items-center justify-between h-16">
-			// 			<div className="absolute inset-y-0 left-0 flex items-center sm:hidden">
-			// 				{/* Mobile menu button*/}
-			// 				<button
-			// 					className="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-white hover:bg-gray-700 focus:outline-none focus:bg-gray-700 focus:text-white transition duration-150 ease-in-out"
-			// 					aria-label="Main menu"
-			// 					aria-expanded="false"
-			// 				>
-			// 					<svg
-			// 						className="block h-6 w-6"
-			// 						xmlns="http://www.w3.org/2000/svg"
-			// 						fill="none"
-			// 						viewBox="0 0 24 24"
-			// 						stroke="currentColor"
-			// 					>
-			// 						<path
-			// 							strokeLinecap="round"
-			// 							strokeLinejoin="round"
-			// 							strokeWidth={2}
-			// 							d="M4 6h16M4 12h16M4 18h16"
-			// 						/>
-			// 					</svg>
-
-			// 					<svg
-			// 						className="hidden h-6 w-6"
-			// 						xmlns="http://www.w3.org/2000/svg"
-			// 						fill="none"
-			// 						viewBox="0 0 24 24"
-			// 						stroke="currentColor"
-			// 					>
-			// 						<path
-			// 							strokeLinecap="round"
-			// 							strokeLinejoin="round"
-			// 							strokeWidth={2}
-			// 							d="M6 18L18 6M6 6l12 12"
-			// 						/>
-			// 					</svg>
-			// 				</button>
-			// 			</div>
-			// 			<div className="flex-1 flex items-center justify-center sm:items-stretch sm:justify-start">
-			// 				<div className="flex-shrink-0">
-			// 					<Link
-			// 						to="/"
-			// 						className="ml-20 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out-link hover:no-underline"
-			// 					>
-			// 						BrainStorm
-			// 					</Link>
-			// 					{/* <img
-			// 						className="block lg:hidden h-8 w-auto"
-			// 						src="https://tailwindui.com/img/logos/v1/workflow-mark-on-dark.svg"
-			// 						alt="Workflow logo"
-			// 					/>
-			// 					<img
-			// 						className="hidden lg:block h-8 w-auto"
-			// 						src="https://tailwindui.com/img/logos/v1/workflow-logo-on-dark.svg"
-			// 						alt="Workflow logo"
-			// 					/> */}
-			// 				</div>
-			// 				<div className="hidden sm:block sm:ml-6">
-			// 					<div className="flex">
-			// 						<Link
-			// 							to="/ideas/list"
-			// 							className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out-link hover:no-underline"
-			// 						>
-			// 							Explore Ideas
-			// 						</Link>
-
-			// 						<Link
-			// 							to="/ideas/table"
-			// 							className="ml-4 px-3 py-2 rounded-md text-sm font-medium leading-5 text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out-link hover:no-underline"
-			// 						>
-			// 							Table
-			// 						</Link>
-			// 					</div>
-			// 				</div>
-			// 			</div>
-			// 			<div className="hidden sm:block sm:ml-6">
-			// 				<Link
-			// 					to="/ideas/create"
-			// 					className=" text-white font-semibold  py-2 px-4 border rounded mr-8 hover:no-underline  hover:bg-indigo-500 focus:outline-none focus:border-indigo-700 focus:shadow-outline-indigo active:bg-indigo-700 transition duration-150 ease-in-out"
-			// 				>
-			// 					Share an Idea
-			// 				</Link>
-			// 			</div>
-			// 			<div className="relative mx-auto text-gray-600 hidden sm:block ">
-			// 				<span className="absolute left-0 inset-y-0 flex items-center pl-3 ">
-			// 					<svg
-			// 						className="h-5 w-5 text-indigo-500 group-hover:text-indigo-400 transition ease-in-out duration-150"
-			// 						fill="currentColor"
-			// 						viewBox="0 0 20 20"
-			// 					>
-			// 						<path
-			// 							fillRule="evenodd"
-			// 							d="M12.9 14.32a8 8 0 1 1 1.41-1.41l5.35 5.33-1.42 1.42-5.33-5.34zM8 14A6 6 0 1 0 8 2a6 6 0 0 0 0 12z"
-			// 							clipRule="evenodd"
-			// 						/>
-			// 					</svg>
-			// 				</span>
-			// 				<input
-			// 					className="border-2 border-gray-300 bg-white h-10 px-5 rounded-lg text-sm focus:outline-none mr-20"
-			// 					type="search"
-			// 					name="search"
-			// 					placeholder="Search"
-			// 				/>
-			// 				<button
-			// 					type="submit"
-			// 					className="absolute right-0 top-0 mt-5 mr-4"
-			// 				></button>
-			// 			</div>
-
-			// 			{/* <div className="absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">
-			// 				<button
-			// 					className="p-1 border-2 border-transparent text-gray-400 rounded-full hover:text-white focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-			// 					aria-label="Notifications"
-			// 				>
-			// 					<svg
-			// 						className="h-6 w-6"
-			// 						xmlns="http://www.w3.org/2000/svg"
-			// 						fill="none"
-			// 						viewBox="0 0 24 24"
-			// 						stroke="currentColor"
-			// 					>
-			// 						<path
-			// 							strokeLinecap="round"
-			// 							strokeLinejoin="round"
-			// 							strokeWidth={2}
-			// 							d="M5 5a5 5 0 0 1 10 0v2A5 5 0 0 1 5 7V5zM0 16.68A19.9 19.9 0 0 1 10 14c3.64 0 7.06.97 10 2.68V20H0v-3.32z"
-			// 						/>
-			// 					</svg>
-			// 				</button>
-			// 			</div> */}
-			// 		</div>
-			// 	</div>
-
-			// 	<div className="hidden sm:hidden">
-			// 		<div className="px-2 pt-2 pb-3">
-			// 			<a
-			// 				href="#"
-			// 				className="block px-3 py-2 rounded-md text-base font-medium text-white bg-gray-900 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-			// 			>
-			// 				Dashboard
-			// 			</a>
-			// 			<a
-			// 				href="#"
-			// 				className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-			// 			>
-			// 				Team
-			// 			</a>
-			// 			<a
-			// 				href="#"
-			// 				className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-			// 			>
-			// 				Projects
-			// 			</a>
-			// 			<a
-			// 				href="#"
-			// 				className="mt-1 block px-3 py-2 rounded-md text-base font-medium text-gray-300 hover:text-white hover:bg-gray-700 focus:outline-none focus:text-white focus:bg-gray-700 transition duration-150 ease-in-out"
-			// 			>
-			// 				Calendar
-			// 			</a>
-			// 		</div>
-			// 	</div>
-			// </nav>
 		);
 	}
 }
