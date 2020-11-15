@@ -2,22 +2,38 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
 import { Link } from "react-router-dom";
+import { withRouter } from "react-router";
 
 class NavBar extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			currentPage: 1
+			currentPage: this.getCurrentPage(this.props.location.pathname)
 		};
 	}
-	// TODO: better pagination system
-	setPage(pageNum) {
-		this.setState({ currentPage: pageNum });
+
+	componentDidUpdate(prevProps) {
+		if (this.props.location.pathname !== prevProps.location.pathname) {
+			this.setState({
+				currentPage: this.getCurrentPage(this.props.location.pathname)
+			});
+		}
+	}
+
+	getCurrentPage(path) {
+		switch (path) {
+			case "/ideas":
+				return 1;
+			case "/ideas/explore":
+				return 2;
+			case "/ideas/table":
+				return 3;
+			default:
+				return 0;
+		}
 	}
 
 	render() {
-		const { currentPage } = this.state;
-
 		return (
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
@@ -68,51 +84,51 @@ class NavBar extends Component {
 							<Link
 								to="/ideas"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-								onClick={e => this.setPage(1)}
+								// onClick={() => pageHandler(1)}
 							>
 								Home
 								<span
 									className={
-										currentPage === 1
+										this.state.currentPage === 1
 											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
 							</Link>
 							<Link
-								onClick={e => this.setPage(2)}
-								to="/ideas/list"
+								// onClick={() => pageHandler(2)}
+								to="/ideas/explore"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Explore Ideas
 								<span
 									className={
-										currentPage === 2
+										this.state.currentPage === 2
 											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
 							</Link>
 							<Link
-								onClick={e => this.setPage(3)}
+								// onClick={() => pageHandler(3)}
 								to="/ideas/table"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Browse Table
 								<span
 									className={
-										currentPage === 3
+										this.state.currentPage === 3
 											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
 							</Link>
 
-							<SearchBar />
+							<SearchBar searchHandler={this.props.searchHandler} />
 							<Link
 								to="/ideas/create"
 								className="relative mb-5 sm:mb-0 ml-10"
-								onClick={e => this.setPage(5)}
+								// onClick={() => pageHandler(5)}
 							>
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
@@ -300,4 +316,4 @@ class NavBar extends Component {
 	}
 }
 
-export default NavBar;
+export default withRouter(NavBar);

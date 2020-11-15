@@ -8,12 +8,38 @@ import { IdeasList, IdeasInsert, IdeasUpdate, IdeasStream, NewIdeaForm, IdeasHom
 
 function App() {
     return (
-        <Router>
+        <Brainstorm />
+    )
+}
 
-            <NavBar />
+class Brainstorm extends React.Component {
+
+    constructor(props) {
+        super(props)
+        this.state = {
+            // ideas: [],
+            searchTerm: "",
+            currentPage: 1
+        }
+
+    }
+    
+    searchHandler = (term) => {
+        this.setState({searchTerm: term})
+    }
+    
+    pageHandler = (pageNum) => {
+        this.setState({currentPage: pageNum})
+    }
+
+    render() {
+         return (
+         <Router>
+
+            <NavBar searchTerm={this.state.searchTerm} searchHandler={this.searchHandler} pageHandler={this.pageHandler} currentPage={this.state.currentPage}/>
             <Switch>
                 <Route path="/ideas" exact component={IdeasHome} />
-                <Route path="/ideas/list" exact component={IdeasStream} />
+                <Route path="/ideas/explore"  render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} />
                 <Route path="/ideas/table" exact component={IdeasList} />
                 <Route path="/ideas/create" exact component={NewIdeaForm} />
                 <Route
@@ -24,6 +50,7 @@ function App() {
             </Switch>
         </Router>
     )
+    }
 }
 
 export default App

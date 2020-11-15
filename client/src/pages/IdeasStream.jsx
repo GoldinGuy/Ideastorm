@@ -10,7 +10,7 @@ class IdeasStream extends Component {
 		super(props);
 		this.state = {
 			ideas: [],
-			searchTerm: "",
+			// searchTerm: "",
 			isLoading: false
 		};
 	}
@@ -24,7 +24,7 @@ class IdeasStream extends Component {
 		// 		isLoading: false
 		// 	});
 		// });
-		if (this.state.searchTerm.length === 0) {
+		if (this.props.searchTerm.length === 0) {
 			await api.getLatestIdeas().then(ideas => {
 				this.setState({
 					ideas: ideas.data.data,
@@ -32,7 +32,7 @@ class IdeasStream extends Component {
 				});
 			});
 		} else {
-			await api.getIdeasByTag(this.state.searchTerm).then(ideas => {
+			await api.getIdeasByTag(this.props.searchTerm).then(ideas => {
 				this.setState({
 					ideas: ideas.data.data,
 					isLoading: false
@@ -108,9 +108,9 @@ class IdeasStream extends Component {
 							<ReactTimeAgo date={this.dateFromObjectId(idea._id)} />
 						</p>
 						<p className="mb-2 text-gray-600">{idea.description}</p>
-						<h5 class="flex-wrap flex">
+						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
-								<span class="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-500 rounded-lg">
+								<span className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-500 rounded-lg">
 									{"#" + tag}
 								</span>
 							))}
