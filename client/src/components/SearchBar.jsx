@@ -15,23 +15,19 @@ class SearchBar extends Component {
 	inputKeyDown = e => {
 		const val = e.target.value;
 		if (e.key === "Enter" && val) {
-			if (
-				this.state.tags.find(tag => tag.toLowerCase() === val.toLowerCase())
-			) {
-				return;
-			}
-			this.search(val);
-			this.query = "";
+			this.search(this.state.query);
 		}
 	};
 
 	search(term) {
 		term.toLowerCase().trim().replaceAll(" ", "-");
+		this.props.searchHandler(term);
+		this.setState({ query: "" });
 	}
 
 	render() {
-		var { query } = this.state;
-		const searchHandler = this.props.searchHandler;
+		const { query } = this.state;
+		// const searchHandler = this.props.searchHandler;
 		return (
 			<div className="flex bg-white">
 				<div className="w-1/2 mx-auto my-6 text-gray-500">
@@ -48,7 +44,8 @@ class SearchBar extends Component {
 							<input
 								type="text"
 								id="search"
-								value={query}
+								defaultValue={query}
+								onChange={this.inputKeyDown}
 								placeholder="Search"
 								spellCheck="false"
 								className="px-6 py-2 -mr-8 font-sans transition-colors duration-300 transform bg-gray-200 border-none rounded-full focus:outline-none focus:bg-gray-300"
@@ -56,7 +53,8 @@ class SearchBar extends Component {
 							<button
 								className="transform border-none focus:border-0 focus:outline-none"
 								aria-label="Submit"
-								onClick={() => searchHandler(query)}
+								// onClick={() => searchHandler(query)}
+								onClick={() => this.search(query)}
 							>
 								<svg
 									className="text-gray-500 duration-200 fill-current hover:text-gray-700 focus:text-gray-700"

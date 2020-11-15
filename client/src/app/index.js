@@ -19,7 +19,6 @@ class Brainstorm extends React.Component {
         this.state = {
             // ideas: [],
             searchTerm: "",
-            currentPage: 1
         }
 
     }
@@ -28,15 +27,12 @@ class Brainstorm extends React.Component {
         this.setState({searchTerm: term})
     }
     
-    pageHandler = (pageNum) => {
-        this.setState({currentPage: pageNum})
-    }
 
     render() {
          return (
          <Router>
 
-            <NavBar searchTerm={this.state.searchTerm} searchHandler={this.searchHandler} pageHandler={this.pageHandler} currentPage={this.state.currentPage}/>
+            <NavBar searchTerm={this.state.searchTerm} searchHandler={this.searchHandler} />
             <Switch>
                 <Route path="/ideas" exact component={IdeasHome} />
                 <Route path="/ideas/explore"  render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} />

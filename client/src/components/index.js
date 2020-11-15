@@ -1,4 +1,5 @@
 
 import NavBar from './NavBar'
+import Cards from './ideaCards'
 
-export {  NavBar }
+export { NavBar, Cards }

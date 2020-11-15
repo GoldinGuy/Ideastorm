@@ -34,6 +34,7 @@ class NavBar extends Component {
 	}
 
 	render() {
+		const searchHandler = this.props.searchHandler;
 		return (
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
@@ -123,7 +124,9 @@ class NavBar extends Component {
 									}
 								/>
 							</Link>
-
+							<button onClick={() => searchHandler("todd-chavez")}>
+								Tesdt
+							</button>
 							<SearchBar searchHandler={this.props.searchHandler} />
 							<Link
 								to="/ideas/create"
