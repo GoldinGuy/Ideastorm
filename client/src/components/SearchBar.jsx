@@ -1,5 +1,4 @@
-import React, { Component } from "react";
-import { useHistory } from "react-router-dom";
+import React from "react";
 
 const SearchBar = ({ searchHandler, history }) => {
 	const [query, setQuery] = React.useState("");
@@ -15,11 +14,11 @@ const SearchBar = ({ searchHandler, history }) => {
 
 	const search = term => {
 		term = term.toLowerCase().trim().replaceAll(" ", "-");
-		history.push("/explore");
+		// history.push("/explore");
 		// history.push({
 		// 	pathname: "/explore",
 		// 	search: "?query=" + term,
-		// 	state: term
+		// 	state: { searchTerm: term }
 		// });
 		console.log(term);
 		searchHandler(term);
