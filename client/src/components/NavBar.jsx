@@ -120,9 +120,7 @@ class NavBar extends Component {
 									}
 								/>
 							</Link>
-							<button onClick={() => searchHandler("todd-chavez")}>
-								Tesdt
-							</button>
+
 							<SearchBar searchHandler={this.props.searchHandler} />
 							<Link to="/ideas/create" className="relative mb-5 sm:mb-0 ml-10">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />

@@ -1,23 +1,21 @@
 import React, { Component } from "react";
 
 const SearchBar = ({ searchHandler }) => {
-	const [query] = React.useState("");
+	const [query, setQuery] = React.useState("");
 
-	const updateSearchTerm = term => {
-		this.setState({ query: term });
-	};
-
-	const inputKeyDown = e => {
-		const val = e.target.value;
-		if (e.key === "Enter" && val) {
-			search(this.state.query);
+	const inputKeyDown = async event => {
+		if (event.key === "Enter") {
+			search(query);
 		}
+		const newQuery = event.target.value;
+		setQuery(newQuery);
 	};
 
 	const search = term => {
-		term.toLowerCase().trim().replaceAll(" ", "-");
+		term = term.toLowerCase().trim().replaceAll(" ", "-");
+		console.log(term);
 		searchHandler(term);
-		this.setState({ query: "" });
+		setQuery("");
 	};
 
 	return (
@@ -34,9 +32,10 @@ const SearchBar = ({ searchHandler }) => {
 							Search this site
 						</label>
 						<input
+							maxLength="25"
 							type="text"
 							id="search"
-							defaultValue={query}
+							value={query}
 							onChange={inputKeyDown}
 							placeholder="Search"
 							spellCheck="false"
