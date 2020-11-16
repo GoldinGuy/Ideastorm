@@ -50,9 +50,9 @@ class IdeasStream extends Component {
 		var pageTitle =
 			this.props.searchTerm.length > 0 ? this.props.searchTerm : "Trending";
 		let showIdeas = true;
-		// console.log(ideas);
-		// console.log(this.props.searchTerm);
-
+		if (!this.state.ideas.length) {
+			showIdeas = false;
+		}
 		var exploreTags = [
 			"tech",
 			"foodies",
@@ -62,10 +62,6 @@ class IdeasStream extends Component {
 			"lifestyle",
 			"fashion"
 		];
-
-		if (!this.state.ideas.length) {
-			showIdeas = false;
-		}
 
 		return (
 			<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">

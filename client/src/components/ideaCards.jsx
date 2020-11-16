@@ -87,6 +87,7 @@ const IdeaCard = ({ idea }) => {
 
 					<h5 className="flex-wrap flex">
 						{idea.tags.map((tag, index) => (
+							// inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4
 							<span className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg">
 								{"#" + tag}
 							</span>
