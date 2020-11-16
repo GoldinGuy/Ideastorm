@@ -210,6 +210,13 @@ getTrendingTags = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+renameField = async (req, res) => {
+//     await Idea.update({}, { $rename: { name: req.params.fieldName } }, { multi: true }, function(err, blocks) {
+//   if(err) { throw err; }
+//   console.log('done!');
+//     });db.students.updateMany( {}, { $rename: { "nmae": "name" } } )
+   await Idea.updateMany({}, { $rename: { "name": 'title' } });
+}
 
 
 module.exports = {
@@ -222,5 +229,6 @@ module.exports = {
     getLatestIdeas,
     getTrendingIdeas,
     getIdeasByText,
-    getTrendingTags
+    getTrendingTags,
+    renameField
 }

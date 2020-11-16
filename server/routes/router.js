@@ -14,6 +14,7 @@ router.get('/latestIdeas', IdeaCtrl.getLatestIdeas)
 router.get('/trendingIdeas', IdeaCtrl.getTrendingIdeas)
 router.get('/ideasByText/:text', IdeaCtrl.getIdeasByText)
 router.get('/trendingTags', IdeaCtrl.getTrendingTags)
+router.post('/renameField/:fieldName', IdeaCtrl.renameField)
 
 
 module.exports = router

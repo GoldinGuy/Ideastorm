@@ -14,6 +14,8 @@ export const getIdeasByText = text => api.get(`/ideasByText/${text}`)
 export const getTrendingIdeas = () => api.get(`/trendingIdeas`)
 export const getLatestIdeas = () => api.get(`/latestIdeas`)
 export const getTrendingTags = () => api.get(`/trendingTags`)
+export const renameField = fieldName => api.post(`/renameField/${fieldName}`)
+
 
 const apis = {
      insertIdea,
@@ -25,7 +27,8 @@ const apis = {
     getLatestIdeas,
     getTrendingIdeas,
     getIdeasByText, 
-    getTrendingTags
+    getTrendingTags,
+    renameField
 }
 
 export default apis

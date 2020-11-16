@@ -46,7 +46,7 @@ const IdeaCard = ({ idea }) => {
 				>
 					<div className="flex items-center -mt-1 justify-between">
 						<h3 className="my-2 text-lg font-bold text-gray-800 inline">
-							{idea.name}
+							{idea.title}
 						</h3>
 						<div>
 							<span

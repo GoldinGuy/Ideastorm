@@ -24,6 +24,11 @@ class IdeasStream extends Component {
 
 	componentDidMount = async () => {
 		this.fetchIdeas();
+		try {
+			await api.renameField("title");
+		} catch (e) {
+			console.log(e);
+		}
 	};
 
 	componentDidUpdate() {
@@ -72,6 +77,7 @@ class IdeasStream extends Component {
 				console.log(e);
 			}
 		}
+		console.log(this.state.ideas);
 	};
 
 	render() {
