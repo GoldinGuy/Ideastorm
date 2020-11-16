@@ -6,9 +6,10 @@ const SearchBar = ({ history }) => {
 	const inputKeyDown = async e => {
 		if (e.key === "Enter") {
 			search(query);
+		} else {
+			const newQuery = e.target.value;
+			setQuery(newQuery);
 		}
-		const newQuery = e.target.value;
-		setQuery(newQuery);
 	};
 
 	const search = term => {
