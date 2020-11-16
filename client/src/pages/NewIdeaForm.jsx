@@ -6,15 +6,15 @@ export default class NewIdeaForm extends Component {
 		super(props);
 
 		this.state = {
-			name: "",
+			title: "",
 			description: "",
 			tags: []
 		};
 	}
 
-	handleChangeInputName = async event => {
-		const name = event.target.value;
-		this.setState({ name });
+	handleChangeInputTitle = async event => {
+		const title = event.target.value;
+		this.setState({ title });
 	};
 
 	handleChangeInputDescription = async event => {
@@ -26,14 +26,14 @@ export default class NewIdeaForm extends Component {
 	};
 
 	handleIncludeIdea = async () => {
-		const { name, description, tags } = this.state;
+		const { title, description, tags } = this.state;
 		// const arrayTags = tags.split("/");
-		const payload = { name, description, tags };
+		const payload = { title, description, tags };
 
 		await api.insertIdea(payload).then(res => {
 			window.alert(`Idea shared successfully`);
 			this.setState({
-				name: "",
+				title: "",
 				description: "",
 				tags: []
 			});
@@ -67,7 +67,7 @@ export default class NewIdeaForm extends Component {
 	};
 
 	render() {
-		const { name, description, tags } = this.state;
+		const { title, description, tags } = this.state;
 		return (
 			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-12 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5">
 				<div>
@@ -81,8 +81,8 @@ export default class NewIdeaForm extends Component {
 						<input
 							className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
 							type="text"
-							onChange={this.handleChangeInputName}
-							value={name}
+							onChange={this.handleChangeInputTitle}
+							value={title}
 							placeholder="An Awesome Idea"
 						/>
 					</div>

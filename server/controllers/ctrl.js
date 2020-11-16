@@ -50,7 +50,7 @@ updateIdea = async (req, res) => {
                 message: 'Idea not found!',
             })
         }
-        idea.name = body.name
+        idea.title = body.title
         idea.description = body.description
         idea.tags = body.tags
         idea
@@ -134,7 +134,7 @@ getIdeasByText = async (req, res) => {
     await Idea.find({
             $or: [
             {
-                name: { $regex: req.params.text, $options: 'i' },
+                title: { $regex: req.params.text, $options: 'i' },
             }, {
                 description: { $regex: req.params.text, $options: 'i' },
             },{
@@ -211,11 +211,7 @@ getTrendingTags = async (req, res) => {
 }
 
 renameField = async (req, res) => {
-//     await Idea.update({}, { $rename: { name: req.params.fieldName } }, { multi: true }, function(err, blocks) {
-//   if(err) { throw err; }
-//   console.log('done!');
-//     });db.students.updateMany( {}, { $rename: { "nmae": "name" } } )
-   await Idea.updateMany({}, { $rename: { "name": 'title' } });
+   await Idea.updateMany({}, { $rename: { "name": req.params.fieldName } });
 }
 
 

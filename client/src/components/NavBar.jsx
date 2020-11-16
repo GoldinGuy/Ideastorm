@@ -36,8 +36,8 @@ class NavBar extends Component {
 		return (
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
-					<a
-						href="/"
+					<Link
+						to="/"
 						className="relative flex items-center inline-block h-5 h-full font-black"
 					>
 						<svg
@@ -74,13 +74,13 @@ class NavBar extends Component {
 							</g>
 						</svg>
 						<span className="ml-3 text-2xl font-black">Brainstorm</span>
-					</a>
+					</Link>
 					<div
 						id="nav"
 						className="absolute top-0 left-0 hidden block w-full mt-20 border-b border-gray-200 sm:border-none sm:px-5 sm:block sm:relative sm:mt-0 sm:px-0 sm:w-auto"
 					>
 						<nav className="flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0">
-							<Link
+							{/* <Link
 								to="/"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
@@ -92,12 +92,38 @@ class NavBar extends Component {
 											: "hidden"
 									}
 								/>
-							</Link>
+							</Link> */}
 							<Link
 								to="/explore"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
-								Explore Ideas
+								Trending
+								<span
+									className={
+										this.state.currentPage === 2
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
+							</Link>
+							<Link
+								to="/explore/"
+								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+							>
+								Featured
+								<span
+									className={
+										this.state.currentPage === 2
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
+							</Link>
+							<Link
+								to="/explore/"
+								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+							>
+								Latest
 								<span
 									className={
 										this.state.currentPage === 2
@@ -110,7 +136,7 @@ class NavBar extends Component {
 								to="/table"
 								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
-								Browse Table
+								Table View
 								<span
 									className={
 										this.state.currentPage === 3
