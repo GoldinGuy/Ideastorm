@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import SearchBar from "../components/SearchBar";
+import { Link } from "react-router-dom";
 
 class IdeasHome extends Component {
 	render() {
 		return (
 			<div>
-				{/* BEGIN HERO SECTION */}
+				{/*  HERO SECTION */}
 				<div className="relative items-center justify-center w-full w-screen h-screen">
 					<div className="container flex flex-col items-center justify-center h-full max-w-6xl pl-0 mx-auto -mt-24 sm:pl-8 xl:pl-0 md:flex-row md:justify-between">
 						<div className="flex flex-col items-center w-5/6 md:items-start sm:w-1/2 lg:w-3/8 lg:mt-10">
@@ -53,12 +53,12 @@ class IdeasHome extends Component {
 								Whether you're looking for a cool new project, or you have an
 								awesome idea to share - you've come to the right place.
 							</p>
-							<a href="#_" className="relative mt-5">
+							<Link to="/explore" className="relative mt-5">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
-								<span className="relative inline-block w-full h-full px-8 py-3 text-base font-bold bg-white border-2 border-black rounded hover:bg-yellow-400 xl:text-xl fold-bold">
+								<span className="relative inline-block w-full h-full px-8 py-3 text-base font-bold bg-white border-2 border-black rounded hover:bg-indigo-500 xl:text-xl fold-bold hover:text-white">
 									Explore Ideas
 								</span>
-							</a>
+							</Link>
 						</div>
 						<div className="flex flex-col items-end justify-center w-5/6 h-auto pl-0 pr-0 mt-10 sm:pl-20 sm:pr-8 xl:pr-0 md:mt-0 md:h-full sm:w-2/3">
 							{/* HERO SVG IMAGE */}

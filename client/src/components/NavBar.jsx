@@ -37,7 +37,7 @@ class NavBar extends Component {
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
 					<a
-						href="#_"
+						href="/"
 						className="relative flex items-center inline-block h-5 h-full font-black"
 					>
 						<svg
@@ -54,8 +54,8 @@ class NavBar extends Component {
 									y2="29.24%"
 									id="b"
 								>
-									<stop stopColor="#FFCD26" offset="0%" />
-									<stop stopColor="#FFDF95" offset="100%" />
+									<stop stopColor="#667eea" offset="0%" />
+									<stop stopColor="#667eea" offset="100%" />
 								</linearGradient>
 								<path
 									d="M95.655.001c-24.386 0-43.538 13.864-52.36 34.66-5.144 12.126-3.711 24.522.084 29.027 2.435-5.804 11.57-15.424 29.476-15.424h79.952c29.783 0 54.375-30.377 61.963-48.263H95.655zM67.693 65.916C23.419 65.916.085 105.344 0 137.666v.345c.011 4.322.439 8.517 1.291 12.466 2.433-5.804 19.956-36.297 47.062-36.297h23.225c29.783 0 54.375-30.378 61.963-48.264H67.693z"

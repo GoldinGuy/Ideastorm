@@ -53,6 +53,16 @@ class IdeasStream extends Component {
 		// console.log(ideas);
 		// console.log(this.props.searchTerm);
 
+		var exploreTags = [
+			"tech",
+			"foodies",
+			"app",
+			"website",
+			"science-fair",
+			"lifestyle",
+			"fashion"
+		];
+
 		if (!this.state.ideas.length) {
 			showIdeas = false;
 			return (
@@ -72,10 +82,17 @@ class IdeasStream extends Component {
 			<div>
 				{showIdeas && (
 					<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
-						<h2 className="relative flex items-center self-start inline-block w-auto mb-10 mt-5 text-4xl font-black">
+						<h2 className="relative flex items-center self-start inline-block w-auto mb-2 mt-5 text-4xl font-black">
 							<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
 							<span className="relative">{pageTitle}</span>
 						</h2>
+						<div className="relative flex items-center mb-6 mt-4 text-4xl font-black overflow-x-scroll sm:overflow-x-hidden">
+							{exploreTags.map((tag, index) => (
+								<span className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg ">
+									{"#" + tag}
+								</span>
+							))}
+						</div>
 						<div className="flex w-full h-full">
 							<div className="w-full">
 								<Cards ideas={this.state.ideas} />
