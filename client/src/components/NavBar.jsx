@@ -94,7 +94,7 @@ class NavBar extends Component {
 								/>
 							</Link> */}
 							<Link
-								to="/explore"
+								to="/explore/trending"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Trending
@@ -107,7 +107,7 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								to="/explore/"
+								to="/explore/featured"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Featured
@@ -120,7 +120,7 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								to="/explore/"
+								to="/explore/latest"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Latest

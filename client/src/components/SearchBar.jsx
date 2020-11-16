@@ -15,8 +15,8 @@ const SearchBar = ({ history }) => {
 	const search = term => {
 		term = term.toLowerCase().trim().replaceAll(" ", "-");
 		history.push({
-			pathname: "/explore",
-			search: term.length > 0 ? "?s=" + term : ""
+			pathname: "/explore/search",
+			search: term.length > 0 ? "?q=" + term : ""
 		});
 		setQuery("");
 	};

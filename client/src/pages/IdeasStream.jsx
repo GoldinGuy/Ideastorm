@@ -6,6 +6,7 @@ class IdeasStream extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			page: this.props.match.params.page,
 			ideas: [],
 			trendingTags: [
 				"tech",
@@ -17,72 +18,111 @@ class IdeasStream extends Component {
 				"fashion"
 			],
 			currentTerm:
-				new URLSearchParams(this.props.location.search).get("s") ?? ""
+				new URLSearchParams(this.props.location.search).get("q") ?? ""
 		};
 		console.log(this.state.currentTerm);
 	}
 
 	componentDidMount = async () => {
 		this.fetchIdeas();
-		try {
-			await api.renameField("title");
-		} catch (e) {
-			console.log(e);
-		}
 	};
 
-	componentDidUpdate() {
-		let query = new URLSearchParams(this.props.location.search).get("s") ?? "";
-		if (this.state.currentTerm !== query) {
-			this.setState(
-				{
-					currentTerm: query
-				},
-				function () {
-					this.fetchIdeas();
-				}.bind(this)
-			);
+	componentDidUpdate(prevProps) {
+		if (prevProps.location.pathname !== this.props.location.pathname) {
+			this.setState({
+				page: this.props.match.params.page
+			});
+			this.fetchIdeas();
+			let query =
+				new URLSearchParams(this.props.location.search).get("q") ?? "";
+			if (this.state.currentTerm !== query) {
+				this.setState(
+					{
+						currentTerm: query
+					},
+					function () {
+						this.fetchIdeas();
+					}.bind(this)
+				);
+			}
 		}
 	}
 
 	fetchIdeas = async () => {
-		if (this.state.currentTerm.length > 0) {
-			try {
-				await api.getIdeasByText(this.state.currentTerm).then(ideas => {
-					this.setState({
-						ideas: ideas.data.data
+		switch (this.state.page) {
+			case "search":
+				let query =
+					new URLSearchParams(this.props.location.search).get("q") ?? "";
+				try {
+					await api.getIdeasByText(query).then(ideas => {
+						this.setState({
+							ideas: ideas.data.data
+						});
 					});
-				});
-			} catch (e) {
-				this.setState({ ideas: [] });
-				console.log(e);
-			}
-		} else {
-			try {
-				await api.getLatestIdeas().then(ideas => {
-					this.setState({
-						ideas: ideas.data.data
+				} catch (e) {
+					this.setState({ ideas: [] });
+					console.log(e);
+				}
+				break;
+			case "trending":
+				try {
+					await api.getLatestIdeas().then(ideas => {
+						this.setState({
+							ideas: ideas.data.data
+						});
 					});
-				});
-			} catch (e) {
-				console.log(e);
-			}
-			try {
-				await api.getTrendingTags().then(tags => {
-					this.setState({
-						trendingTags: tags.data.data
+				} catch (e) {
+					console.log(e);
+				}
+				try {
+					await api.getTrendingTags().then(tags => {
+						this.setState({
+							trendingTags: tags.data.data
+						});
 					});
-				});
-			} catch (e) {
-				console.log(e);
-			}
+				} catch (e) {
+					console.log(e);
+				}
+				break;
+			default:
 		}
+		// if (this.state.page === "search") {
+		// 	let query =
+		// 		new URLSearchParams(this.props.location.search).get("query") ?? "";
+		// 	try {
+		// 		await api.getIdeasByText(query).then(ideas => {
+		// 			this.setState({
+		// 				ideas: ideas.data.data
+		// 			});
+		// 		});
+		// 	} catch (e) {
+		// 		this.setState({ ideas: [] });
+		// 		console.log(e);
+		// 	}
+		// } else {
+		// 	try {
+		// 		await api.getLatestIdeas().then(ideas => {
+		// 			this.setState({
+		// 				ideas: ideas.data.data
+		// 			});
+		// 		});
+		// 	} catch (e) {
+		// 		console.log(e);
+		// 	}
+		// 	try {
+		// 		await api.getTrendingTags().then(tags => {
+		// 			this.setState({
+		// 				trendingTags: tags.data.data
+		// 			});
+		// 		});
+		// 	} catch (e) {
+		// 		console.log(e);
+		// 	}
+		// }
 		console.log(this.state.ideas);
 	};
 
 	render() {
-		var pageTitle =
-			this.state.currentTerm.length > 0 ? this.state.currentTerm : "Trending";
 		let showIdeas = true;
 		if (!this.state.ideas.length) {
 			showIdeas = false;
@@ -91,7 +131,7 @@ class IdeasStream extends Component {
 			<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
 				<h2 className="relative flex items-center self-start inline-block w-auto mb-2 mt-5 text-4xl font-black">
 					<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
-					<span className="relative">{pageTitle}</span>
+					<span className="relative">{this.state.page}</span>
 				</h2>
 				{/* TODO: implement trending tags */}
 				<div className="relative flex items-center mb-6 mt-4 text-4xl  overflow-x-scroll sm:overflow-x-hidden">
@@ -101,8 +141,8 @@ class IdeasStream extends Component {
 							className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 							onClick={() =>
 								this.props.history.push({
-									pathname: "/explore",
-									search: "?s=" + tag._id
+									pathname: "/explore/search",
+									search: "?q=" + tag._id
 								})
 							}
 						>
