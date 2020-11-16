@@ -12,14 +12,7 @@ const Idea = new Schema(
     { timestamps: true },
 )
 
-// const Idea = new Schema(
-//     {
-//         name: { type: String, required: true },
-//         time: { type: [String], required: true },
-//         rating: { type: Number, required: true },
-//     },
-//     { timestamps: true },
-// )
+
 // const Idea = new Schema(
 //     {
 //         name: { type: String, required: true },
