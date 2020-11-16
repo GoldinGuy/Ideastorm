@@ -13,6 +13,7 @@ export const getIdeasByTag = tags => api.get(`/ideasByTag/${tags}`)
 export const getIdeasByText = text => api.get(`/ideasByText/${text}`)
 export const getTrendingIdeas = () => api.get(`/trendingIdeas`)
 export const getLatestIdeas = () => api.get(`/latestIdeas`)
+export const getTrendingTags = () => api.get(`/trendingTags`)
 
 const apis = {
      insertIdea,
@@ -23,7 +24,8 @@ const apis = {
     getIdeasByTag,
     getLatestIdeas,
     getTrendingIdeas,
-    getIdeasByText
+    getIdeasByText, 
+    getTrendingTags
 }
 
 export default apis

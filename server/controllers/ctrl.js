@@ -184,6 +184,34 @@ getTrendingIdeas = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getTrendingTags = async (req, res) => {
+    await Idea.aggregate([
+        // Unwind the array
+        { "$unwind": "$tags" },
+        // Group on tags with a count
+        { "$group": {
+            "_id": "$tags",
+            "count": { "$sum": 1 }
+        }},
+        // Optionally sort the tags by count descending
+        { "$sort": { "_id": -1 } },
+        // Optionally limit to the top "n" results. Using 10 results here
+        { "$limit": 10 }
+
+    ], function (err, tags) {
+        console.log(err);
+        console.log(tags);
+        if (!tags.length) {
+        return res
+                .status(404)
+                .json({ success: false, error: `Tags not found` })
+        }
+        return res.status(200).json({ success: true, data: tags })
+    }).catch(err => console.log(err))
+}
+
+
+
 module.exports = {
     createIdea,
     updateIdea,
@@ -193,5 +221,6 @@ module.exports = {
     getIdeasByTag,
     getLatestIdeas,
     getTrendingIdeas,
-    getIdeasByText
+    getIdeasByText,
+    getTrendingTags
 }

@@ -6,9 +6,18 @@ class IdeasStream extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			ideas: [],
+			trendingTags: [
+				"tech",
+				"foodies",
+				"app",
+				"website",
+				"science-fair",
+				"lifestyle",
+				"fashion"
+			],
 			currentTerm:
-				new URLSearchParams(this.props.location.search).get("s") ?? "",
-			ideas: []
+				new URLSearchParams(this.props.location.search).get("s") ?? ""
 		};
 		console.log(this.state.currentTerm);
 	}
@@ -53,6 +62,15 @@ class IdeasStream extends Component {
 			} catch (e) {
 				console.log(e);
 			}
+			try {
+				await api.getTrendingTags().then(tags => {
+					this.setState({
+						trendingTags: tags.data.data
+					});
+				});
+			} catch (e) {
+				console.log(e);
+			}
 		}
 	};
 
@@ -63,16 +81,6 @@ class IdeasStream extends Component {
 		if (!this.state.ideas.length) {
 			showIdeas = false;
 		}
-		var exploreTags = [
-			"tech",
-			"foodies",
-			"app",
-			"website",
-			"science-fair",
-			"lifestyle",
-			"fashion"
-		];
-
 		return (
 			<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
 				<h2 className="relative flex items-center self-start inline-block w-auto mb-2 mt-5 text-4xl font-black">
@@ -81,17 +89,18 @@ class IdeasStream extends Component {
 				</h2>
 				{/* TODO: implement trending tags */}
 				<div className="relative flex items-center mb-6 mt-4 text-4xl  overflow-x-scroll sm:overflow-x-hidden">
-					{exploreTags.map((tag, index) => (
+					{this.state.trendingTags.map((tag, index) => (
 						<button
+							id={tag._id}
 							className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 							onClick={() =>
 								this.props.history.push({
 									pathname: "/explore",
-									search: "?s=" + tag
+									search: "?s=" + tag._id
 								})
 							}
 						>
-							{"#" + tag}
+							{"#" + tag._id}
 						</button>
 					))}
 				</div>
