@@ -1,28 +1,42 @@
 import React, { Component } from "react";
 import api from "../api";
-
 import Cards from "../components/ideaCards";
 
 class IdeasStream extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
+			currentTerm:
+				new URLSearchParams(this.props.location.search).get("s") ?? "",
 			ideas: []
 		};
+		console.log(this.state.currentTerm);
 	}
 
 	componentDidMount = async () => {
 		this.fetchIdeas();
 	};
 
-	componentDidUpdate(prevProps) {
-		if (prevProps.searchTerm !== this.props.searchTerm) {
-			this.fetchIdeas();
+	componentDidUpdate = async prevProps => {
+		let query = new URLSearchParams(this.props.location.search).get("s") ?? "";
+		if (this.state.currentTerm !== query) {
+			this.setState({ currentTerm: query });
 		}
-	}
+	};
 
 	fetchIdeas = async () => {
-		if (this.props.searchTerm.length === 0) {
+		if (this.state.currentTerm > 0) {
+			try {
+				await api.getIdeasByText(this.state.currentTerm).then(ideas => {
+					this.setState({
+						ideas: ideas.data.data
+					});
+				});
+			} catch (e) {
+				this.setState({ ideas: [] });
+				console.log(e);
+			}
+		} else {
 			try {
 				await api.getLatestIdeas().then(ideas => {
 					this.setState({
@@ -32,23 +46,12 @@ class IdeasStream extends Component {
 			} catch (e) {
 				console.log(e);
 			}
-		} else {
-			try {
-				await api.getIdeasByText(this.props.searchTerm).then(ideas => {
-					this.setState({
-						ideas: ideas.data.data
-					});
-				});
-			} catch (e) {
-				this.setState({ ideas: [] });
-				console.log(e);
-			}
 		}
 	};
 
 	render() {
 		var pageTitle =
-			this.props.searchTerm.length > 0 ? this.props.searchTerm : "Trending";
+			this.state.currentTerm.length > 0 ? this.state.currentTerm : "Trending";
 		let showIdeas = true;
 		if (!this.state.ideas.length) {
 			showIdeas = false;
@@ -74,7 +77,12 @@ class IdeasStream extends Component {
 					{exploreTags.map((tag, index) => (
 						<button
 							className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
-							onClick={() => this.props.searchHandler(tag)}
+							onClick={() =>
+								this.props.history.push({
+									pathname: "/explore",
+									search: "?s=" + tag
+								})
+							}
 						>
 							{"#" + tag}
 						</button>

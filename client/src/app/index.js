@@ -8,7 +8,27 @@ import { IdeasList, IdeasInsert, IdeasUpdate, IdeasStream, NewIdeaForm, IdeasHom
 
 function App() {
     return (
-        <Brainstorm />
+          <BrowserRouter basename="/ideas">
+
+            <NavBar />
+             <Switch>
+                <Route path="/" exact component={IdeasHome} />
+                <Route path="/explore" exact component={IdeasStream} />
+                       {/* <Route
+                    path="/explore/:id"
+                    exact
+                    component={Idea}
+                /> */}
+                {/* <Route path="/explore/:searchTerm" render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} /> */}
+                <Route path="/table" exact component={IdeasList} />
+                <Route path="/create" exact component={NewIdeaForm} />
+                <Route
+                    path="/update/:id"
+                    exact
+                    component={IdeasUpdate}
+                />
+            </Switch>
+        </BrowserRouter>
     )
 }
 
@@ -23,9 +43,9 @@ class Brainstorm extends React.Component {
 
     }
     
-    searchHandler = (term) => {
-        this.setState({ searchTerm: term })
-    }
+    // searchHandler = (term) => {
+    //     this.setState({ searchTerm: term })
+    // }
     
     render() {
          return (
