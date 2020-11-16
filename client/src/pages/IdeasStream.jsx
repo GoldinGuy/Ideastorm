@@ -17,15 +17,22 @@ class IdeasStream extends Component {
 		this.fetchIdeas();
 	};
 
-	componentDidUpdate = async prevProps => {
+	componentDidUpdate() {
 		let query = new URLSearchParams(this.props.location.search).get("s") ?? "";
 		if (this.state.currentTerm !== query) {
-			this.setState({ currentTerm: query });
+			this.setState(
+				{
+					currentTerm: query
+				},
+				function () {
+					this.fetchIdeas();
+				}.bind(this)
+			);
 		}
-	};
+	}
 
 	fetchIdeas = async () => {
-		if (this.state.currentTerm > 0) {
+		if (this.state.currentTerm.length > 0) {
 			try {
 				await api.getIdeasByText(this.state.currentTerm).then(ideas => {
 					this.setState({
