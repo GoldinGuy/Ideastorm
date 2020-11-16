@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import SearchBar from "./SearchBar";
-import { BrowserRouter, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
 class NavBar extends Component {
@@ -33,7 +33,6 @@ class NavBar extends Component {
 	}
 
 	render() {
-		const searchHandler = this.props.searchHandler;
 		return (
 			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">

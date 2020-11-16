@@ -34,8 +34,13 @@ class Brainstorm extends React.Component {
             <NavBar searchTerm={this.state.searchTerm} searchHandler={this.searchHandler} />
              <Switch>
                 <Route path="/" exact component={IdeasHome} />
-                <Route path="/explore" render={() => (<IdeasStream searchTerm={this.state.searchTerm} />)} />
-                <Route path="/explore/:searchTerm" render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} />
+                     <Route path="/explore" render={() => (<IdeasStream searchTerm={this.state.searchTerm} />)} />
+                       {/* <Route
+                    path="/explore/:id"
+                    exact
+                    component={Idea}
+                /> */}
+                {/* <Route path="/explore/:searchTerm" render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} /> */}
                 <Route path="/table" exact component={IdeasList} />
                 <Route path="/create" exact component={NewIdeaForm} />
                 <Route

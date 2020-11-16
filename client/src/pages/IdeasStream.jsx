@@ -12,9 +12,7 @@ class IdeasStream extends Component {
 	}
 
 	componentDidMount = async () => {
-		if (this.props.searchTerm.length === 0) {
-			this.fetchIdeas();
-		}
+		this.fetchIdeas();
 	};
 
 	componentDidUpdate(prevProps) {
