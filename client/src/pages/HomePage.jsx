@@ -250,12 +250,12 @@ class IdeasHome extends Component {
 								That is our goal. That is Brainstorm. And all ideas, big or
 								small, are welcome.
 							</p>
-							<a href="#_" className="relative">
+							<Link to="/create" className="relative">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-5 py-3 text-lg font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
 									SHARE AN IDEA
 								</span>
-							</a>
+							</Link>
 						</div>
 						<div className="relative flex flex-col items-center justify-center w-full -mr-0 sm:w-5/6 sm:w-2/3 sm:-mr-20">
 							<div className="overflow-hidden border-2 border-black rounded-lg">

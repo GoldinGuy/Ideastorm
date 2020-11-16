@@ -34,7 +34,7 @@ class IdeasStream extends Component {
 			}
 		} else {
 			try {
-				await api.getIdeasByTag([this.props.searchTerm]).then(ideas => {
+				await api.getIdeasByText(this.props.searchTerm).then(ideas => {
 					this.setState({
 						ideas: ideas.data.data
 					});
@@ -74,10 +74,10 @@ class IdeasStream extends Component {
 					<span className="relative">{pageTitle}</span>
 				</h2>
 				{/* TODO: implement trending tags */}
-				<div className="relative flex items-center mb-6 mt-4 text-4xl font-black overflow-x-scroll sm:overflow-x-hidden">
+				<div className="relative flex items-center mb-6 mt-4 text-4xl  overflow-x-scroll sm:overflow-x-hidden">
 					{exploreTags.map((tag, index) => (
 						<button
-							className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
+							className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 							onClick={() => this.props.searchHandler(tag)}
 						>
 							{"#" + tag}

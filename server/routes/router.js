@@ -12,5 +12,7 @@ router.get('/ideas', IdeaCtrl.getIdeas)
 router.get('/ideasByTag/:tags', IdeaCtrl.getIdeasByTag)
 router.get('/latestIdeas', IdeaCtrl.getLatestIdeas)
 router.get('/trendingIdeas', IdeaCtrl.getTrendingIdeas)
+router.get('/ideasByText/:text', IdeaCtrl.getIdeasByText)
+
 
 module.exports = router

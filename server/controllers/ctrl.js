@@ -130,6 +130,31 @@ getIdeasByTag = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
+getIdeasByText = async (req, res) => {
+    await Idea.find({
+            $or: [
+            {
+                name: { $regex: req.params.text, $options: 'i' },
+            }, {
+                description: { $regex: req.params.text, $options: 'i' },
+            },{
+                    tags: { $regex: req.params.text, $options: 'i' },
+             }
+          ]
+}, (err, ideas) => {
+        if (err) {
+            return res.status(400).json({ success: false, error: err })
+        }
+        if (!ideas.length) {
+            return res
+                .status(404)
+                .json({ success: false, error: `Ideas not found` })
+        }
+        return res.status(200).json({ success: true, data: ideas })
+    }).catch(err => console.log(err))
+}
+
+
 getLatestIdeas = async (req, res) => {
     await Idea.find({}, null, {sort: {$natural: -1}},  (err, ideas) => {
         if (err) {
@@ -167,5 +192,6 @@ module.exports = {
     getIdeaById,
     getIdeasByTag,
     getLatestIdeas,
-    getTrendingIdeas
+    getTrendingIdeas,
+    getIdeasByText
 }
