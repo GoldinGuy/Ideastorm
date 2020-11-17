@@ -7,6 +7,7 @@ let autocomplete = require("../assets/utils/autocomplete_words.js");
 
 export default class NewIdeaPage extends Component {
 	_isMounted = false;
+	tagRef = React.createRef();
 
 	constructor(props) {
 		super(props);
@@ -58,11 +59,16 @@ export default class NewIdeaPage extends Component {
 					errorMessage: false
 				});
 			});
+			this.clearAllTags();
 		} else {
 			this.setState({
 				errorMessage: true
 			});
 		}
+	};
+
+	clearAllTags = () => {
+		this.tagRef.current && this.tagRef.current.removeAllTags();
 	};
 
 	render() {
@@ -132,9 +138,9 @@ export default class NewIdeaPage extends Component {
 							<Tags
 								className="w-full p-1 mt-2 text-gray-900 bg-gray-300 rounded-lg !focus:outline-none !focus:shadow-outline"
 								value={tags}
-								onAdd={this.editTag}
 								settings={settings}
 								{...tagifyProps}
+								tagifyRef={this.tagRef}
 								onChange={e => (
 									e.persist(),
 									this.setState({
