@@ -1,6 +1,7 @@
 import React from "react";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
+import { Link } from "react-router-dom";
 
 import en from "javascript-time-ago/locale/en";
 
@@ -17,22 +18,39 @@ const IdeaCard = ({ idea }) => {
 	let rColor;
 	switch (Math.floor(Math.random() * 5) + 1) {
 		case 1:
-			rColor = "indigo-500";
+			rColor = "indigo-300";
 			break;
 		case 2:
-			rColor = "purple-500";
+			rColor = "indigo-400";
 			break;
 		case 3:
-			rColor = "blue-400";
+			rColor = "indigo-600";
 			break;
 		case 4:
-			rColor = "teal-500";
+			rColor = "indigo-300";
 			break;
 		case 5:
-			rColor = "indigo-500";
+			rColor = "indigo-700";
 			break;
 		default:
-			rColor = "yellow-400";
+			rColor = "yellow-500";
+		// case 1:
+		// 	rColor = "indigo-500";
+		// 	break;
+		// case 2:
+		// 	rColor = "purple-500";
+		// 	break;
+		// case 3:
+		// 	rColor = "blue-400";
+		// 	break;
+		// case 4:
+		// 	rColor = "teal-500";
+		// 	break;
+		// case 5:
+		// 	rColor = "indigo-500";
+		// 	break;
+		// default:
+		// 	rColor = "yellow-400";
 	}
 	return (
 		<div className="w-full mb-10 sm:mb-0 sm:w-1/2" key={idea.title}>
@@ -136,20 +154,46 @@ const Cards = ({ ideas }) => {
 };
 
 const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
-	// console.log("topTags " + topTags);
-	// console.log(ideas);
 	return (
 		<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
-			<h2
-				className="relative flex items-center self-start inline-block w-auto mb-2 mt-5 text-4xl font-black"
-				key="header"
-			>
-				<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
-				<span className="relative">{pageTitle}</span>
-			</h2>
+			<div className="relative flex items-center self-start inline-block w-auto mb-1 mt-2   font-black">
+				<h2
+					className="relative flex items-center self-start inline-block w-auto  text-4xl font-black mr-4"
+					key="header"
+				>
+					<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
+					<span className="relative">{pageTitle}</span>
+				</h2>
+				{[
+					"Trending",
+					"Featured",
+					"Latest",
+					"Tech",
+					"Eatables",
+					"Science-Fair"
+				].map(header => {
+					if (header !== pageTitle) {
+						return (
+							<Link
+								to={"/" + header.toLowerCase()}
+								className="relative inline-block text-base font-medium text-indigo-500 ml-4 mr-2"
+							>
+								<span className="block">{header}</span>
+								<span className="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
+									<span
+										xShow="hover"
+										className="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-indigo-500"
+									/>
+								</span>
+							</Link>
+						);
+					}
+					return null;
+				})}
+			</div>
 			{/* TAGS */}
 			<div
-				className="relative flex items-center mb-6 mt-4 text-4xl max-w-none overflow-x-scroll sm:overflow-x-hidden"
+				className="relative flex items-center mb-8 mt-4 text-4xl max-w-none overflow-x-scroll sm:overflow-x-hidden"
 				key="tags"
 			>
 				{topTags.map((tag, index) => (

@@ -32,7 +32,7 @@ class LatestPage extends Component {
 		try {
 			await api.getTrendingTags().then(tags => {
 				this.setState({
-					topTags: tags.data.data
+					topTags: tags.data.data.splice(0, 7)
 				});
 			});
 		} catch (e) {
