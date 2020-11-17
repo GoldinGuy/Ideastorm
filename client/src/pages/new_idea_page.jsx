@@ -167,51 +167,9 @@ export default class NewIdeaPage extends Component {
 									this.setState({
 										tags: e.target.value
 									}),
-									// console.log("CHANGED:", e.target.value)
 									console.log(this.state.tags)
 								)}
 							/>
-
-							{/* <ul className="w-full">
-								<li className="inline-block w-full">
-									<input
-										className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
-										type="text"
-										placeholder="website. app. foodies. science-fair. tech. art-project."
-										onKeyDown={this.inputKeyDown}
-										ref={c => {
-											this.tagInput = c;
-										}}
-									/>
-								</li>
-								{tags.map((tag, i) => (
-									<div
-										className="bg-indigo-100 inline-flex items-center text-sm rounded mt-2 mr-1"
-										key={tag}
-									>
-										<span className="ml-2 mr-1 leading-relaxed truncate text-md max-w-xs">
-											{"#" + tag}
-										</span>
-										<button
-											className="w-6 h-8 inline-block align-middle text-gray-500 hover:text-gray-600 focus:outline-none"
-											onClick={() => {
-												this.removeTag(i);
-											}}
-										>
-											<svg
-												className="w-6 h-6 fill-current mx-auto"
-												xmlns="http://www.w3.org/2000/svg"
-												viewBox="0 0 24 24"
-											>
-												<path
-													fillRule="evenodd"
-													d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"
-												/>
-											</svg>
-										</button>
-									</div>
-								))}
-							</ul> */}
 						</div>
 					</div>
 					{this.state.errorMessage && (
@@ -260,54 +218,3 @@ export default class NewIdeaPage extends Component {
 		);
 	}
 }
-
-// const TagsField = () => {
-// 	const tagifyRef = useRef();
-
-// 	const tagifyProps = {
-// 		whitelist: autocomplete.words,
-// 		showFilteredDropdown: "a",
-// 		loading: false
-// 	};
-
-// 	const settings = {
-// 		maxTags: 6,
-// 		minTags: 3,
-// 		trim: true,
-// 		delimiters: [",", ".", "\\s+"],
-// 		caseSensitive: false,
-// 		accentedSearch: true,
-// 		highlightFirst: false,
-// 		addTagOnBlur: true,
-// 		//backspace: "edit",
-// 		placeholder: "Add up to 6 tags",
-// 		dropdown: {
-// 			enabled: 0, // a;ways show suggestions dropdown
-// 			fuzzySearch: true
-// 		}
-// 	};
-
-// 	const onChange = useCallback(e => {
-// 		e.persist();
-// 		console.log("CHANGED:", e.target.value);
-// 	}, []);
-
-// 	const clearAll = () => {
-// 		tagifyRef.current && tagifyRef.current.removeAllTags();
-// 	};
-
-// 	const editTag = () => {
-// 		tagifyRef.current && tagifyRef.current.replaceTag(tagifyRef.current, {});
-// 	}
-
-// 	return (
-// 		<Tags
-// 			className="w-full p-1 mt-2 text-gray-900 bg-gray-300 rounded-lg !focus:outline-none !focus:shadow-outline"
-// 			value=""
-// 			settings={settings}
-// 			{...tagifyProps}
-// 			onAdd={editTag}
-// 			tagifyRef={tagifyRef}
-// 		/>
-// 	);
-// };
