@@ -82,8 +82,8 @@ class IdeasTable extends Component {
 				filterable: true
 			},
 			{
-				Header: "Name",
-				accessor: "name",
+				Header: "Title",
+				accessor: "title",
 				filterable: true
 			},
 			{
@@ -96,7 +96,7 @@ class IdeasTable extends Component {
 				Header: "Tags",
 				accessor: "tags",
 				filterable: true,
-				Cell: props => <span>{props.value.join(" , ")}</span>
+				Cell: props => <span>{props.value.join(", ")}</span>
 			},
 			{
 				Header: "",

@@ -23,9 +23,9 @@ class NavBar extends Component {
 		switch (path) {
 			case "/trending":
 				return 1;
-			case "/featured":
-				return 2;
 			case "/latest":
+				return 2;
+			case "/explore":
 				return 3;
 			case "/table":
 				return 4;
@@ -97,7 +97,7 @@ class NavBar extends Component {
 									}
 								/>
 							</Link>
-							<Link
+							{/* <Link
 								to="/featured"
 								key="featured"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
@@ -110,13 +110,27 @@ class NavBar extends Component {
 											: "hidden"
 									}
 								/>
-							</Link>
+							</Link> */}
 							<Link
 								to="/latest"
 								key="latest"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Latest
+								<span
+									className={
+										this.state.currentPage === 2
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
+							</Link>
+							<Link
+								to="/explore"
+								key="explore-categories"
+								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+							>
+								Explore Categories
 								<span
 									className={
 										this.state.currentPage === 3

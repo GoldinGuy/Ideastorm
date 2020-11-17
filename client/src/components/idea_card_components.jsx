@@ -17,40 +17,40 @@ const IdeaCard = ({ idea }) => {
 
 	let rColor;
 	switch (Math.floor(Math.random() * 5) + 1) {
-		case 1:
-			rColor = "indigo-300";
-			break;
-		case 2:
-			rColor = "indigo-400";
-			break;
-		case 3:
-			rColor = "indigo-600";
-			break;
-		case 4:
-			rColor = "indigo-300";
-			break;
-		case 5:
-			rColor = "indigo-700";
-			break;
-		default:
-			rColor = "yellow-500";
 		// case 1:
-		// 	rColor = "indigo-500";
+		// 	rColor = "indigo-300";
 		// 	break;
 		// case 2:
-		// 	rColor = "purple-500";
+		// 	rColor = "indigo-400";
 		// 	break;
 		// case 3:
-		// 	rColor = "blue-400";
+		// 	rColor = "indigo-600";
 		// 	break;
 		// case 4:
-		// 	rColor = "teal-500";
+		// 	rColor = "indigo-300";
 		// 	break;
 		// case 5:
-		// 	rColor = "indigo-500";
+		// 	rColor = "indigo-700";
 		// 	break;
 		// default:
-		// 	rColor = "yellow-400";
+		// 	rColor = "yellow-500";
+		case 1:
+			rColor = "indigo-500";
+			break;
+		case 2:
+			rColor = "purple-500";
+			break;
+		case 3:
+			rColor = "blue-400";
+			break;
+		case 4:
+			rColor = "teal-500";
+			break;
+		case 5:
+			rColor = "indigo-500";
+			break;
+		default:
+			rColor = "yellow-400";
 	}
 	return (
 		<div className="w-full mb-10 sm:mb-0 sm:w-1/2" key={idea.title}>
@@ -164,7 +164,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 					<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
 					<span className="relative">{pageTitle}</span>
 				</h2>
-				{[
+				{/* {[
 					"Trending",
 					"Featured",
 					"Latest",
@@ -189,7 +189,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 						);
 					}
 					return null;
-				})}
+				})}*/}
 			</div>
 			{/* TAGS */}
 			<div
