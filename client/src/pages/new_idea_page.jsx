@@ -78,7 +78,10 @@ export default class NewIdeaPage extends Component {
 		const { title, description, tags } = this.state;
 		return (
 			<div>
-				<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-2 sm:pt-10 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5">
+				<div
+					className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-2 sm:pt-10 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5"
+					key="input-form"
+				>
 					<div>
 						<div>
 							<h2 className="mb-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
@@ -127,21 +130,6 @@ export default class NewIdeaPage extends Component {
 									/>
 								</li>
 								{tags.map((tag, i) => (
-									// <button
-									// 	type="button"
-									// 	className="no-outline"
-									// 	onClick={() => {
-									// 		this.removeTag(i);
-									// 	}}
-									// >
-									// 	<li
-									// 		key={tag}
-									// 		className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4"
-									// 	>
-									// 		{"#" + tag}
-									// 	</li>
-									// </button>
-
 									<div
 										className="bg-indigo-100 inline-flex items-center text-sm rounded mt-2 mr-1"
 										key={tag}
@@ -161,7 +149,7 @@ export default class NewIdeaPage extends Component {
 												viewBox="0 0 24 24"
 											>
 												<path
-													fill-rule="evenodd"
+													fillRule="evenodd"
 													d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"
 												/>
 											</svg>
@@ -172,7 +160,10 @@ export default class NewIdeaPage extends Component {
 						</div>
 					</div>
 					{this.state.errorMessage && (
-						<div className="flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden mt-2 mb-2">
+						<div
+							className="flex max-w-sm w-full mx-auto bg-white shadow-md rounded-lg overflow-hidden mt-2 mb-2"
+							key="errorMessage"
+						>
 							<div className="flex justify-center items-center w-12 bg-red-500">
 								<svg
 									className="h-6 w-6 fill-current text-white"
@@ -194,7 +185,10 @@ export default class NewIdeaPage extends Component {
 							</div>
 						</div>
 					)}
-					<div className="relative flex items-center  flex-col  justify-center w-full mb-10 sm:mb-0 sm:pr-10">
+					<div
+						className="relative flex items-center  flex-col  justify-center w-full mb-10 sm:mb-0 sm:pr-10"
+						key="submit"
+					>
 						<button
 							type="button"
 							className="relative "
