@@ -8,7 +8,16 @@ class SearchPage extends Component {
 		super(props);
 		this.state = {
 			ideas: [],
-			topTags: [],
+			topTags: [
+				{ _id: "tech" },
+				{ _id: "foodies" },
+				{ _id: "app" },
+				{ _id: "tech" },
+				{ _id: "website" },
+				{ _id: "science-fair" },
+				{ _id: "lifestyle" },
+				{ _id: "fashion" }
+			],
 			query: new URLSearchParams(this.props.location.search).get("q") ?? ""
 		};
 	}

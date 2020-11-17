@@ -8,13 +8,14 @@ class TrendingPage extends Component {
 		this.state = {
 			ideas: [],
 			topTags: [
-				"tech",
-				"foodies",
-				"app",
-				"website",
-				"science-fair",
-				"lifestyle",
-				"fashion"
+				{ _id: "tech" },
+				{ _id: "foodies" },
+				{ _id: "app" },
+				{ _id: "tech" },
+				{ _id: "website" },
+				{ _id: "science-fair" },
+				{ _id: "lifestyle" },
+				{ _id: "fashion" }
 			]
 		};
 	}
