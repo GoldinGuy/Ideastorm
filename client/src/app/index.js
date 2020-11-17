@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch , Redirect, } from 'react-router-dom'
 
 import { NavBar } from '../components'
-import { IdeasList, IdeasInsert, IdeasUpdate, IdeasStream, NewIdeaForm, IdeasHome } from '../pages'
+import { IdeasTable, IdeasUpdate,TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -11,14 +11,15 @@ function App() {
           <BrowserRouter basename="/ideas">
 
             <NavBar />
-             <Switch>
-                <Route path="/" exact component={IdeasHome} />
+            <Switch>
+                {/* <Redirect path="/" to="/"/> */}
+                <Route path="/" exact component={HomePage} />
                 {/* <Route path="/explore" exact component={IdeasStream} /> */}
-                <Route path="/explore/:page" exact component={IdeasStream} />
-            
-                {/* <Route path="/explore/:searchTerm" render={() => ( <IdeasStream searchTerm={this.state.searchTerm} /> )} /> */}
-                <Route path="/table" exact component={IdeasList} />
-                <Route path="/create" exact component={NewIdeaForm} />
+                <Route path="/trending" exact component={TrendingPage} />
+                <Route path="/latest" exact component={LatestPage} />
+                <Route path="/search" exact component={SearchPage} />
+                <Route path="/table" exact component={IdeasTable} />
+                <Route path="/create" exact component={NewIdeaPage} />
                 <Route
                     path="/update/:id"
                     exact
@@ -28,7 +29,5 @@ function App() {
         </BrowserRouter>
     )
 }
-
-
 
 export default App

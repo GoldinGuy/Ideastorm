@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import api from "../api";
 
-export default class NewIdeaForm extends Component {
+export default class NewIdeaPage extends Component {
 	constructor(props) {
 		super(props);
 
@@ -69,7 +69,7 @@ export default class NewIdeaForm extends Component {
 	render() {
 		const { title, description, tags } = this.state;
 		return (
-			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-12 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5">
+			<div className="grid max-w-screen-xl grid-cols-1 gap-8 px-8 pt-10 mx-auto text-gray-900 md:grid-cols-1 md:px-12 lg:px-32 xl:px-64 mb-5">
 				<div>
 					<div>
 						<h2 className="mb-6 text-center text-3xl leading-9 font-extrabold text-gray-900">
@@ -95,7 +95,7 @@ export default class NewIdeaForm extends Component {
 							className="w-full h-32 p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
 							onChange={this.handleChangeInputDescription}
 							value={description}
-							placeholder="A Descriptively Descriptive Description. Supports Markdown"
+							placeholder="A Descriptively Descriptive Description"
 						/>
 					</div>
 					<div className="mt-6">

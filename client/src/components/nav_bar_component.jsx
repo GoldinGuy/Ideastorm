@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import SearchBar from "./SearchBar";
+import SearchBar from "./search_bar_component";
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router";
 
@@ -21,12 +21,14 @@ class NavBar extends Component {
 
 	getCurrentPage(path) {
 		switch (path) {
-			case "":
+			case "/trending":
 				return 1;
-			case "/explore":
+			case "/featured":
 				return 2;
-			case "/table":
+			case "/latest":
 				return 3;
+			case "/table":
+				return 4;
 			default:
 				return 0;
 		}
@@ -39,6 +41,7 @@ class NavBar extends Component {
 					<Link
 						to="/"
 						className="relative flex items-center inline-block h-5 h-full font-black"
+						key="/"
 					>
 						<svg
 							className="w-auto h-8 mt-1"
@@ -80,11 +83,12 @@ class NavBar extends Component {
 						className="absolute top-0 left-0 hidden block w-full mt-20 border-b border-gray-200 sm:border-none sm:px-5 sm:block sm:relative sm:mt-0 sm:px-0 sm:w-auto"
 					>
 						<nav className="flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0">
-							{/* <Link
-								to="/"
-								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+							<Link
+								to="/trending"
+								key="trending"
+								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
-								Home
+								Trending
 								<span
 									className={
 										this.state.currentPage === 1
@@ -92,22 +96,10 @@ class NavBar extends Component {
 											: "hidden"
 									}
 								/>
-							</Link> */}
-							<Link
-								to="/explore/trending"
-								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-							>
-								Trending
-								<span
-									className={
-										this.state.currentPage === 2
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
-											: "hidden"
-									}
-								/>
 							</Link>
 							<Link
-								to="/explore/featured"
+								to="/featured"
+								key="featured"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Featured
@@ -120,23 +112,11 @@ class NavBar extends Component {
 								/>
 							</Link>
 							<Link
-								to="/explore/latest"
+								to="/latest"
+								key="latest"
 								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Latest
-								<span
-									className={
-										this.state.currentPage === 2
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
-											: "hidden"
-									}
-								/>
-							</Link>
-							<Link
-								to="/table"
-								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-							>
-								Table View
 								<span
 									className={
 										this.state.currentPage === 3
@@ -145,12 +125,31 @@ class NavBar extends Component {
 									}
 								/>
 							</Link>
+							<Link
+								to="/table"
+								key="table"
+								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+							>
+								Table
+								<span
+									className={
+										this.state.currentPage === 4
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											: "hidden"
+									}
+								/>
+							</Link>
 
 							<SearchBar
+								key="search"
 								searchHandler={this.props.searchHandler}
 								history={this.props.history}
 							/>
-							<Link to="/create" className="relative mb-5 sm:mb-0 ml-10">
+							<Link
+								to="/create"
+								key="create"
+								className="relative mb-5 sm:mb-0 ml-10"
+							>
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-3 py-1 text-base font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-yellow-400 hover:text-gray-900">
 									SHARE AN IDEA

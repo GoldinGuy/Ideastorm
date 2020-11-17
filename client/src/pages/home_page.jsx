@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 
-class IdeasHome extends Component {
+class HomePage extends Component {
 	render() {
 		return (
 			<div>
@@ -938,4 +938,4 @@ class IdeasHome extends Component {
 		);
 	}
 }
-export default IdeasHome;
+export default HomePage;

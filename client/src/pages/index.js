@@ -1,8 +1,10 @@
-import IdeasTable from './IdeasTable'
-import IdeasInsert from './IdeasInsert'
+import IdeasTable from './table_page'
 import IdeasUpdate from './IdeasUpdate'
-import IdeasStream from './IdeasStream'
-import NewIdeaForm from './NewIdeaForm'
-import IdeasHome from './HomePage'
+import TrendingPage from './trending_page'
+import NewIdeaPage from './new_idea_page'
+import HomePage from './home_page'
+import LatestPage from './latest_page'
+import SearchPage from './search_page'
 
-export { IdeasTable as IdeasList, IdeasInsert, IdeasUpdate, IdeasStream, NewIdeaForm, IdeasHome }
+
+export { IdeasTable, IdeasUpdate, TrendingPage, LatestPage, NewIdeaPage, HomePage, SearchPage }

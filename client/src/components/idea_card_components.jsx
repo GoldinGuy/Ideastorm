@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
 
@@ -9,7 +9,6 @@ function dateFromObjectId(objectId) {
 }
 
 const IdeaCard = ({ idea }) => {
-	// console.log(idea);
 	if (!idea) {
 		return null;
 	}
@@ -36,7 +35,7 @@ const IdeaCard = ({ idea }) => {
 			rColor = "yellow-400";
 	}
 	return (
-		<div className="w-full mb-10 sm:mb-0 sm:w-1/2">
+		<div className="w-full mb-10 sm:mb-0 sm:w-1/2" key={idea.title}>
 			<div className="relative ml-0 mr-0 sm:mr-10">
 				<span
 					className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
@@ -88,7 +87,10 @@ const IdeaCard = ({ idea }) => {
 					<h5 className="flex-wrap flex">
 						{idea.tags.map((tag, index) => (
 							// inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4
-							<span className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg">
+							<span
+								className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg"
+								key={"tag-" + tag}
+							>
 								{"#" + tag}
 							</span>
 						))}
@@ -105,8 +107,7 @@ const IdeaCard = ({ idea }) => {
 };
 
 const Cards = ({ ideas }) => {
-	// console.log(ideas);
-	if (!ideas) {
+	if (!ideas || ideas.length < 1) {
 		return null;
 	}
 	var cards;
@@ -114,14 +115,17 @@ const Cards = ({ ideas }) => {
 		let idea_cards;
 		for (var j = i; j < i + 3; j++) {
 			if (j < ideas.length) {
-				idea_cards = [idea_cards, <IdeaCard idea={ideas[j]} />];
+				idea_cards = [
+					idea_cards,
+					<IdeaCard idea={ideas[j]} key={`card-${i + j}`} />
+				];
 			}
 		}
 		cards = [
 			cards,
 			<div
 				className="flex flex-col w-full xl:mb-8 lg:mb-8 md:mb-8 sm:mb-0 sm:flex-row"
-				key={i}
+				key={"row-" + i}
 			>
 				{idea_cards}
 			</div>
@@ -131,4 +135,73 @@ const Cards = ({ ideas }) => {
 	return cards;
 };
 
-export default Cards;
+const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
+	// console.log("topTags " + topTags);
+	// console.log(ideas);
+	return (
+		<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
+			<h2
+				className="relative flex items-center self-start inline-block w-auto mb-2 mt-5 text-4xl font-black"
+				key="header"
+			>
+				<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
+				<span className="relative">{pageTitle}</span>
+			</h2>
+			{/* TAGS */}
+			<div
+				className="relative flex items-center mb-6 mt-4 text-4xl  overflow-x-scroll sm:overflow-x-hidden"
+				key="tags"
+			>
+				{topTags.map((tag, index) => (
+					<button
+						key={tag._id}
+						className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
+						onClick={() =>
+							history.push({
+								pathname: "/search",
+								search: "?q=" + tag._id
+							})
+						}
+					>
+						{"#" + tag._id}
+					</button>
+				))}
+			</div>
+			{ideas && ideas.length > 0 && (
+				<div className="flex w-full h-full" key="idea-cards">
+					<div className="w-full">
+						<Cards ideas={ideas} />
+					</div>
+				</div>
+			)}
+			{!ideas ||
+				(ideas.length < 1 && (
+					<div className="flex w-full h-full" key="404">
+						<div className="w-full text-center mt-20 font-bold">
+							<span className="bold text-purple-500 text-xl">
+								404: Looks like nobody else has thought of anything yet...
+							</span>
+							<div className="relative flex items-center  flex-col  justify-center w-full mt-12 sm:mb-0 sm:pr-10">
+								<button
+									type="button"
+									className="relative "
+									onClick={() =>
+										history.push({
+											pathname: "/create"
+										})
+									}
+								>
+									<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
+									<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
+										BE THE FIRST!
+									</span>
+								</button>
+							</div>
+						</div>
+					</div>
+				))}
+		</div>
+	);
+};
+
+export default IdeasStream;
