@@ -11,7 +11,7 @@ class HomePage extends Component {
 						<div className="flex flex-col items-center w-5/6 md:items-start sm:w-1/2 lg:w-3/8 lg:mt-10">
 							<div className="relative">
 								<h1 className="relative mb-4 text-4xl font-black leading-none text-center text-black lg:text-5xl xl:text-6xl md:text-left">
-									The Evolution of Thinking
+									The Evolution of Ideas
 								</h1>
 								<svg
 									className="absolute top-0 right-0 hidden w-20 -mt-16 -mr-10 transform rotate-90 lg:block xl:-mr-8 xl:-mt-12"

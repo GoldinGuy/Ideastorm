@@ -1,10 +1,20 @@
-import React, { Component } from "react";
+import React, {
+	useState,
+	useEffect,
+	useCallback,
+	useRef,
+	Component
+} from "react";
+
 import api from "../api";
+import Tags from "@yaireo/tagify/dist/react.tagify";
+import "@yaireo/tagify/dist/tagify.css";
+// import autocomplete_words from "../assets/utils/autocomplete_words";
+let autocomplete = require("../assets/utils/autocomplete_words.js");
 
 export default class NewIdeaPage extends Component {
 	constructor(props) {
 		super(props);
-
 		this.state = {
 			title: "",
 			description: "",
@@ -27,9 +37,16 @@ export default class NewIdeaPage extends Component {
 	};
 
 	handleIncludeIdea = async () => {
-		const { title, description, tags } = this.state;
-		// const arrayTags = tags.split("/");
-		if (tags.length >= 3) {
+		if (this.state.tags.length >= 3) {
+			let temp = [];
+			for (let i = 0; i < this.state.tags.length; i++) {
+				if (this.state.tags[i].value) {
+					temp.push(this.state.tags[i].value);
+				}
+			}
+			this.setState({ tags: temp });
+
+			const { title, description, tags } = this.state;
 			const payload = { title, description, tags };
 
 			await api.insertIdea(payload).then(res => {
@@ -76,6 +93,28 @@ export default class NewIdeaPage extends Component {
 
 	render() {
 		const { title, description, tags } = this.state;
+
+		const settings = {
+			maxTags: 6,
+			minTags: 3,
+			trim: true,
+			delimiters: [",", ".", "\\s+"],
+			caseSensitive: false,
+			accentedSearch: true,
+			highlightFirst: false,
+			//backspace: "edit",
+			placeholder: "Add up to 6 tags",
+			dropdown: {
+				enabled: 0, // a;ways show suggestions dropdown
+				fuzzySearch: true
+			}
+		};
+
+		const tagifyProps = {
+			whitelist: autocomplete.words,
+			showFilteredDropdown: "a",
+			loading: false
+		};
 		return (
 			<div>
 				<div
@@ -115,9 +154,25 @@ export default class NewIdeaPage extends Component {
 							<span className="text-sm font-bold text-gray-600 uppercase">
 								Tag It!
 							</span>
-							{/* <div className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"> */}
 
-							<ul className="w-full">
+							{/* <TagsField /> */}
+							<Tags
+								className="w-full p-1 mt-2 text-gray-900 bg-gray-300 rounded-lg !focus:outline-none !focus:shadow-outline"
+								value={tags}
+								onAdd={this.editTag}
+								settings={settings}
+								{...tagifyProps}
+								onChange={e => (
+									e.persist(),
+									this.setState({
+										tags: e.target.value
+									}),
+									// console.log("CHANGED:", e.target.value)
+									console.log(this.state.tags)
+								)}
+							/>
+
+							{/* <ul className="w-full">
 								<li className="inline-block w-full">
 									<input
 										className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
@@ -156,7 +211,7 @@ export default class NewIdeaPage extends Component {
 										</button>
 									</div>
 								))}
-							</ul>
+							</ul> */}
 						</div>
 					</div>
 					{this.state.errorMessage && (
@@ -205,3 +260,54 @@ export default class NewIdeaPage extends Component {
 		);
 	}
 }
+
+// const TagsField = () => {
+// 	const tagifyRef = useRef();
+
+// 	const tagifyProps = {
+// 		whitelist: autocomplete.words,
+// 		showFilteredDropdown: "a",
+// 		loading: false
+// 	};
+
+// 	const settings = {
+// 		maxTags: 6,
+// 		minTags: 3,
+// 		trim: true,
+// 		delimiters: [",", ".", "\\s+"],
+// 		caseSensitive: false,
+// 		accentedSearch: true,
+// 		highlightFirst: false,
+// 		addTagOnBlur: true,
+// 		//backspace: "edit",
+// 		placeholder: "Add up to 6 tags",
+// 		dropdown: {
+// 			enabled: 0, // a;ways show suggestions dropdown
+// 			fuzzySearch: true
+// 		}
+// 	};
+
+// 	const onChange = useCallback(e => {
+// 		e.persist();
+// 		console.log("CHANGED:", e.target.value);
+// 	}, []);
+
+// 	const clearAll = () => {
+// 		tagifyRef.current && tagifyRef.current.removeAllTags();
+// 	};
+
+// 	const editTag = () => {
+// 		tagifyRef.current && tagifyRef.current.replaceTag(tagifyRef.current, {});
+// 	}
+
+// 	return (
+// 		<Tags
+// 			className="w-full p-1 mt-2 text-gray-900 bg-gray-300 rounded-lg !focus:outline-none !focus:shadow-outline"
+// 			value=""
+// 			settings={settings}
+// 			{...tagifyProps}
+// 			onAdd={editTag}
+// 			tagifyRef={tagifyRef}
+// 		/>
+// 	);
+// };
