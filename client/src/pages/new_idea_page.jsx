@@ -1,18 +1,13 @@
-import React, {
-	useState,
-	useEffect,
-	useCallback,
-	useRef,
-	Component
-} from "react";
+import React, { Component } from "react";
 
 import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
 import "@yaireo/tagify/dist/tagify.css";
-// import autocomplete_words from "../assets/utils/autocomplete_words";
 let autocomplete = require("../assets/utils/autocomplete_words.js");
 
 export default class NewIdeaPage extends Component {
+	_isMounted = false;
+
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -21,6 +16,13 @@ export default class NewIdeaPage extends Component {
 			tags: [],
 			errorMessage: false
 		};
+	}
+	componentDidMount() {
+		this._isMounted = true;
+	}
+
+	componentWillUnmount() {
+		this._isMounted = false;
 	}
 
 	handleChangeInputTitle = async event => {
@@ -38,13 +40,11 @@ export default class NewIdeaPage extends Component {
 
 	handleIncludeIdea = async () => {
 		if (this.state.tags.length >= 3) {
-			let temp = [];
-			for (let i = 0; i < this.state.tags.length; i++) {
-				if (this.state.tags[i].value) {
-					temp.push(this.state.tags[i].value);
-				}
+			let newTags = [];
+			for (const tag of JSON.parse(this.state.tags)) {
+				newTags.push(tag.value);
 			}
-			this.setState({ tags: temp });
+			await this.setState({ tags: newTags });
 
 			const { title, description, tags } = this.state;
 			const payload = { title, description, tags };
@@ -62,32 +62,6 @@ export default class NewIdeaPage extends Component {
 			this.setState({
 				errorMessage: true
 			});
-		}
-	};
-
-	removeTag = i => {
-		const newTags = [...this.state.tags];
-		newTags.splice(i, 1);
-		this.setState({ tags: newTags });
-	};
-
-	inputKeyDown = e => {
-		const val = e.target.value;
-		if ((e.key === "Enter" || e.key === ",") && val) {
-			if (
-				this.state.tags.find(tag => tag.toLowerCase() === val.toLowerCase())
-			) {
-				return;
-			}
-			this.setState({
-				tags: [
-					...this.state.tags,
-					val.toLowerCase().trim().replaceAll(" ", "-")
-				]
-			});
-			this.tagInput.value = null;
-		} else if (e.key === "Backspace" && !val) {
-			this.removeTag(this.state.tags.length - 1);
 		}
 	};
 
@@ -155,7 +129,6 @@ export default class NewIdeaPage extends Component {
 								Tag It!
 							</span>
 
-							{/* <TagsField /> */}
 							<Tags
 								className="w-full p-1 mt-2 text-gray-900 bg-gray-300 rounded-lg !focus:outline-none !focus:shadow-outline"
 								value={tags}
