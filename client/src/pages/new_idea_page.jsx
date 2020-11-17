@@ -115,22 +115,6 @@ export default class NewIdeaPage extends Component {
 							{/* <div className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"> */}
 
 							<ul className="w-full">
-								{tags.map((tag, i) => (
-									<button
-										type="button"
-										className="no-outline"
-										onClick={() => {
-											this.removeTag(i);
-										}}
-									>
-										<li
-											key={tag}
-											className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4"
-										>
-											{"#" + tag}
-										</li>
-									</button>
-								))}
 								<li className="inline-block w-full">
 									<input
 										className="w-full p-3 mt-2 text-gray-900 bg-gray-300 rounded-lg focus:outline-none focus:shadow-outline"
@@ -142,6 +126,48 @@ export default class NewIdeaPage extends Component {
 										}}
 									/>
 								</li>
+								{tags.map((tag, i) => (
+									// <button
+									// 	type="button"
+									// 	className="no-outline"
+									// 	onClick={() => {
+									// 		this.removeTag(i);
+									// 	}}
+									// >
+									// 	<li
+									// 		key={tag}
+									// 		className="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4"
+									// 	>
+									// 		{"#" + tag}
+									// 	</li>
+									// </button>
+
+									<div
+										className="bg-indigo-100 inline-flex items-center text-sm rounded mt-2 mr-1"
+										key={tag}
+									>
+										<span className="ml-2 mr-1 leading-relaxed truncate text-md max-w-xs">
+											{"#" + tag}
+										</span>
+										<button
+											className="w-6 h-8 inline-block align-middle text-gray-500 hover:text-gray-600 focus:outline-none"
+											onClick={() => {
+												this.removeTag(i);
+											}}
+										>
+											<svg
+												className="w-6 h-6 fill-current mx-auto"
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+											>
+												<path
+													fill-rule="evenodd"
+													d="M15.78 14.36a1 1 0 0 1-1.42 1.42l-2.82-2.83-2.83 2.83a1 1 0 1 1-1.42-1.42l2.83-2.82L7.3 8.7a1 1 0 0 1 1.42-1.42l2.83 2.83 2.82-2.83a1 1 0 0 1 1.42 1.42l-2.83 2.83 2.83 2.82z"
+												/>
+											</svg>
+										</button>
+									</div>
+								))}
 							</ul>
 						</div>
 					</div>
