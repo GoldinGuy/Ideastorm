@@ -22,13 +22,14 @@ function titleCase(str) {
 }
 
 const IdeaCard = ({ idea }) => {
-	const handleStormClick = () => {
-		console.log("clicl");
-		if (!idea.s_count) {
-			idea.s_count = 1;
-		}
-		let payload = { s_count: idea.s_count + 1 };
-		apis.updateStormcountById(idea._id, payload);
+	const [s_count, setStormCount] = React.useState(idea.s_count);
+
+	const handleStormClick = async () => {
+		await apis
+			.updateStormcountById(idea._id, { s_count: idea.s_count + 1 })
+			.then(res => {
+				setStormCount(idea.s_count + 1);
+			});
 	};
 
 	if (!idea) {
@@ -66,15 +67,15 @@ const IdeaCard = ({ idea }) => {
 					className={`relative p-5 bg-white border-2 rounded-lg border-${rColor}`}
 				>
 					<div className="flex items-center -mt-1 justify-between">
-						<h3 className="my-2 text-lg font-bold text-gray-800 inline ">
+						<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
 							{titleCase(idea.title)}
 						</h3>
-						<div className="inline-block">
+						<div className="inline-block flex-none self-start mt-2">
 							<span
 								className={`mt-1 mb-1 text-xs font-medium inline uppercase text-${rColor}`}
 							>
 								{/* {Math.floor(Math.random(0, 10) * 10)} */}
-								{idea.s_count ?? 1}
+								{s_count}
 							</span>{" "}
 							<button
 								onClick={handleStormClick}
@@ -90,6 +91,7 @@ const IdeaCard = ({ idea }) => {
 							</button>
 						</div>
 					</div>
+
 					<span
 						className={`mt-1 mb-1 text-xs font-medium  uppercase text-${rColor}`}
 					>
