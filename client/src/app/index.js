@@ -1,5 +1,5 @@
 import React from 'react'
-import { BrowserRouter, Route, Switch , Redirect, } from 'react-router-dom'
+import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { NavBar } from '../components'
 import { IdeasTable, IdeasUpdate,TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
@@ -14,7 +14,6 @@ function App() {
             <Switch>
                 {/* <Redirect path="/" to="/"/> */}
                 <Route path="/" exact component={HomePage} />
-                {/* <Route path="/explore" exact component={IdeasStream} /> */}
                 <Route path="/trending" exact component={TrendingPage} />
                 <Route path="/latest" exact component={LatestPage} />
                 <Route path="/search" exact component={SearchPage} />

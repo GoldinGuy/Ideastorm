@@ -40,15 +40,14 @@ export default class NewIdeaPage extends Component {
 	};
 
 	handleIncludeIdea = async () => {
-		if (this.state.tags.length >= 3) {
-			let newTags = [];
-			for (const tag of JSON.parse(this.state.tags)) {
-				newTags.push(tag.value);
-			}
-			await this.setState({ tags: newTags });
-
+		let newTags = [];
+		for (const tag of JSON.parse(this.state.tags)) {
+			newTags.push(tag.value);
+		}
+		if (newTags.length >= 3) {
+			this.setState({ tags: newTags });
 			const { title, description, tags } = this.state;
-			const payload = { title, description, tags };
+			const payload = { title, description, tags, s_count: 1 };
 
 			await api.insertIdea(payload).then(res => {
 				window.alert(`Idea shared successfully`);
@@ -59,6 +58,7 @@ export default class NewIdeaPage extends Component {
 					errorMessage: false
 				});
 			});
+			// autocomplete.addWords(tags);
 			this.clearAllTags();
 		} else {
 			this.setState({
@@ -145,8 +145,8 @@ export default class NewIdeaPage extends Component {
 									e.persist(),
 									this.setState({
 										tags: e.target.value
-									}),
-									console.log(this.state.tags)
+									})
+									// console.log(this.state.tags)
 								)}
 							/>
 						</div>

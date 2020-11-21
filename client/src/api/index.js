@@ -13,6 +13,8 @@ export const getAllIdeas = () => api.get(`/ideas`)
 export const updateIdeaById = (id, payload) => api.put(`/idea/${id}`, payload)
 export const deleteIdeaById = id => api.delete(`/idea/${id}`)
 
+export const updateStormcountById = (id, payload) => api.put(`/idea/s_count/${id}`, payload)
+
 // fetch a specific idea 
 export const getIdeaById = id => api.get(`/idea/${id}`)
 
@@ -39,7 +41,8 @@ const apis = {
     getTrendingIdeas,
     getIdeasByText, 
     getTrendingTags,
-    renameField
+    renameField,
+    updateStormcountById
 }
 
 export default apis

@@ -8,13 +8,14 @@ class LatestPage extends Component {
 		this.state = {
 			ideas: [],
 			topTags: [
-				"tech",
-				"foodies",
-				"science-fair",
-				"lifestyle",
-				"fashion",
-				"app",
-				"website"
+				{ _id: "tech" },
+				{ _id: "foodies" },
+				{ _id: "app" },
+				{ _id: "tech" },
+				{ _id: "website" },
+				{ _id: "science-fair" },
+				{ _id: "lifestyle" },
+				{ _id: "fashion" }
 			]
 		};
 	}

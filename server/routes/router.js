@@ -12,6 +12,9 @@ router.post('/idea', IdeaCtrl.createIdea)
 router.put('/idea/:id', IdeaCtrl.updateIdea)
 router.delete('/idea/:id', IdeaCtrl.deleteIdea)
 
+router.put('/idea/s_count/:id', IdeaCtrl.updateStormcount)
+
+
 // fetch ideas in bulk by category
 router.get('/ideas', IdeaCtrl.getIdeas)
 router.get('/trendingIdeas', IdeaCtrl.getTrendingIdeas)

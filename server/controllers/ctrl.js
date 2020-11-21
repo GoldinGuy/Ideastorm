@@ -71,6 +71,42 @@ updateIdea = async (req, res) => {
     })
 }
 
+updateStormcount = async (req, res) => {
+    const body = req.body
+    console.log("attempting to update stomrcount")
+
+    if (!body) {
+        return res.status(400).json({
+            success: false,
+            error: 'You must provide a stormcount to update',
+        })
+    }
+
+    Idea.findOne({ _id: req.params.id }, (err, idea) => {
+        if (err) {
+            return res.status(404).json({
+                err,
+                message: 'Idea not found!',
+            })
+        }
+        idea.s_count = body.s_count;
+        idea.save()
+            .then(() => {
+                return res.status(200).json({
+                    success: true,
+                    id: idea._id,
+                    message: 'Stormcount updated!',
+                })
+            })
+            .catch(error => {
+                return res.status(404).json({
+                    error,
+                    message: 'Stormcount not updated!',
+                })
+            })
+    })
+}
+
 deleteIdea = async (req, res) => {
     await Idea.findOneAndDelete({ _id: req.params.id }, (err, idea) => {
         if (err) {
@@ -239,5 +275,6 @@ module.exports = {
     getTrendingIdeas,
     getIdeasByText,
     getTrendingTags,
-    renameField
+    renameField,
+    updateStormcount
 }
