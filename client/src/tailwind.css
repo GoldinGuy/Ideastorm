@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer utilities {
+	.truncate {
+		text-overflow: ellipsis;
+		overflow: ellipse;
+		white-space: nowrap;
+	}
+}

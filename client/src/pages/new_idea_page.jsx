@@ -116,6 +116,7 @@ export default class NewIdeaPage extends Component {
 								onChange={this.handleChangeInputTitle}
 								value={title}
 								placeholder="An Awesome Idea"
+								maxLength="55"
 							/>
 						</div>
 
@@ -128,6 +129,7 @@ export default class NewIdeaPage extends Component {
 								onChange={this.handleChangeInputDescription}
 								value={description}
 								placeholder="A Descriptively Descriptive Description"
+								maxLength="1000"
 							/>
 						</div>
 						<div className="mt-6">
