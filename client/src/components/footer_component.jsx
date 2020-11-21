@@ -5,7 +5,7 @@ class Footer extends Component {
 	render() {
 		return (
 			<div>
-				<div className="relative w-full py-20 pb-20 overflow-hidden bg-white md:pt-40 md:pb-64">
+				<div className="relative w-full py-20 pb-20 overflow-hidden bg-white md:pt-40 ">
 					<svg
 						className="absolute bottom-0 w-full text-gray-200 fill-current"
 						viewBox="0 0 1400 74"
@@ -14,6 +14,7 @@ class Footer extends Component {
 						<path d="M0 24C87.243 11.422 173.12 5.133 257.633 5.133 468.305 5.133 578.027 74 700 74c136.015 0 290.882-96.208 481.234-68.867C1268.807 17.71 1341.73 24 1400 24v50H0V24z" />
 					</svg>
 				</div>
+				{/* TODO: suggested for you  */}
 				<div className="relative w-full pt-24 pb-56 bg-gray-200">
 					<svg
 						className="absolute bottom-0 w-full text-black fill-current"
