@@ -60,101 +60,106 @@ class Footer extends Component {
 										/>
 									</g>
 								</svg>
-								<span className="ml-2 text-lg font-black">Brainstorm</span>
+								<Link to="/" className="ml-2 text-lg font-black">
+									Brainstorm
+								</Link>
 							</span>
 						</a>
 						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									Product
+									<Link to="/search?q=tech">Tech</Link>
 								</li>
 								<li>
-									<a
-										href="#_"
+									<Link
+										to="/search?q=website"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										Features
-									</a>
+										Sites
+									</Link>
 								</li>
 								<li>
-									<a
-										href="#_"
+									<Link
+										to="/search?q=app"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										Integrations
-									</a>
+										Apps
+									</Link>
 								</li>
 								<li>
-									<a
-										href="#_"
+									<Link
+										to="/search?q=device"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										Pricing
-									</a>
+										Hardware
+									</Link>
 								</li>
 								<li>
-									<a
-										href="#_"
+									<Link
+										to="/search?q=dev"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										FAQ
-									</a>
+										Dev Tools
+									</Link>
+								</li>
+							</ul>
+
+							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
+								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
+									<Link to="/search?q=education">Education</Link>
+								</li>
+								<li>
+									<Link
+										to="/search?q=science-fair"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Science Fair
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/search?q=food"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Foodies
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/search?q=crafts"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Crafts & Projects
+									</Link>
 								</li>
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									Company
+									Site
 								</li>
 								<li>
 									<a
-										href="#_"
+										href="mailto:seth@goldinwebdesign.com"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										Privacy
+										Contact
 									</a>
 								</li>
 								<li>
-									<a
-										href="#_"
+									<Link
+										to="/terms"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
 										Terms of Service
-									</a>
-								</li>
-							</ul>
-							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									TailwindCSS
+									</Link>
 								</li>
 								<li>
-									<a
-										href="https://devdojo.com/tailwindcss/templates"
-										target="_blank"
-										rel="noopener noreferrer"
+									<Link
+										to="/jobs"
 										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 									>
-										Templates
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://devdojo.com/tailwindcss/components"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Components
-									</a>
-								</li>
-								<li>
-									<a
-										href="https://devdojo.com/tails"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Tails
-									</a>
+										Join the Team
+									</Link>
 								</li>
 							</ul>
 							<div className="flex flex-col w-full text-gray-700">
@@ -210,9 +215,13 @@ class Footer extends Component {
 					</div>
 					<div className="pt-4 pt-6 mt-10 text-center text-gray-600 border-t border-gray-800">
 						{" "}
-						©2020 Brainstorm. Created with 💙 by{" "}
+						©2020 Brainstorm.{" "}
+						<span className="sm:hidden">
+							<br />
+						</span>{" "}
+						Created with 💙 by{" "}
 						<a href="https://goldinwebdesign.com/" className="">
-							Goldin Web Design
+							Goldin Web Design.
 						</a>
 					</div>
 				</footer>
