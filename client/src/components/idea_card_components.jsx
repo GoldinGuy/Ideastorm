@@ -1,7 +1,7 @@
 import React from "react";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
-
+import LinesEllipsis from "react-lines-ellipsis";
 import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 
@@ -111,7 +111,14 @@ const IdeaCard = ({ idea }) => {
 							</svg>
 						</span> */}
 
-					<p className="mb-2 text-gray-600 line-clamp">{idea.description}</p>
+					<LinesEllipsis
+						text={idea.description}
+						maxLine="8"
+						ellipsis="..."
+						trimRight
+						basedOn="letters"
+						className="mb-2 text-gray-600 "
+					/>
 
 					<h5 className="flex-wrap flex">
 						{idea.tags.map((tag, index) => (

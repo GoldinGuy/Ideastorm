@@ -22744,6 +22744,13 @@ video {
   animation: bounce 1s infinite;
 }
 
+.line-clamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 8;
+  -webkit-box-orient: vertical;
+  overflow: ellipse;
+}
+
 @media (min-width: 640px) {
   .sm\:container {
     width: 100%;

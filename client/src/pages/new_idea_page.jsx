@@ -40,14 +40,14 @@ export default class NewIdeaPage extends Component {
 	};
 
 	handleIncludeIdea = async () => {
-		let newTags = [];
-		for (const tag of JSON.parse(this.state.tags)) {
-			newTags.push(tag.value);
-		}
-		if (newTags.length >= 3) {
-			this.setState({ tags: newTags });
-			const { title, description, tags } = this.state;
-			const payload = { title, description, tags, s_count: 1 };
+		if (this.state.tags.length >= 3) {
+			let newTags = [];
+			for (const tag of JSON.parse(this.state.tags)) {
+				newTags.push(tag.value);
+			}
+			// this.setState({ tags: newTags });
+			const { title, description } = this.state;
+			const payload = { title, description, tags: newTags, s_count: 1 };
 
 			await api.insertIdea(payload).then(res => {
 				window.alert(`Idea shared successfully`);
