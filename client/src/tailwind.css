@@ -3,9 +3,10 @@
 @tailwind utilities;
 
 @layer utilities {
-	.truncate {
-		text-overflow: ellipsis;
+	.line-clamp {
+		display: -webkit-box;
+		-webkit-line-clamp: 8;
+		-webkit-box-orient: vertical;
 		overflow: ellipse;
-		white-space: nowrap;
 	}
 }

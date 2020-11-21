@@ -111,7 +111,7 @@ const IdeaCard = ({ idea }) => {
 							</svg>
 						</span> */}
 
-					<p className="mb-2 text-gray-600">{idea.description}</p>
+					<p className="mb-2 text-gray-600 line-clamp">{idea.description}</p>
 
 					<h5 className="flex-wrap flex">
 						{idea.tags.map((tag, index) => (
