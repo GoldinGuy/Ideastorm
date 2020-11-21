@@ -218,7 +218,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 					<button
 						// TODO: unique keys
 						key={tag._id}
-						className="px-1 mb-1 mr-2 text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
+						className="px-1 mb-1 mr-2 flex-none text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 						onClick={() =>
 							history.push({
 								pathname: "/search",

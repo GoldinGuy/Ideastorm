@@ -1,7 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import { NavBar } from '../components'
+import { NavBar, Footer } from '../components'
 import { IdeasTable, IdeasUpdate,TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
@@ -9,7 +9,6 @@ import { IdeasTable, IdeasUpdate,TrendingPage, NewIdeaPage, LatestPage, HomePage
 function App() {
     return (
           <BrowserRouter basename="/ideas">
-
             <NavBar />
             <Switch>
                 {/* <Redirect path="/" to="/"/> */}
@@ -25,6 +24,7 @@ function App() {
                     component={IdeasUpdate}
                 />
             </Switch>
+             <Footer />
         </BrowserRouter>
     )
 }
