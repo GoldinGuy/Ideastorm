@@ -41,7 +41,8 @@ class TrendingPage extends Component {
 			.getTrendingIdeas(this.state.page)
 			.then(ideas => {
 				this.setState({
-					ideas: [...this.state.ideas, ...ideas.data.data]
+					ideas: [...this.state.ideas, ...ideas.data.data],
+					loadMore: this.state.ideas.length % 36 === 0 ? false : true
 				});
 			})
 			.catch(err => {
@@ -49,29 +50,27 @@ class TrendingPage extends Component {
 			});
 	};
 
-	// componentDidUpdate = () => {}
+	// componentDidUpdate = async () => {};
 
 	render() {
-		const { ideas, topTags } = this.state;
-
+		console.log(this.state.ideas.length);
 		return (
 			<InfiniteScroll
-				dataLength={ideas.length}
+				dataLength={this.state.ideas.length}
 				next={this.fetchIdeas}
-				hasMore={!(ideas.length % 36 === 0)}
+				hasMore={this.state.loadMore}
 				loader={<h4>Loading...</h4>}
-				className="h-full"
+				className="h-full overflow-y-hidden"
 				endMessage={
-					<div className="relative h-full flex items-center flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10">
+					<div className="relative h-full flex items-center flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10 overflow-y-hidden">
 						<button
 							type="button"
 							className="relative "
-							onClick={this.fetchIdeas}
-							// onClick={() =>
-							// 	this.setState({
-							// 		loadMore: true
-							// 	})
-							// }
+							onClick={() =>
+								this.setState({
+									loadMore: true
+								})
+							}
 						>
 							<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
 							<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
@@ -82,9 +81,9 @@ class TrendingPage extends Component {
 				}
 			>
 				<IdeasStream
-					ideas={ideas}
+					ideas={this.state.ideas}
 					pageTitle={"Trending"}
-					topTags={topTags}
+					topTags={this.state.topTags}
 					history={this.props.history}
 				/>
 				{/* {!this.state.loadMore && (
