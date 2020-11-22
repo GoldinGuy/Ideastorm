@@ -139,7 +139,7 @@ getIdeaById = async (req, res) => {
 }
 
 getIdeas = async (req, res) => {
-    await Idea.find({}, (err, ideas) => {
+    await Idea.find({}, null, {limit: 18,}, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -192,7 +192,7 @@ getIdeasByText = async (req, res) => {
 
 
 getLatestIdeas = async (req, res) => {
-    await Idea.find({}, null, {sort: {$natural: -1}},  (err, ideas) => {
+    await Idea.find({}, null, {sort: {$natural: -1}, limit: 18,},  (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
