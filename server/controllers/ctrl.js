@@ -1,5 +1,7 @@
 const Idea = require('../models/idea')
 
+const PAGE_SIZE = 18;
+
 createIdea = (req, res) => {
     const body = req.body
 
@@ -139,7 +141,7 @@ getIdeaById = async (req, res) => {
 }
 
 getIdeas = async (req, res) => {
-    await Idea.find({}, null, {limit: 18,}, (err, ideas) => {
+    await Idea.find({}, null, {limit: PAGE_SIZE,}, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -192,7 +194,8 @@ getIdeasByText = async (req, res) => {
 
 
 getLatestIdeas = async (req, res) => {
-    await Idea.find({}, null, {sort: {$natural: -1}, limit: 18,},  (err, ideas) => {
+    // CreatedAt: -1 
+        await Idea.find({}, null, { sort: { $natural: -1 }, limit: PAGE_SIZE, skip: (parseInt(req.params.page) - 1) * PAGE_SIZE }, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -207,14 +210,15 @@ getLatestIdeas = async (req, res) => {
 
 // TODO: figure out what trending means 
 getTrendingIdeas = async (req, res) => {
-    await Idea.find({}, null, { sort: { $natural: -1 }, limit: 18, skip: (req.page - 1) * 18 }, (err, ideas) => {
+
+    await Idea.find({}, null, { sort: { $natural: -1 },  skip: (parseInt(req.params.page) - 1) * 18, limit: PAGE_SIZE, }, (err, ideas) => {
         if (err) {
-            return res.status(400).json({ success: false, error: err })
+            return res.status(400).json({ success: false, error: err, ideas: [] })
         }
         if (!ideas.length) {
             return res
                 .status(404)
-                .json({ success: false, error: `Ideas not found` })
+                .json({ success: false, error: `Ideas not found`, ideas: [] })
         }
         return res.status(200).json({ success: true, data: ideas })
     }).catch(err => console.log(err))

@@ -23,8 +23,8 @@ export const getIdeasByTag = tags => api.get(`/ideasByTag/${tags}`)
 export const getIdeasByText = text => api.get(`/ideasByText/${text}`)
 
 // fetch ideas by category
-export const getTrendingIdeas = page => api.get(`/trendingIdeas/:page`)
-export const getLatestIdeas = () => api.get(`/latestIdeas`)
+export const getTrendingIdeas = page => api.get(`/trendingIdeas/${page}`)
+export const getLatestIdeas = page => api.get(`/latestIdeas/${page}`)
 
 // fetch tags 
 export const getTrendingTags = () => api.get(`/trendingTags`)

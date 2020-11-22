@@ -18,7 +18,7 @@ router.put('/idea/s_count/:id', IdeaCtrl.updateStormcount)
 // fetch ideas in bulk by category
 router.get('/ideas', IdeaCtrl.getIdeas)
 router.get('/trendingIdeas/:page', IdeaCtrl.getTrendingIdeas)
-router.get('/latestIdeas', IdeaCtrl.getLatestIdeas)
+router.get('/latestIdeas/:page', IdeaCtrl.getLatestIdeas)
 
 // fetch a specific idea 
 router.get('/idea/:id', IdeaCtrl.getIdeaById)

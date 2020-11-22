@@ -38,13 +38,16 @@ class TrendingPage extends Component {
 	};
 
 	fetchIdeas = async () => {
-		this.setState({ page: this.state.page + 1 });
+		let nextPage = this.state.page + 1;
+		this.setState({ page: nextPage });
 		await api
-			.getTrendingIdeas(this.state.page)
+			.getTrendingIdeas(nextPage)
 			.then(ideas => {
 				this.setState({
 					ideas: [...this.state.ideas, ...ideas.data.data],
-					loadMore: this.state.ideas.length % 36 === 0 ? false : true
+					loadMore:
+						(this.state.ideas.length % 36 === 0 ? false : true) &&
+						(ideas.length < 18 ? false : true)
 				});
 			})
 			.catch(err => {
