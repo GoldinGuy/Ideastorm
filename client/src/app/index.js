@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
 import { NavBar, Footer } from '../components'
-import { IdeasTable, IdeasUpdate,TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
+import { IdeasTable, TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
 
 // import 'bootstrap/dist/css/bootstrap.min.css'
 
@@ -18,11 +18,11 @@ function App() {
                 <Route path="/search" exact component={SearchPage} />
                 <Route path="/table" exact component={IdeasTable} />
                 <Route path="/create" exact component={NewIdeaPage} />
-                <Route
+                {/* <Route
                     path="/update/:id"
                     exact
                     component={IdeasUpdate}
-                />
+                /> */}
             </Switch>
              <Footer />
         </BrowserRouter>
