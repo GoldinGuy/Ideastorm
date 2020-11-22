@@ -72,7 +72,7 @@ const IdeaCard = ({ idea }) => {
 						</h3>
 						<div className="inline-block flex-none self-start mt-2">
 							<span
-								className={`mt-1 mb-1 text-xs font-medium inline uppercase text-${rColor}`}
+								className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
 							>
 								{/* {Math.floor(Math.random(0, 10) * 10)} */}
 								{s_count}
@@ -240,11 +240,11 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 			{!ideas ||
 				(ideas.length < 1 && (
 					<div className="flex w-full h-full" key="404">
-						<div className="w-full text-center mt-20 font-bold">
-							<span className="bold text-purple-500 text-xl">
+						<div className="w-full h-full  text-center mt-20 font-bold">
+							<span className="bold h-full text-purple-500 text-xl">
 								404: Looks like nobody else has thought of anything yet...
 							</span>
-							<div className="relative flex items-center  flex-col  justify-center w-full mt-12 sm:mb-0 sm:pr-10">
+							<div className="relative flex items-center h-full flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10">
 								<button
 									type="button"
 									className="relative "

@@ -69,44 +69,6 @@ class Footer extends Component {
 						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									<Link to="/search?q=tech">Tech</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=website"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Sites
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=app"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Apps
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=device"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Hardware
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=dev"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Dev Tools
-									</Link>
-								</li>
-							</ul>
-
-							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
 									<Link to="/search?q=education">Education</Link>
 								</li>
 								<li>
@@ -134,6 +96,37 @@ class Footer extends Component {
 									</Link>
 								</li>
 							</ul>
+							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
+								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
+									<Link to="/search?q=tech">Tech</Link>
+								</li>
+								<li>
+									<Link
+										to="/search?q=website"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Sites
+									</Link>
+								</li>
+								<li>
+									<Link
+										to="/search?q=app"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Apps
+									</Link>
+								</li>
+
+								<li>
+									<Link
+										to="/search?q=dev"
+										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+									>
+										Dev Tools
+									</Link>
+								</li>
+							</ul>
+
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
 									Site
