@@ -14,7 +14,7 @@ class HomePage extends Component {
 									The Evolution of Ideas
 								</h1>
 								<svg
-									className="absolute top-0 right-0 hidden w-20 -mt-16 -mr-10 transform rotate-90 lg:block xl:-mr-8 xl:-mt-12"
+									className="absolute top-0 right-0 hidden w-20 -mt-16 -mr-10 transform rotate-90 lg:block xl:-mr-8 xl:-mt-12 "
 									viewBox="0 0 89 96"
 									xmlns="http://www.w3.org/2000/svg"
 								>
@@ -269,7 +269,7 @@ class HomePage extends Component {
 					</div>
 				</div>
 				{/* Features Section */}
-				<div className="relative w-full py-20 pb-20 overflow-hidden bg-white md:pt-40 md:pb-64">
+				<div className="relative w-full py-20  overflow-hidden bg-white md:pt-40">
 					{/* CURVED SVG BORDER INVERT */}
 					<svg
 						className="absolute top-0 w-full text-yellow-400 fill-current"
@@ -401,7 +401,7 @@ class HomePage extends Component {
 								</div>
 							</div>
 							<div className="hidden w-1/3 lg:block">
-								<div className="absolute w-full w-screen max-w-4xl pl-12 -mt-20">
+								<div className="absolute w-full max-w-4xl pl-12 -mt-20">
 									<div className="absolute top-0 left-0 w-full h-full mt-2 ml-10 bg-gray-900 rounded-lg" />
 									<div className="relative overflow-hidden border-2 border-black rounded-lg">
 										<img

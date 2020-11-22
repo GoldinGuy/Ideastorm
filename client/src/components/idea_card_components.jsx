@@ -211,8 +211,10 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 					</div>
 				</div>
 			)}
-			{!ideas ||
-				(ideas.length < 1 && (
+			{pageTitle !== "Trending" &&
+				pageTitle !== "Featured" &&
+				!ideas &&
+				ideas.length < 1 && (
 					<div className="flex w-full h-full" key="404">
 						<div className="w-full h-full  text-center mt-20 font-bold">
 							<span className="bold h-full text-purple-500 text-xl">
@@ -236,7 +238,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 							</div>
 						</div>
 					</div>
-				))}
+				)}
 		</div>
 	);
 };

@@ -5,31 +5,32 @@ class Footer extends Component {
 	render() {
 		return (
 			<div>
-				<div className="relative w-full py-20 pb-20 overflow-hidden bg-white  ">
+				<div className="relative w-full py-20 pb-20 border-none overflow-hidden bg-white  ">
 					<svg
-						className="absolute bottom-0 w-full text-gray-200 fill-current"
+						className="absolute bottom-0 w-full border-none text-gray-200 fill-current"
 						viewBox="0 0 1400 74"
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<path d="M0 24C87.243 11.422 173.12 5.133 257.633 5.133 468.305 5.133 578.027 74 700 74c136.015 0 290.882-96.208 481.234-68.867C1268.807 17.71 1341.73 24 1400 24v50H0V24z" />
 					</svg>
 				</div>
+
 				{/* TODO: suggested for you  */}
-				<div className="relative w-full pt-24 pb-56 bg-gray-200">
+				<div className="relative w-full pt-24 pb-56 border-none bg-gray-200">
 					<svg
-						className="absolute bottom-0 w-full text-black fill-current"
+						className="absolute bottom-0 w-full border-none text-black fill-current"
 						viewBox="0 0 1400 74"
 						xmlns="http://www.w3.org/2000/svg"
 					>
 						<path d="M0 24C87.243 11.422 173.12 5.133 257.633 5.133 468.305 5.133 578.027 74 700 74c136.015 0 290.882-96.208 481.234-68.867C1268.807 17.71 1341.73 24 1400 24v50H0V24z" />
 					</svg>
 				</div>
-				<footer className="px-4 pt-12 pb-8 text-white bg-black">
+				<footer className="px-4 pt-12 pb-8 text-white border-none bg-black">
 					<div className="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
-						<a href="#_" className="block w-1/3 mr-4">
-							<span className="flex items-center">
+						<Link to="/" className="block w-1/3 mr-4 border-none">
+							<span className="flex items-center border-none">
 								<svg
-									className="w-auto h-8 mt-1 text-white fill-current"
+									className="w-auto h-8 mt-1 border-none text-white fill-current"
 									viewBox="0 0 215 151"
 									xmlns="http://www.w3.org/2000/svg"
 									xmlnsXlink="http://www.w3.org/1999/xlink"
@@ -65,7 +66,7 @@ class Footer extends Component {
 									Brainstorm
 								</Link>
 							</span>
-						</a>
+						</Link>
 						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
@@ -207,7 +208,7 @@ class Footer extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="pt-4 pt-6 mt-10 text-center text-gray-600 border-t border-gray-800">
+					<div className="pt-4 pt-6 mt-10 text-center border-none text-gray-600 border-t border-gray-800">
 						{" "}
 						©2020 Brainstorm.{" "}
 						<span className="sm:hidden">
