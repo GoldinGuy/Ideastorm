@@ -207,7 +207,7 @@ getLatestIdeas = async (req, res) => {
 
 // TODO: figure out what trending means 
 getTrendingIdeas = async (req, res) => {
-    await Idea.find({}, null, {sort: {$natural: -1}, limit: 18, },  (err, ideas) => {
+    await Idea.find({}, null, { sort: { $natural: -1 }, limit: 18, skip: (req.page - 1) * 18 }, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err })
         }
@@ -219,19 +219,6 @@ getTrendingIdeas = async (req, res) => {
         return res.status(200).json({ success: true, data: ideas })
     }).catch(err => console.log(err))
 }
-// getTrendingIdeas = async (req, res) => {
-//     await Idea.find({}, {limit:18}, {sort:{$natural:-1}}, {limit: 18}, (err, ideas) => {
-//         if (err) {
-//             return res.status(400).json({ success: false, error: err })
-//         }
-//         if (!ideas.length) {
-//             return res
-//                 .status(404)
-//                 .json({ success: false, error: `Ideas not found` })
-//         }
-//         return res.status(200).json({ success: true, data: ideas })
-//     }).catch(err => console.log(err))
-// }
 
 getTrendingTags = async (req, res) => {
     await Idea.aggregate([

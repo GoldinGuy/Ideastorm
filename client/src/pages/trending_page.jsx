@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import api from "../api";
 import IdeasStream from "../components/idea_card_components";
 import InfiniteScroll from "react-infinite-scroll-component";
-import HashLoader from "react-spinners/HashLoader";
+import BeatLoader from "react-spinners/BeatLoader";
 
 class TrendingPage extends Component {
 	constructor(props) {
@@ -61,16 +61,20 @@ class TrendingPage extends Component {
 				next={this.fetchIdeas}
 				hasMore={this.state.loadMore}
 				loader={
-					<HashLoader
-						css={`
-							display: block;
-							margin: 0 auto;
-							border-color: red;
-						`}
-						size={50}
-						color={"#123abc"}
-						loading={true}
-					/>
+					<div className="h-full overflow-y-hidden">
+						<BeatLoader
+							css={`
+								display: block;
+								margin: 0 auto;
+								border-color: red;
+								height: 100%;
+								text-align: center;
+							`}
+							size={20}
+							color={"#123abc"}
+							loading={true}
+						/>
+					</div>
 				}
 				className="h-full overflow-y-hidden"
 				endMessage={
