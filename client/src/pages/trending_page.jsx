@@ -10,6 +10,7 @@ class TrendingPage extends Component {
 		this.state = {
 			ideas: [],
 			loadMore: true,
+			page: 0,
 			topTags: [
 				{ _id: "tech" },
 				{ _id: "foodies" },
@@ -37,7 +38,7 @@ class TrendingPage extends Component {
 	};
 
 	fetchIdeas = async () => {
-		console.log("fetching");
+		this.setState({ page: this.state.page + 1 });
 		await api
 			.getTrendingIdeas(this.state.page)
 			.then(ideas => {
@@ -54,7 +55,6 @@ class TrendingPage extends Component {
 	// componentDidUpdate = async () => {};
 
 	render() {
-		console.log(this.state.ideas.length);
 		return (
 			<InfiniteScroll
 				dataLength={this.state.ideas.length}
