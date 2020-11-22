@@ -245,8 +245,14 @@ getTrendingTags = async (req, res) => {
         return res
                 .status(404)
                 .json({ success: false, error: `Tags not found` })
-        }
-        return res.status(200).json({ success: true, data: tags })
+            }
+        let uniqueTags = [];
+        tags.forEach((tag) => {
+            if (!uniqueTags.includes(tag._id)) {
+                uniqueTags.push(tag._id);
+            }
+        });
+        return res.status(200).json({ success: true, data: uniqueTags })
     }).catch(err => console.log(err))
 }
 

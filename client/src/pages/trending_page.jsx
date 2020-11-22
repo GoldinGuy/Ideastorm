@@ -12,14 +12,14 @@ class TrendingPage extends Component {
 			loadMore: true,
 			page: 0,
 			topTags: [
-				{ _id: "tech" },
-				{ _id: "foodies" },
-				{ _id: "app" },
-				{ _id: "tech" },
-				{ _id: "website" },
-				{ _id: "science-fair" },
-				{ _id: "lifestyle" },
-				{ _id: "fashion" }
+				// { _id: "tech" },
+				// { _id: "foodies" },
+				// { _id: "app" },
+				// { _id: "tech" },
+				// { _id: "website" },
+				// { _id: "science-fair" },
+				// { _id: "lifestyle" },
+				// { _id: "fashion" }
 			]
 		};
 	}
@@ -29,8 +29,9 @@ class TrendingPage extends Component {
 		try {
 			await api.getTrendingTags().then(tags => {
 				this.setState({
-					topTags: tags.data.data.splice(0, 7)
+					topTags: tags.data.data.splice(0, 8)
 				});
+				console.log(this.state.topTags);
 			});
 		} catch (e) {
 			console.log(e);

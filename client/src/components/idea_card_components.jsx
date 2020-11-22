@@ -172,6 +172,7 @@ const Cards = ({ ideas }) => {
 };
 
 const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
+	console.log(topTags);
 	return (
 		<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
 			<div className="relative flex items-center self-start w-auto mb-1 mt-2   font-black">
@@ -182,32 +183,6 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 					<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
 					<span className="relative">{pageTitle}</span>
 				</h2>
-				{/* {[
-					"Trending",
-					"Featured",
-					"Latest",
-					"Tech",
-					"Eatables",
-					"Science-Fair"
-				].map(header => {
-					if (header !== pageTitle) {
-						return (
-							<Link
-								to={"/" + header.toLowerCase()}
-								className="relative inline-block text-base font-medium text-indigo-500 ml-4 mr-2"
-							>
-								<span className="block">{header}</span>
-								<span className="absolute bottom-0 left-0 inline-block w-full h-1 -mb-1 overflow-hidden">
-									<span
-										xShow="hover"
-										className="absolute inset-0 inline-block w-full h-1 h-full transform border-t-2 border-indigo-500"
-									/>
-								</span>
-							</Link>
-						);
-					}
-					return null;
-				})}*/}
 			</div>
 			{/* TAGS */}
 			<div
@@ -216,17 +191,16 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 			>
 				{topTags.map((tag, index) => (
 					<button
-						// TODO: unique keys
-						key={tag._id}
+						key={tag}
 						className="px-1 mb-1 mr-2 flex-none text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 						onClick={() =>
 							history.push({
 								pathname: "/search",
-								search: "?q=" + tag._id
+								search: "?q=" + tag
 							})
 						}
 					>
-						{"#" + tag._id}
+						{"#" + tag}
 					</button>
 				))}
 			</div>
