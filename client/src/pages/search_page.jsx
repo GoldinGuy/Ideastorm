@@ -8,16 +8,7 @@ class SearchPage extends Component {
 		super(props);
 		this.state = {
 			ideas: [],
-			topTags: [
-				{ _id: "tech" },
-				{ _id: "foodies" },
-				{ _id: "app" },
-				{ _id: "tech" },
-				{ _id: "website" },
-				{ _id: "science-fair" },
-				{ _id: "lifestyle" },
-				{ _id: "fashion" }
-			],
+			topTags: [],
 			query: new URLSearchParams(this.props.location.search).get("q") ?? ""
 		};
 	}
@@ -68,7 +59,7 @@ class SearchPage extends Component {
 				.then(result =>
 					result.forEach(tag => {
 						// console.log(tag);
-						newTags.push({ _id: tag.word });
+						newTags.push(tag.word);
 					})
 				);
 			this.setState({

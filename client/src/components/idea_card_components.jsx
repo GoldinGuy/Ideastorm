@@ -62,7 +62,6 @@ const IdeaCard = ({ idea }) => {
 							<span
 								className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
 							>
-								{/* {Math.floor(Math.random(0, 10) * 10)} */}
 								{s_count}
 							</span>{" "}
 							<button
