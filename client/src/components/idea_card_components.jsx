@@ -9,18 +9,6 @@ function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
-function titleCase(str) {
-	// stackoverflow.com/questions/196972/convert-string-to-title-case-with-javascript
-	// return str.replace(/\w\S*/g, function (txt) {
-	// 	return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
-	// });
-	str = str.toLowerCase().split(" ");
-	for (var i = 0; i < str.length; i++) {
-		str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
-	}
-	return str.join(" ");
-}
-
 const IdeaCard = ({ idea }) => {
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 
@@ -68,7 +56,7 @@ const IdeaCard = ({ idea }) => {
 				>
 					<div className="flex items-center -mt-1 justify-between">
 						<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
-							{titleCase(idea.title)}
+							{idea.title}
 						</h3>
 						<div className="inline-block flex-none self-start mt-2">
 							<span

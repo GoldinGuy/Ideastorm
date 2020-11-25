@@ -1,7 +1,10 @@
 import axios from 'axios'
 
+// const api = axios.create({
+//     baseURL: 'http://localhost:3000/api',
+// })
 const api = axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL: 'http://165.22.0.134:3000/api',
 })
 
 // edit db 
@@ -23,8 +26,8 @@ export const getIdeasByTag = tags => api.get(`/ideasByTag/${tags}`)
 export const getIdeasByText = text => api.get(`/ideasByText/${text}`)
 
 // fetch ideas by category
-export const getTrendingIdeas = page => api.get(`/trendingIdeas/${page}`)
-export const getLatestIdeas = page => api.get(`/latestIdeas/${page}`)
+export const getTrendingIdeas = text => api.get(`/trendingIdeas/${text}`)
+export const getLatestIdeas = text => api.get(`/latestIdeas/${text}`)
 
 // fetch tags 
 export const getTrendingTags = () => api.get(`/trendingTags`)

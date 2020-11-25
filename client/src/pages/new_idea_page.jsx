@@ -5,6 +5,14 @@ import Tags from "@yaireo/tagify/dist/react.tagify";
 import "@yaireo/tagify/dist/tagify.css";
 let autocomplete = require("../assets/utils/autocomplete_words.js");
 
+function titleCase(str) {
+	str = str.toLowerCase().split(" ");
+	for (var i = 0; i < str.length; i++) {
+		str[i] = str[i].charAt(0).toUpperCase() + str[i].slice(1);
+	}
+	return str.join(" ");
+}
+
 export default class NewIdeaPage extends Component {
 	_isMounted = false;
 	tagRef = React.createRef();
@@ -43,11 +51,15 @@ export default class NewIdeaPage extends Component {
 		if (this.state.tags.length >= 3) {
 			let newTags = [];
 			for (const tag of JSON.parse(this.state.tags)) {
-				newTags.push(tag.value);
+				newTags.push(tag.value.trim().replace(" ", "-"));
 			}
-			// this.setState({ tags: newTags });
 			const { title, description } = this.state;
-			const payload = { title, description, tags: newTags, s_count: 1 };
+			const payload = {
+				title: titleCase(title),
+				description,
+				tags: newTags,
+				s_count: 1
+			};
 
 			await api.insertIdea(payload).then(res => {
 				window.alert(`Idea shared successfully`);
@@ -144,11 +156,11 @@ export default class NewIdeaPage extends Component {
 								{...tagifyProps}
 								tagifyRef={this.tagRef}
 								onChange={e => (
+									// eslint-disable-next-line no-sequences
 									e.persist(),
 									this.setState({
 										tags: e.target.value
 									})
-									// console.log(this.state.tags)
 								)}
 							/>
 						</div>

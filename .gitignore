@@ -1,3 +1,4 @@
 node_modules/
 brainstorm_ssh*
 brainstorm_sshkey*
+.ssh

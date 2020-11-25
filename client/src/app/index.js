@@ -8,7 +8,7 @@ import { IdeasTable, TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage
 
 function App() {
     return (
-          <BrowserRouter basename="/ideas">
+          <BrowserRouter basename="/">
             <NavBar />
             <Switch>
                 {/* <Redirect path="/" to="/"/> */}
