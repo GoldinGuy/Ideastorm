@@ -58,14 +58,12 @@ class SearchPage extends Component {
 				.then(res => res.json())
 				.then(result =>
 					result.forEach(tag => {
-						// console.log(tag);
 						newTags.push(tag.word);
 					})
 				);
 			this.setState({
 				topTags: newTags
 			});
-			// console.log(this.state.topTags);
 		} catch (e) {
 			console.log(e);
 		}
