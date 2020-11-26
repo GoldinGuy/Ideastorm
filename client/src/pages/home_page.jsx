@@ -10,7 +10,7 @@ class HomePage extends Component {
 					<div className="container flex flex-col items-center justify-center h-full max-w-6xl pl-0 mx-auto -mt-24 sm:pl-8 xl:pl-0 md:flex-row md:justify-between">
 						<div className="flex flex-col items-center w-5/6 md:items-start sm:w-1/2 lg:w-3/8 lg:mt-10">
 							<div className="relative">
-								<h1 className="relative mb-4 text-4xl font-black leading-none text-center text-black lg:text-5xl xl:text-6xl md:text-left sm:mt-0 mt-20">
+								<h1 className="relative mb-4 text-4xl font-black leading-none text-center text-black lg:text-5xl xl:text-6xl md:text-left md:mt-0 mt-20">
 									The Evolution of Ideas
 								</h1>
 								<svg
@@ -247,8 +247,8 @@ class HomePage extends Component {
 									A collective hive-mind of potential that anyone can contribute
 									to.
 								</strong>{" "}
-								That is our goal. That is Brainstorm. And all ideas, big or
-								small, are welcome.
+								That is the goal of Ideastorm. And all ideas, big or small, are
+								welcome.
 							</p>
 							<Link to="/create" className="relative">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />

@@ -72,22 +72,24 @@ class LatestPage extends Component {
 				}
 				className="h-full overflow-y-hidden"
 				endMessage={
-					<div className="relative h-full flex items-center flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10 overflow-y-hidden">
-						<button
-							type="button"
-							className="relative "
-							onClick={() =>
-								this.setState({
-									loadMore: true
-								})
-							}
-						>
-							<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
-							<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
-								SEE MORE IDEAS!
-							</span>
-						</button>
-					</div>
+					this.state.ideas.length % 18 === 0 && (
+						<div className="relative h-full flex items-center flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10 overflow-y-hidden">
+							<button
+								type="button"
+								className="relative "
+								onClick={() =>
+									this.setState({
+										loadMore: true
+									})
+								}
+							>
+								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
+								<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
+									SEE MORE IDEAS!
+								</span>
+							</button>
+						</div>
+					)
 				}
 			>
 				<IdeasStream

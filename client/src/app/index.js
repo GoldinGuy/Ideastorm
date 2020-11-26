@@ -4,8 +4,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { NavBar, Footer } from '../components'
 import { IdeasTable, TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
 
-// import 'bootstrap/dist/css/bootstrap.min.css'
-
 function App() {
     return (
           <BrowserRouter basename="/">
