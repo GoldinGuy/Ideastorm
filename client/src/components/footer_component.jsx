@@ -63,7 +63,7 @@ class Footer extends Component {
 									</g>
 								</svg>
 								<Link to="/" className="ml-2 text-lg font-black">
-									Brainstorm
+									Ideastorm
 								</Link>
 							</span>
 						</Link>
@@ -210,7 +210,7 @@ class Footer extends Component {
 					</div>
 					<div className="pt-4 pt-6 mt-10 text-center border-none text-gray-600 border-t border-gray-800">
 						{" "}
-						©2020 Brainstorm.{" "}
+						©2020 Ideastorm.{" "}
 						<span className="sm:hidden">
 							<br />
 						</span>{" "}

@@ -1,5 +1,5 @@
 {
-	"name": "brainstorm-server",
+	"name": "ideastorm-server",
 	"version": "1.0.0",
 	"description": "An API for Ideas",
 	"main": "index.js",

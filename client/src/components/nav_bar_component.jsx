@@ -76,7 +76,7 @@ class NavBar extends Component {
 								/>
 							</g>
 						</svg>
-						<span className="ml-3 text-2xl font-black">Brainstorm</span>
+						<span className="ml-3 text-2xl font-black">Ideastorm</span>
 					</Link>
 					<div
 						id="nav"
