@@ -111,7 +111,8 @@ class IdeasTable extends Component {
 							<DeleteIdea id={props.original._id} />
 						</span>
 					);
-				}
+				},
+				width: 90
 			}
 			// {
 			// 	Header: "",
