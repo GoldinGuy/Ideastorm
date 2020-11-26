@@ -6,7 +6,7 @@ import api from "../api";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
-	padding: 0 40px 40px 40px;
+	padding: 0 10px 10px 10px;
 `;
 
 const Update = styled.div`
@@ -79,24 +79,28 @@ class IdeasTable extends Component {
 			{
 				Header: "ID",
 				accessor: "_id",
-				filterable: true
+				filterable: true,
+				style: { whiteSpace: "unset" }
 			},
 			{
 				Header: "Title",
 				accessor: "title",
-				filterable: true
+				filterable: true,
+				style: { whiteSpace: "unset" }
 			},
 			{
 				Header: "Description",
 				accessor: "description",
-				filterable: true
+				filterable: true,
+				style: { whiteSpace: "unset" }
 			},
 
 			{
 				Header: "Tags",
 				accessor: "tags",
 				filterable: true,
-				Cell: props => <span>{props.value.join(", ")}</span>
+				Cell: props => <span>{props.value.join(", ")}</span>,
+				style: { whiteSpace: "unset" }
 			},
 			{
 				Header: "",
@@ -108,18 +112,18 @@ class IdeasTable extends Component {
 						</span>
 					);
 				}
-			},
-			{
-				Header: "",
-				accessor: "",
-				Cell: function (props) {
-					return (
-						<span>
-							<UpdateIdea id={props.original._id} />
-						</span>
-					);
-				}
 			}
+			// {
+			// 	Header: "",
+			// 	accessor: "",
+			// 	Cell: function (props) {
+			// 		return (
+			// 			<span>
+			// 				<UpdateIdea id={props.original._id} />
+			// 			</span>
+			// 		);
+			// 	}
+			// }
 		];
 
 		let showTable = true;
@@ -134,9 +138,20 @@ class IdeasTable extends Component {
 						data={ideas}
 						columns={columns}
 						loading={isLoading}
-						defaultPageSize={10}
+						defaultPageSize={20}
 						showPageSizeOptions={true}
 						minRows={0}
+						collapseOnDataChange={false}
+						collapseOnSortingChange={false}
+						collapseOnPageChange={false}
+						defaultFilterMethod={(filter, row, column) => {
+							const id = filter.pivotId || filter.id;
+							return row[id] !== undefined
+								? String(row[id])
+										.toLowerCase()
+										.includes(filter.value.toLowerCase())
+								: true;
+						}}
 					/>
 				)}
 			</Wrapper>

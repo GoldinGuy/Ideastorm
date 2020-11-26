@@ -36,7 +36,7 @@ class NavBar extends Component {
 
 	render() {
 		return (
-			<div className="relative z-20 w-full h-24 px-8 pt-2 bg-white">
+			<div className="relative z-20 w-full h-24 px-8 pt-2 ">
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
 					<Link
 						to="/"
@@ -86,41 +86,28 @@ class NavBar extends Component {
 							<Link
 								to="/trending"
 								key="trending"
-								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className=" relative px-1 mb-1 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Trending
 								<span
 									className={
 										this.state.currentPage === 1
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
 							</Link>
-							{/* <Link
-								to="/featured"
-								key="featured"
-								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
-							>
-								Featured
-								<span
-									className={
-										this.state.currentPage === 2
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
-											: "hidden"
-									}
-								/>
-							</Link> */}
+
 							<Link
 								to="/latest"
 								key="latest"
-								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className=" relative px-1 mb-1 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Latest
 								<span
 									className={
 										this.state.currentPage === 2
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
@@ -128,13 +115,13 @@ class NavBar extends Component {
 							<Link
 								to="/explore"
 								key="explore-categories"
-								className=" relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className=" relative px-1 mb-1 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Explore Categories
 								<span
 									className={
 										this.state.currentPage === 3
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>
@@ -142,13 +129,13 @@ class NavBar extends Component {
 							<Link
 								to="/table"
 								key="table"
-								className="relative px-1 mb-1 mb-5 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
+								className=" relative px-1 mb-1 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
 								Table
 								<span
 									className={
 										this.state.currentPage === 4
-											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-fullabsolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
+											? "absolute bottom-0 left-0 w-full h-1 -mb-2 bg-yellow-300 rounded-full"
 											: "hidden"
 									}
 								/>

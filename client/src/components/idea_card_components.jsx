@@ -28,19 +28,22 @@ const IdeaCard = ({ idea }) => {
 	let rColor;
 	switch (Math.floor(Math.random() * 5) + 1) {
 		case 1:
-			rColor = "indigo-500";
+			rColor = "indigo-400";
 			break;
 		case 2:
-			rColor = "purple-500";
+			// rColor = "purple-500";
+			rColor = "indigo-500";
 			break;
 		case 3:
-			rColor = "blue-400";
+			// rColor = "blue-400";
+			rColor = "indigo-600";
 			break;
 		case 4:
-			rColor = "teal-500";
+			// rColor = "teal-500";
+			rColor = "blue-500";
 			break;
 		case 5:
-			rColor = "indigo-500";
+			rColor = "purple-500";
 			break;
 		default:
 			rColor = "yellow-400";
@@ -200,7 +203,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 			)}
 			{pageTitle !== "Trending" &&
 				pageTitle !== "Featured" &&
-				!ideas &&
+				// !ideas &&
 				ideas.length < 1 && (
 					<div className="flex w-full h-full" key="404">
 						<div className="w-full h-full  text-center mt-20 font-bold">
