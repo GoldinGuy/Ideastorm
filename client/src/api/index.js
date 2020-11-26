@@ -1,8 +1,8 @@
 import axios from 'axios'
 
-// 'http://165.22.0.134:3000/api', 'http://localhost:3000/api', 'https://server.ideastorm.app/api', 'https://api.ideastorm.app:3000/api',
+// 'http://165.22.0.134:3000/api', 'http://localhost:3000/api', 'https://server.ideastorm.app/api', 
 const api = axios.create({
-    baseURL: 'http://165.22.0.134:3000/api',
+    baseURL: 'https://server.ideastorm.app/api',
 })
 
 // edit db 
