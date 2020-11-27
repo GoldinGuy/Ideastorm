@@ -31,7 +31,7 @@ class TrendingPage extends Component {
 				this.setState({
 					topTags: tags.data.data.splice(0, 8)
 				});
-				console.log(this.state.topTags);
+				// console.log(this.state.topTags);
 			});
 		} catch (e) {
 			console.log(e);

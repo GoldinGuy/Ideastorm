@@ -208,10 +208,9 @@ getLatestIdeas = async (req, res) => {
     }).catch(err => console.log(err))
 }
 
-// TODO: figure out what trending means 
 getTrendingIdeas = async (req, res) => {
 
-    await Idea.find({}, null, { sort: { $natural: -1 },  skip: (parseInt(req.params.page) - 1) * 18, limit: PAGE_SIZE, }, (err, ideas) => {
+    await Idea.find({}, null, { sort: { s_count: -1 },  skip: (parseInt(req.params.page) - 1) * 18, limit: PAGE_SIZE, }, (err, ideas) => {
         if (err) {
             return res.status(400).json({ success: false, error: err, ideas: [] })
         }

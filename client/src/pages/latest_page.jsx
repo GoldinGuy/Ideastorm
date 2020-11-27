@@ -18,7 +18,7 @@ class LatestPage extends Component {
 	componentDidMount = async () => {
 		this.fetchIdeas();
 		try {
-			await api.get().then(tags => {
+			await api.getTrendingTags().then(tags => {
 				this.setState({
 					topTags: tags.data.data.splice(0, 8)
 				});
