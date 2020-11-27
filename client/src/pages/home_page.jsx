@@ -260,7 +260,7 @@ class HomePage extends Component {
 						<div className="relative flex flex-col items-center justify-center w-full -mr-0 sm:w-5/6 sm:w-2/3 sm:-mr-20">
 							<div className="overflow-hidden border-2 border-black rounded-lg">
 								<img
-									src="https://user-images.githubusercontent.com/47064842/100406521-12656680-3034-11eb-94bb-ecb0fa151c45.png"
+									src="https://user-images.githubusercontent.com/47064842/100407223-cfa48e00-3035-11eb-94f5-3970dea753a4.gif"
 									alt="Brainstorm"
 									className="object-cover w-full h-full"
 								/>
