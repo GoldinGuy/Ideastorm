@@ -202,7 +202,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 				</div>
 			)}
 			{pageTitle !== "Trending" &&
-				pageTitle !== "Featured" &&
+				pageTitle !== "Latest" &&
 				// !ideas &&
 				ideas.length < 1 && (
 					<div className="flex w-full h-full" key="404">

@@ -117,7 +117,7 @@ class NavBar extends Component {
 								key="explore-categories"
 								className=" relative px-1 mb-1 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
 							>
-								Explore Categories
+								Explore
 								<span
 									className={
 										this.state.currentPage === 3
