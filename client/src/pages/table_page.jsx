@@ -34,15 +34,23 @@ class UpdateIdea extends Component {
 class DeleteIdea extends Component {
 	deleteUser = event => {
 		event.preventDefault();
-
 		if (
-			window.confirm(
-				`Do you want to delete the idea ${this.props.id} permanently?`
-			)
+			prompt(
+				`Delete the idea ${this.props.id} permanently. Enter Admin Password:`,
+				""
+			) === "INSERT PW HERE"
 		) {
 			api.deleteIdeaById(this.props.id);
 			window.location.reload();
 		}
+		// if (
+		// 	window.confirm(
+		// 		`Do you want to delete the idea ${this.props.id} permanently?`
+		// 	)
+		// ) {
+		// 	api.deleteIdeaById(this.props.id);
+		// 	window.location.reload();
+		// }
 	};
 
 	render() {
@@ -73,7 +81,6 @@ class IdeasTable extends Component {
 
 	render() {
 		const { ideas, isLoading } = this.state;
-		// console.log("TCL: IdeasList -> render -> ideas", ideas);
 
 		const columns = [
 			{
@@ -92,7 +99,8 @@ class IdeasTable extends Component {
 				Header: "Description",
 				accessor: "description",
 				filterable: true,
-				style: { whiteSpace: "unset" }
+				style: { whiteSpace: "unset" },
+				width: 500
 			},
 
 			{
@@ -143,6 +151,7 @@ class IdeasTable extends Component {
 						showPageSizeOptions={true}
 						minRows={0}
 						collapseOnDataChange={false}
+						className="-striped -highlight"
 						collapseOnSortingChange={false}
 						collapseOnPageChange={false}
 						defaultFilterMethod={(filter, row, column) => {
