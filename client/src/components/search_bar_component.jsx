@@ -23,8 +23,8 @@ const SearchBar = ({ history }) => {
 
 	return (
 		<div className="flex">
-			<div className="w-1/2 mx-auto my-6 text-gray-500">
-				<section className="flex items-center justify-center h-20">
+			<div className="w-1/2 mx-auto my-0 sm:my-6 text-gray-500">
+				<section className="flex items-center justify-center sm:h-20">
 					<div
 						className="flex items-center justify-center w-1/2"
 						role="search"
