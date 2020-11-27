@@ -2,6 +2,7 @@ import React from "react";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
 import LinesEllipsis from "react-lines-ellipsis";
+import { useCookies } from "react-cookie";
 import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 
@@ -11,13 +12,32 @@ function dateFromObjectId(objectId) {
 
 const IdeaCard = ({ idea }) => {
 	const [s_count, setStormCount] = React.useState(idea.s_count);
-
+	const [cookies, setCookie] = useCookies("s_counted");
+	const [s_counted, setStormCounted] = React.useState(
+		cookies.s_counted.split("|").includes(idea._id) ?? false
+	);
 	const handleStormClick = async () => {
-		await apis
-			.updateStormcountById(idea._id, { s_count: idea.s_count + 1 })
-			.then(res => {
-				setStormCount(idea.s_count + 1);
-			});
+		var s_arr = (cookies.s_counted ?? []).split("|");
+		if (!s_counted) {
+			await apis
+				.updateStormcountById(idea._id, { s_count: s_count + 1 })
+				.then(res => {
+					setStormCount(s_count + 1);
+				});
+			setStormCounted(true);
+			s_arr.push(idea._id);
+		} else {
+			await apis
+				.updateStormcountById(idea._id, { s_count: s_count - 1 })
+				.then(res => {
+					setStormCount(s_count - 1);
+				});
+			setStormCounted(false);
+			s_arr.splice(s_arr.indexOf(idea._id), 1);
+		}
+		setCookie("s_counted", s_arr.join("|"), {
+			path: "/"
+		});
 	};
 
 	if (!idea) {
@@ -31,15 +51,12 @@ const IdeaCard = ({ idea }) => {
 			rColor = "indigo-400";
 			break;
 		case 2:
-			// rColor = "purple-500";
 			rColor = "indigo-500";
 			break;
 		case 3:
-			// rColor = "blue-400";
 			rColor = "indigo-600";
 			break;
 		case 4:
-			// rColor = "teal-500";
 			rColor = "blue-500";
 			break;
 		case 5:
@@ -112,7 +129,6 @@ const IdeaCard = ({ idea }) => {
 
 					<h5 className="flex-wrap flex">
 						{idea.tags.map((tag, index) => (
-							// inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2 mt-4
 							<span
 								className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg"
 								key={"tag-" + tag}
@@ -120,11 +136,6 @@ const IdeaCard = ({ idea }) => {
 								{"#" + tag}
 							</span>
 						))}
-						{/* {idea.tags.map((tag, index) => (
-							<div className="text-sm px-3 bg-gray-200 text-gray-800 rounded-full m-1">
-								{"#" + tag}
-							</div>
-						))} */}
 					</h5>
 				</div>
 			</div>
@@ -162,7 +173,7 @@ const Cards = ({ ideas }) => {
 };
 
 const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
-	console.log(topTags);
+	// console.log(ideas);
 	return (
 		<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
 			<div className="relative flex items-center self-start w-auto mb-1 mt-2   font-black">
@@ -201,34 +212,31 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 					</div>
 				</div>
 			)}
-			{pageTitle !== "Trending" &&
-				pageTitle !== "Latest" &&
-				// !ideas &&
-				ideas.length < 1 && (
-					<div className="flex w-full h-full" key="404">
-						<div className="w-full h-full  text-center mt-20 font-bold">
-							<span className="bold h-full text-purple-500 text-xl">
-								404: Looks like nobody else has thought of anything yet...
-							</span>
-							<div className="relative flex items-center h-full flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10">
-								<button
-									type="button"
-									className="relative "
-									onClick={() =>
-										history.push({
-											pathname: "/create"
-										})
-									}
-								>
-									<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
-									<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
-										BE THE FIRST!
-									</span>
-								</button>
-							</div>
+			{pageTitle !== "Trending" && pageTitle !== "Latest" && ideas.length < 1 && (
+				<div className="flex w-full h-full" key="404">
+					<div className="w-full h-full  text-center mt-20 font-bold">
+						<span className="bold h-full text-purple-500 text-xl">
+							404: Looks like nobody else has thought of anything yet...
+						</span>
+						<div className="relative flex items-center h-full flex-col justify-center w-full mt-12 sm:mb-0 sm:pr-10">
+							<button
+								type="button"
+								className="relative "
+								onClick={() =>
+									history.push({
+										pathname: "/create"
+									})
+								}
+							>
+								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
+								<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
+									BE THE FIRST!
+								</span>
+							</button>
 						</div>
 					</div>
-				)}
+				</div>
+			)}
 		</div>
 	);
 };
