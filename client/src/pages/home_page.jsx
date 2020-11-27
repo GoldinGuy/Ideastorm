@@ -260,8 +260,8 @@ class HomePage extends Component {
 						<div className="relative flex flex-col items-center justify-center w-full -mr-0 sm:w-5/6 sm:w-2/3 sm:-mr-20">
 							<div className="overflow-hidden border-2 border-black rounded-lg">
 								<img
-									src="https://cdn.devdojo.com/images/october2020/screenshot.png"
-									alt="Screen shot of Flare"
+									src="https://user-images.githubusercontent.com/47064842/100406521-12656680-3034-11eb-94bb-ecb0fa151c45.png"
+									alt="Brainstorm"
 									className="object-cover w-full h-full"
 								/>
 							</div>
@@ -405,8 +405,8 @@ class HomePage extends Component {
 									<div className="absolute top-0 left-0 w-full h-full mt-2 ml-10 bg-gray-900 rounded-lg" />
 									<div className="relative overflow-hidden border-2 border-black rounded-lg">
 										<img
-											src="https://cdn.devdojo.com/images/october2020/screenshot2.png"
-											alt="Screen shot of Flare's hero component"
+											src="https://user-images.githubusercontent.com/47064842/100406521-12656680-3034-11eb-94bb-ecb0fa151c45.png"
+											alt="Ideas"
 											className="object-cover w-full h-full"
 										/>
 									</div>
