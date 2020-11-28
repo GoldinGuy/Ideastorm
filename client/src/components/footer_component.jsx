@@ -62,9 +62,7 @@ class Footer extends Component {
 										/>
 									</g>
 								</svg>
-								<Link to="/" className="ml-2 text-lg font-black">
-									Ideastorm
-								</Link>
+								<span className="ml-2 text-lg font-black">Ideastorm</span>
 							</span>
 						</Link>
 						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
