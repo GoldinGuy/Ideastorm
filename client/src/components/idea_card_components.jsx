@@ -12,7 +12,9 @@ function dateFromObjectId(objectId) {
 
 const IdeaCard = ({ idea }) => {
 	const [s_count, setStormCount] = React.useState(idea.s_count);
-	const [cookies, setCookie] = useCookies("s_counted");
+	const [cookies, setCookie] = useCookies("s_counted", "", {
+		expires: 2147483647
+	});
 	const [s_counted, setStormCounted] = React.useState(
 		cookies.s_counted?.split("|")?.includes(idea._id) ?? false
 	);
