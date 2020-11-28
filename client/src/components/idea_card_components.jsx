@@ -14,7 +14,7 @@ const IdeaCard = ({ idea }) => {
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies("s_counted");
 	const [s_counted, setStormCounted] = React.useState(
-		cookies.s_counted.split("|").includes(idea._id) ?? false
+		cookies.s_counted?.split("|")?.includes(idea._id) ?? false
 	);
 	const handleStormClick = async () => {
 		var s_arr = cookies.s_counted?.split("|") ?? [];
