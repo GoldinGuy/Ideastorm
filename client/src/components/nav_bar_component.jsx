@@ -90,12 +90,12 @@ class NavBar extends Component {
 					</Link>
 					<div
 						id="nav"
-						className={`absolute top-0 left-0  block w-full mt-20 border-b border-gray-200 sm:border-none sm:px-5 sm:block sm:relative sm:mt-0 sm:w-auto ${
+						className={`absolute top-0 left-0  block w-full mt-20 border-b border-gray-200 sm:border-none sm:px-5 sm:block sm:relative sm:mt-0  sm:w-auto ${
 							this.state.mobileExpanded ? "" : "hidden"
 						}`}
 					>
 						<nav
-							className={`flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0 ${
+							className={`flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0  ${
 								this.state.mobileExpanded ? "flex-col-reverse" : ""
 							}`}
 						>

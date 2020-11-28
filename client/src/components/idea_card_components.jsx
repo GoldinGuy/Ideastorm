@@ -17,8 +17,7 @@ const IdeaCard = ({ idea }) => {
 		cookies.s_counted.split("|").includes(idea._id) ?? false
 	);
 	const handleStormClick = async () => {
-		var s_arr = cookies.s_counted ?? [];
-		s_arr.split("|");
+		var s_arr = (cookies.s_counted ?? "").split("|");
 		if (!s_counted) {
 			await apis
 				.updateStormcountById(idea._id, { s_count: s_count + 1 })
