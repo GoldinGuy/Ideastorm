@@ -95,11 +95,11 @@ class NavBar extends Component {
 						}`}
 					>
 						<nav
-							className={`flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0  ${
+							className={`flex flex-col items-center py-4 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0  ${
 								this.state.mobileExpanded ? "flex-col-reverse" : ""
 							}`}
 						>
-							<div className="flex flex-col items-center py-3 bg-white border border-gray-100 sm:flex-row sm:bg-transparent sm:border-none sm:py-0">
+							<div className="flex flex-col items-center py-6 bg-white  sm:flex-row sm:bg-transparent sm:border-none sm:py-0">
 								<Link
 									to="/trending"
 									key="trending"
