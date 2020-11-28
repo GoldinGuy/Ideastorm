@@ -12,11 +12,11 @@ function dateFromObjectId(objectId) {
 
 const IdeaCard = ({ idea }) => {
 	const [s_count, setStormCount] = React.useState(idea.s_count);
-	const [cookies, setCookie] = useCookies("s_counted", "", {
-		expires: 2147483647
+	const [cookies, setCookie] = useCookies(["s_counted"], "", {
+		expires: Date(8640000000000000)
 	});
 	const [s_counted, setStormCounted] = React.useState(
-		cookies.s_counted?.split("|")?.includes(idea._id) ?? false
+		cookies.s_counted?.split("|").includes(idea._id) ?? false
 	);
 	const handleStormClick = async () => {
 		var s_arr = cookies.s_counted?.split("|") ?? [];
@@ -37,9 +37,13 @@ const IdeaCard = ({ idea }) => {
 			setStormCounted(false);
 			s_arr.splice(s_arr.indexOf(idea._id), 1);
 		}
-		setCookie("s_counted", s_arr.join("|"), {
-			path: "/"
-		});
+		setCookie(
+			"s_counted",
+			s_arr.join("|"),
+			{ path: "/" },
+			{ expires: Date(8640000000000000) }
+		);
+		// console.log(cookies.s_counted);
 	};
 
 	if (!idea) {
