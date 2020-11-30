@@ -24,6 +24,31 @@ class Footer extends Component {
 					>
 						<path d="M0 24C87.243 11.422 173.12 5.133 257.633 5.133 468.305 5.133 578.027 74 700 74c136.015 0 290.882-96.208 481.234-68.867C1268.807 17.71 1341.73 24 1400 24v50H0V24z" />
 					</svg>
+					<div className="container flex w-full flex-col justify-between px-4 mx-auto overflow-hidden lg:flex-row">
+						<div className="block w-full mt-6 text-sm sm:flex lg:mt-0">
+							{[
+								{ title: "Education", tags: ["science-fair", ""] },
+								{ title: "Tech", tags: ["sites", "apps", "dev"] }
+							].map(cat => (
+								<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
+									<li className="inline-block px-3 py-2 text-md font-medium tracking-wideuppercase">
+										<Link to={`/search?q=${cat.title}`}>{cat.title}</Link>
+									</li>
+									{cat.tags.map(tag => (
+										<li className="mb-3">
+											<Link
+												key={tag}
+												className="px-1 mr-2 flex-none  text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
+												to={`/search?q=${tag}`}
+											>
+												{"#" + tag}
+											</Link>
+										</li>
+									))}
+								</ul>
+							))}
+						</div>
+					</div>
 				</div>
 				<footer className="px-4 pt-12 pb-8 text-white border-none bg-black">
 					<div className="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">

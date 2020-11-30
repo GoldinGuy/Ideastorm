@@ -250,3 +250,5 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 };
 
 export default IdeasStream;
+
+export { IdeaCard, Cards };
