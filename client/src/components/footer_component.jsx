@@ -27,14 +27,14 @@ class Footer extends Component {
 					<div className="container flex w-full flex-col justify-between px-4 mx-auto overflow-hidden lg:flex-row">
 						<div className="block w-full mt-6 text-sm sm:flex lg:mt-0">
 							{[
-								{ title: "Education", tags: ["science-fair", ""] },
-								{ title: "Tech", tags: ["sites", "apps", "dev"] }
+								["tech", "sites", "apps", "dev"],
+								["science-fair", "stem", "education", "business"],
+								["foodies", "snacks", "projects", "crafts"],
+								["utilities", "lifestyle", "home-living", "startup"],
+								["utilities", "lifestyle", "home-living", "startup"]
 							].map(cat => (
 								<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-									<li className="inline-block px-3 py-2 text-md font-medium tracking-wideuppercase">
-										<Link to={`/search?q=${cat.title}`}>{cat.title}</Link>
-									</li>
-									{cat.tags.map(tag => (
+									{cat.map(tag => (
 										<li className="mb-3">
 											<Link
 												key={tag}
@@ -92,67 +92,31 @@ class Footer extends Component {
 						</Link>
 						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									<Link to="/search?q=education">Education</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=science-fair"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Science Fair
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=food"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Foodies
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=crafts"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Crafts & Projects
-									</Link>
-								</li>
+								<a
+									href="mailto:seth@goldinwebdesign.com"
+									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+								>
+									Contact
+								</a>
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									<Link to="/search?q=tech">Tech</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=website"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Sites
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/search?q=app"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Apps
-									</Link>
-								</li>
-
-								<li>
-									<Link
-										to="/search?q=dev"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Dev Tools
-									</Link>
-								</li>
+								<Link
+									to="/terms"
+									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+								>
+									Terms of Service
+								</Link>
+							</ul>
+							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
+								<Link
+									to="/jobs"
+									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
+								>
+									Join the team
+								</Link>
 							</ul>
 
-							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
+							{/* <li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
 									Site
 								</li>
 								<li>
@@ -179,7 +143,7 @@ class Footer extends Component {
 										Join the Team
 									</Link>
 								</li>
-							</ul>
+							</ul> */}
 							<div className="flex flex-col w-full text-gray-700">
 								<div className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
 									Follow Us!
