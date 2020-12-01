@@ -54,39 +54,6 @@ class Footer extends Component {
 					<div className="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
 						<Link to="/" className="block w-1/3 mr-4 border-none">
 							<span className="flex items-center border-none">
-								{/* <svg
-									className="w-auto h-8 mt-1 border-none text-white fill-current"
-									viewBox="0 0 215 151"
-									xmlns="http://www.w3.org/2000/svg"
-									xmlnsXlink="http://www.w3.org/1999/xlink"
-								>
-									<defs>
-										<linearGradient
-											x1="56.965%"
-											y1="53.262%"
-											x2="7.891%"
-											y2="29.24%"
-											id="b"
-										>
-											<stop stopColor="#FFCD26" offset="0%" />
-											<stop stopColor="#FFDF95" offset="100%" />
-										</linearGradient>
-										<path
-											d="M95.655.001c-24.386 0-43.538 13.864-52.36 34.66-5.144 12.126-3.711 24.522.084 29.027 2.435-5.804 11.57-15.424 29.476-15.424h79.952c29.783 0 54.375-30.377 61.963-48.263H95.655zM67.693 65.916C23.419 65.916.085 105.344 0 137.666v.345c.011 4.322.439 8.517 1.291 12.466 2.433-5.804 19.956-36.297 47.062-36.297h23.225c29.783 0 54.375-30.378 61.963-48.264H67.693z"
-											id="a"
-										/>
-									</defs>
-									<g fill="none" fillRule="evenodd">
-										<mask id="c" fill="#fff">
-											<use xlinkHref="#a" />
-										</mask>
-										<path
-											d="M95.655.001c-24.386 0-43.538 13.864-52.36 34.66-5.144 12.126-3.711 24.522.084 29.027 2.435-5.804 11.57-15.424 29.476-15.424h79.952c29.783 0 54.375-30.377 61.963-48.263H95.655zM67.693 65.916C23.419 65.916.085 105.344 0 137.666v.345c.011 4.322.439 8.517 1.291 12.466 2.433-5.804 19.956-36.297 47.062-36.297h23.225c29.783 0 54.375-30.378 61.963-48.264H67.693z"
-											fill="url(#b)"
-											mask="url(#c)"
-										/>
-									</g>
-								</svg> */}
 								<img
 									src="https://user-images.githubusercontent.com/47064842/100686922-4e0e7200-334d-11eb-975d-7ed8be0c4a3a.png"
 									alt="logo"

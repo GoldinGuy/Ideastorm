@@ -54,7 +54,7 @@ class NavBar extends Component {
 						key="/"
 					>
 						<img
-							src="https://user-images.githubusercontent.com/47064842/100686268-f7ecff00-334b-11eb-80fa-417c5a104f0a.png"
+							src="https://user-images.githubusercontent.com/47064842/100686922-4e0e7200-334d-11eb-975d-7ed8be0c4a3a.png"
 							alt="logo"
 							className="w-auto"
 							style={{ height: "3.5rem" }}
