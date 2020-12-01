@@ -43,14 +43,6 @@ class DeleteIdea extends Component {
 			api.deleteIdeaById(this.props.id);
 			window.location.reload();
 		}
-		// if (
-		// 	window.confirm(
-		// 		`Do you want to delete the idea ${this.props.id} permanently?`
-		// 	)
-		// ) {
-		// 	api.deleteIdeaById(this.props.id);
-		// 	window.location.reload();
-		// }
 	};
 
 	render() {
@@ -64,7 +56,10 @@ class IdeasTable extends Component {
 		this.state = {
 			ideas: [],
 			columns: [],
-			isLoading: false
+			isLoading: false,
+			isAdmin:
+				(new URLSearchParams(this.props.location.search).get("user") ?? "") ===
+				"admin"
 		};
 	}
 
@@ -120,7 +115,8 @@ class IdeasTable extends Component {
 						</span>
 					);
 				},
-				width: 90
+				width: 90,
+				show: this.state.isAdmin
 			},
 			{
 				Header: "",
@@ -132,19 +128,9 @@ class IdeasTable extends Component {
 						</span>
 					);
 				},
-				width: 90
+				width: 90,
+				show: this.state.isAdmin
 			}
-			// {
-			// 	Header: "",
-			// 	accessor: "",
-			// 	Cell: function (props) {
-			// 		return (
-			// 			<span>
-			// 				<UpdateIdea id={props.original._id} />
-			// 			</span>
-			// 		);
-			// 	}
-			// }
 		];
 
 		let showTable = true;
