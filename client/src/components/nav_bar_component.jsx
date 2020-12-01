@@ -53,7 +53,13 @@ class NavBar extends Component {
 						className="relative flex items-center inline-block h-5 h-full font-black"
 						key="/"
 					>
-						<svg
+						<img
+							src="https://user-images.githubusercontent.com/47064842/100686268-f7ecff00-334b-11eb-80fa-417c5a104f0a.png"
+							alt="logo"
+							className="w-auto"
+							style={{ height: "3.5rem" }}
+						/>
+						{/* <svg
 							className="w-auto h-8 mt-1"
 							viewBox="0 0 215 151"
 							xmlns="http://www.w3.org/2000/svg"
@@ -85,7 +91,7 @@ class NavBar extends Component {
 									mask="url(#c)"
 								/>
 							</g>
-						</svg>
+						</svg> */}
 						<span className="ml-3 text-2xl font-black">Ideastorm</span>
 					</Link>
 					<div
