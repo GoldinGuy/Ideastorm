@@ -75,7 +75,7 @@ class HomePage extends Component {
 								Whether you're looking for a cool new project, or you have an
 								awesome idea to share - you've come to the right place.
 							</p>
-							<Link to="/explore" className="relative mt-5">
+							<Link to="/trending" className="relative mt-5">
 								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded" />
 								<span className="relative inline-block w-full h-full px-8 py-3 text-base font-bold bg-white border-2 border-black rounded hover:bg-indigo-500 xl:text-xl fold-bold hover:text-white">
 									Explore Ideas
