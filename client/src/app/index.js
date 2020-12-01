@@ -2,7 +2,7 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import { CookiesProvider,  } from 'react-cookie';
 import { NavBar, Footer, ScrollToTop } from '../components'
-import { IdeasTable, TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage } from '../pages'
+import { IdeasTable, TrendingPage, NewIdeaPage, LatestPage, HomePage, SearchPage, UpdateIdeasPage } from '../pages'
 
 
 function App() {
@@ -18,11 +18,11 @@ function App() {
                         <Route path="/search" exact component={SearchPage} />
                         <Route path="/table" exact component={IdeasTable} />
                         <Route path="/create" exact component={NewIdeaPage} />
-                        {/* <Route
+                        <Route
                             path="/update/:id"
                             exact
-                            component={IdeasUpdate}
-                        /> */}
+                            component={UpdateIdeasPage}
+                        />
                     </Switch>
                     <Footer />
                 </ScrollToTop>

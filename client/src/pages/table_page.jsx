@@ -23,7 +23,7 @@ class UpdateIdea extends Component {
 	updateUser = event => {
 		event.preventDefault();
 
-		window.location.href = `/ideas/update/${this.props.id}`;
+		window.location.href = `/update/${this.props.id}`;
 	};
 
 	render() {
@@ -109,6 +109,18 @@ class IdeasTable extends Component {
 				filterable: true,
 				Cell: props => <span>{props.value.join(", ")}</span>,
 				style: { whiteSpace: "unset" }
+			},
+			{
+				Header: "",
+				accessor: "",
+				Cell: function (props) {
+					return (
+						<span>
+							<UpdateIdea id={props.original._id} />
+						</span>
+					);
+				},
+				width: 90
 			},
 			{
 				Header: "",
