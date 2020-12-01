@@ -54,7 +54,7 @@ class Footer extends Component {
 					<div className="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
 						<Link to="/" className="block w-1/3 mr-4 border-none">
 							<span className="flex items-center border-none">
-								<svg
+								{/* <svg
 									className="w-auto h-8 mt-1 border-none text-white fill-current"
 									viewBox="0 0 215 151"
 									xmlns="http://www.w3.org/2000/svg"
@@ -86,7 +86,13 @@ class Footer extends Component {
 											mask="url(#c)"
 										/>
 									</g>
-								</svg>
+								</svg> */}
+								<img
+									src="https://user-images.githubusercontent.com/47064842/100686922-4e0e7200-334d-11eb-975d-7ed8be0c4a3a.png"
+									alt="logo"
+									className="w-auto"
+									style={{ height: "4.5rem" }}
+								/>
 								<span className="ml-2 text-lg font-black">Ideastorm</span>
 							</span>
 						</Link>
