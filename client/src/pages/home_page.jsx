@@ -295,7 +295,7 @@ class HomePage extends Component {
 						</div>
 					</div>
 				</div>
-				{/* Features Section */}
+				{/* Featured Section */}
 				<div className="relative w-full py-20  overflow-hidden bg-white md:pt-40">
 					{/* CURVED SVG BORDER INVERT */}
 					<svg
@@ -309,7 +309,7 @@ class HomePage extends Component {
 						<h2 className="relative flex items-center self-start  w-auto mb-20 text-4xl font-black">
 							<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
 							<span className="relative">Featured</span>
-							{/* TODO: FEATURED IDEAS */}
+							{/* TODO: PERSONALLY SELECTED FEATURED IDEAS */}
 						</h2>
 						<div className="flex w-full h-full">
 							<div className="w-full lg:w-2/3">

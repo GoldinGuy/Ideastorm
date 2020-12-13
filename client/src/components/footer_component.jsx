@@ -76,20 +76,20 @@ class Footer extends Component {
 								</a>
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<Link
-									to="/terms"
+								<a
+									href="https://www.youtube.com/watch?v=SIaFtAKnqBU&list=PLSLWyQKazD3X0W72mUUmd0hHXJvA0RNOk&index=33"
 									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 								>
 									Terms of Service
-								</Link>
+								</a>
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
-								<Link
-									to="/jobs"
+								<a
+									href="https://www.youtube.com/watch?v=oHg5SJYRHA0"
 									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 								>
-									Join the team
-								</Link>
+									Join the Team
+								</a>
 							</ul>
 							<div className="flex flex-col w-full text-gray-700">
 								<div className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
