@@ -5,12 +5,16 @@ import LinesEllipsis from "react-lines-ellipsis";
 import { useCookies } from "react-cookie";
 import en from "javascript-time-ago/locale/en";
 import apis from "../api";
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import { DiscussionEmbed } from "disqus-react";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
 const IdeaCard = ({ idea }) => {
+	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
 		expires: Date(8640000000000000)
@@ -72,82 +76,160 @@ const IdeaCard = ({ idea }) => {
 			rColor = "yellow-400";
 	}
 	return (
-		<div className="w-full mb-10 sm:mb-0 sm:w-1/2" key={idea.title}>
-			<div className="relative ml-0 mr-0 sm:mr-10">
-				<span
-					className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
-				/>
-				<div
-					className={`relative p-5 bg-white border-2 rounded-lg border-${rColor}`}
-				>
-					<div className="flex items-center -mt-1 justify-between">
-						<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
-							{idea.title}
-						</h3>
-						<div className="inline-block flex-none self-start mt-2">
-							<span
-								className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
-							>
-								{s_count}
-							</span>{" "}
-							<button
-								onClick={handleStormClick}
-								className="focus:border-0 focus:outline-none"
-							>
-								<svg
-									xmlns="http://www.w3.org/2000/svg"
-									viewBox="0 0 320 512"
-									className={`w-5 h-5 fill-current inline text-${
-										s_counted ? "yellow-500" : "indigo-600"
-									}`}
-								>
-									<path d="M295.973 160H180.572L215.19 30.184C219.25 14.956 207.756 0 192 0H56C43.971 0 33.8 8.905 32.211 20.828l-31.996 240C-1.704 275.217 9.504 288 24.004 288h118.701L96.646 482.466C93.05 497.649 104.659 512 119.992 512c8.35 0 16.376-4.374 20.778-11.978l175.973-303.997c9.244-15.967-2.288-36.025-20.77-36.025z" />
-								</svg>
-							</button>
-						</div>
-					</div>
-
+		<>
+			<div
+				className="w-full mb-10 sm:mb-0 sm:w-1/2"
+				key={idea.title}
+				onClick={() => setModal(true)}
+			>
+				<div className="relative ml-0 mr-0 sm:mr-10">
 					<span
-						className={`mt-1 mb-1 text-xs font-medium  uppercase text-${rColor}`}
-					>
-						<ReactTimeAgo date={dateFromObjectId(idea._id)} />
-					</span>
-					{/* share svg */}
-					{/* <span className="inline">
-							<svg
-								xmlns="http://www.w3.org/2000/svg"
-								viewBox="0 0 512 512"
-								className="w-5 h-5  text-gray-600 fill-current inline mr-2"
-							>
-								<path
-									d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
-									// fill="#1A1A1A"
-								/>
-							</svg>
-						</span> */}
-
-					<LinesEllipsis
-						text={idea.description}
-						maxLine="8"
-						ellipsis="..."
-						trimRight
-						basedOn="letters"
-						className="mb-2 text-gray-600 "
+						className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
 					/>
+					<div
+						className={`relative p-5 bg-white border-2 rounded-lg border-${rColor}`}
+					>
+						<div className="flex items-center -mt-1 justify-between">
+							<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
+								{idea.title}
+							</h3>
+							<div className="inline-block flex-none self-start mt-2">
+								<span
+									className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
+								>
+									{s_count}
+								</span>{" "}
+								<button
+									onClick={handleStormClick}
+									className="focus:border-0 focus:outline-none"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 320 512"
+										className={`w-5 h-5 fill-current inline text-${
+											s_counted ? "yellow-500" : "indigo-600"
+										}`}
+									>
+										<path d="M295.973 160H180.572L215.19 30.184C219.25 14.956 207.756 0 192 0H56C43.971 0 33.8 8.905 32.211 20.828l-31.996 240C-1.704 275.217 9.504 288 24.004 288h118.701L96.646 482.466C93.05 497.649 104.659 512 119.992 512c8.35 0 16.376-4.374 20.778-11.978l175.973-303.997c9.244-15.967-2.288-36.025-20.77-36.025z" />
+									</svg>
+								</button>
+							</div>
+						</div>
 
-					<h5 className="flex-wrap flex">
-						{idea.tags.map((tag, index) => (
-							<span
-								className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg"
-								key={"tag-" + tag}
-							>
-								{"#" + tag}
-							</span>
-						))}
-					</h5>
+						<span
+							className={`mt-1 mb-1 text-xs font-medium  uppercase text-${rColor}`}
+						>
+							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
+						</span>
+
+						<LinesEllipsis
+							text={idea.description}
+							maxLine="8"
+							ellipsis="..."
+							trimRight
+							basedOn="letters"
+							className="mb-2 text-gray-600 "
+						/>
+
+						<h5 className="flex-wrap flex">
+							{idea.tags.map((tag, index) => (
+								<span
+									className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg"
+									key={"tag-" + tag}
+								>
+									{"#" + tag}
+								</span>
+							))}
+						</h5>
+					</div>
 				</div>
 			</div>
-		</div>
+			{/* modal */}
+			<Modal
+				open={modalOpen}
+				onClose={() => setModal(false)}
+				classNames={{
+					overlay: "customOverlay",
+					modal: "customModal"
+				}}
+			>
+				<div className="relative ml-0 mr-0 sm:mr-10">
+					<span
+						className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
+					/>
+					<div
+						className={`relative p-5 bg-white border-2 rounded-lg border-${rColor}`}
+					>
+						<div className="flex items-center -mt-1 justify-between">
+							<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
+								{idea.title}
+							</h3>
+							<div className="inline-block flex-none self-start mt-2">
+								{/* share svg */}
+								<span className="inline mr-1">
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 512 512"
+										className="w-5 h-5  text-gray-600 fill-current inline mr-2"
+									>
+										<path
+											d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
+											// fill="#1A1A1A"
+										/>
+									</svg>
+								</span>
+								<span
+									className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
+								>
+									{s_count}
+								</span>{" "}
+								<button
+									onClick={handleStormClick}
+									className="focus:border-0 focus:outline-none"
+								>
+									<svg
+										xmlns="http://www.w3.org/2000/svg"
+										viewBox="0 0 320 512"
+										className={`w-5 h-5 fill-current inline text-${
+											s_counted ? "yellow-500" : "indigo-600"
+										}`}
+									>
+										<path d="M295.973 160H180.572L215.19 30.184C219.25 14.956 207.756 0 192 0H56C43.971 0 33.8 8.905 32.211 20.828l-31.996 240C-1.704 275.217 9.504 288 24.004 288h118.701L96.646 482.466C93.05 497.649 104.659 512 119.992 512c8.35 0 16.376-4.374 20.778-11.978l175.973-303.997c9.244-15.967-2.288-36.025-20.77-36.025z" />
+									</svg>
+								</button>
+							</div>
+						</div>
+						<span
+							className={`mt-1 mb-5 text-xs font-medium  uppercase text-${rColor}`}
+						>
+							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
+						</span>
+
+						<p className="mb-5 mt-3 text-gray-600 ">{idea.description}</p>
+
+						<h5 className="flex-wrap flex">
+							{idea.tags.map((tag, index) => (
+								<span
+									className="px-1 mb-1 mr-1 text-gray-900 bg-gray-300 text-sm border border-gray-400 rounded-lg"
+									key={"tag-" + tag}
+								>
+									{"#" + tag}
+								</span>
+							))}
+						</h5>
+					</div>
+				</div>
+				<DiscussionEmbed
+					shortname="ideastorm.app"
+					config={{
+						url: idea.title,
+						identifier: idea.id,
+						title: idea.title,
+						language: "EN"
+					}}
+				/>
+			</Modal>
+		</>
 	);
 };
 
