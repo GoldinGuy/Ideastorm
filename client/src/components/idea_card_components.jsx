@@ -167,12 +167,12 @@ const IdeaCard = ({ idea }) => {
 								{idea.title}
 							</h3>
 							<div className="inline-block flex-none self-start mt-2">
-								<ShareBtn
+								{/* <ShareBtn
 									url={"https://ideastorm.app/explore/" + idea.id}
 									text={"Check out this cool idea: " + idea.title}
 									className="ib"
 									displayText="Share"
-								/>
+								/> */}
 								{/* share svg */}
 								{/* <span className="inline mr-1">
 									<svg
