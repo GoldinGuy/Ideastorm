@@ -32,12 +32,15 @@ class Footer extends Component {
 								["foodies", "snacks", "projects", "crafts"],
 								["utilities", "lifestyle", "home-living", "startup"],
 								["utilities", "lifestyle", "home-living", "startup"]
-							].map(cat => (
-								<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
+							].map((cat, index) => (
+								<ul
+									className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none"
+									key={cat + "-ul-" + index}
+								>
 									{cat.map(tag => (
-										<li className="mb-3">
+										<li className="mb-3" key={tag + "-li"}>
 											<Link
-												key={tag}
+												key={tag + "-link"}
 												className="px-1 mr-2 flex-none  text-gray-900 bg-gray-300 font-black text-sm border border-gray-400 rounded-lg focus:border-0 focus:outline-none"
 												to={`/search?q=${tag}`}
 											>
@@ -148,6 +151,13 @@ class Footer extends Component {
 						Created with 💙 by{" "}
 						<a href="https://goldinwebdesign.com/" className="">
 							Goldin Web Design.
+						</a>{" "}
+						<span className="sm:hidden">
+							<br />
+						</span>
+						Styling credit{" "}
+						<a href="https://devdojo.com/" className="">
+							DevDojo.
 						</a>
 					</div>
 				</footer>
