@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import api from "../api";
-
+import config from "../pw_config";
 import styled from "styled-components";
 
 const Wrapper = styled.div`
@@ -22,8 +22,12 @@ const Delete = styled.div`
 class UpdateIdea extends Component {
 	updateUser = event => {
 		event.preventDefault();
-
-		window.location.href = `/update/${this.props.id}`;
+		if (
+			prompt(`Update the idea ${this.props.id}. Enter Admin Password:`, "") ===
+			config.admin.pw
+		) {
+			window.location.href = `/update/${this.props.id}`;
+		}
 	};
 
 	render() {
@@ -38,7 +42,7 @@ class DeleteIdea extends Component {
 			prompt(
 				`Delete the idea ${this.props.id} permanently. Enter Admin Password:`,
 				""
-			) === "INSERT PW HERE"
+			) === config.admin.pw
 		) {
 			api.deleteIdeaById(this.props.id);
 			window.location.reload();
@@ -59,7 +63,7 @@ class IdeasTable extends Component {
 			isLoading: false,
 			isAdmin:
 				(new URLSearchParams(this.props.location.search).get("user") ?? "") ===
-				"admin"
+				config.admin.user
 		};
 	}
 

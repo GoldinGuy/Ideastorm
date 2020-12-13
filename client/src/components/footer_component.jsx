@@ -88,35 +88,6 @@ class Footer extends Component {
 									Join the team
 								</Link>
 							</ul>
-
-							{/* <li className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
-									Site
-								</li>
-								<li>
-									<a
-										href="mailto:seth@goldinwebdesign.com"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Contact
-									</a>
-								</li>
-								<li>
-									<Link
-										to="/terms"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Terms of Service
-									</Link>
-								</li>
-								<li>
-									<Link
-										to="/jobs"
-										className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
-									>
-										Join the Team
-									</Link>
-								</li>
-							</ul> */}
 							<div className="flex flex-col w-full text-gray-700">
 								<div className="inline-block px-3 py-2 font-medium tracking-wide text-white uppercase">
 									Follow Us!
