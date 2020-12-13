@@ -8,6 +8,7 @@ import apis from "../api";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { DiscussionEmbed } from "disqus-react";
+import Linkify from "react-linkify";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -121,16 +122,16 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-
-						<LinesEllipsis
-							text={idea.description}
-							maxLine="8"
-							ellipsis="..."
-							trimRight
-							basedOn="letters"
-							className="mb-2 text-gray-600 "
-						/>
-
+						<Linkify>
+							<LinesEllipsis
+								text={idea.description}
+								maxLine="8"
+								ellipsis="..."
+								trimRight
+								basedOn="letters"
+								className="mb-2 text-gray-600 "
+							/>
+						</Linkify>
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
 								<span
@@ -205,7 +206,9 @@ const IdeaCard = ({ idea }) => {
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
 
-						<p className="mb-5 mt-3 text-gray-600 ">{idea.description}</p>
+						<Linkify>
+							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
+						</Linkify>
 
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
