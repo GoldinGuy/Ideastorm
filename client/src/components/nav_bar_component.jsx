@@ -103,7 +103,7 @@ class NavBar extends Component {
 										}
 									/>
 								</Link>
-								<Link
+								{/* <Link
 									to="/explore"
 									key="explore-categories"
 									className=" relative px-1 mb-3 mr-0 text-base font-bold sm:mb-0 sm:mr-4 lg:mr-8"
@@ -116,7 +116,7 @@ class NavBar extends Component {
 												: "hidden"
 										}
 									/>
-								</Link>
+								</Link> */}
 								<Link
 									to="/table"
 									key="table"
