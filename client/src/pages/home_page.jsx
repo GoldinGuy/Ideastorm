@@ -306,7 +306,7 @@ class HomePage extends Component {
 						<path d="M0 50C309.151 16.667 542.484 0 700 0c157.516 0 390.849 16.667 700 50V0H0v50z" />
 					</svg>
 					<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
-						<h2 className="relative flex items-center self-start inline-block w-auto mb-20 text-4xl font-black">
+						<h2 className="relative flex items-center self-start  w-auto mb-20 text-4xl font-black">
 							<span className="absolute inline-block w-full h-4 mt-3 -ml-2 bg-yellow-400" />
 							<span className="relative">Featured</span>
 							{/* TODO: FEATURED IDEAS */}
@@ -316,13 +316,19 @@ class HomePage extends Component {
 								{/* Feature blocks first column */}
 								<div className="flex flex-col w-full mb-10 sm:flex-row">
 									{this.state.featuredIdeas.slice(0, 2).map(featuredIdea => (
-										<IdeaCard idea={featuredIdea} />
+										<IdeaCard
+											idea={featuredIdea}
+											key={featuredIdea.title + "-ideaCard"}
+										/>
 									))}
 								</div>
 								{/* Feature blocks second column */}
 								<div className="flex flex-col w-full mb-5 sm:flex-row">
 									{this.state.featuredIdeas.slice(2, 4).map(featuredIdea => (
-										<IdeaCard idea={featuredIdea} />
+										<IdeaCard
+											idea={featuredIdea}
+											key={featuredIdea.title + "-ideaCard"}
+										/>
 									))}
 								</div>
 							</div>
