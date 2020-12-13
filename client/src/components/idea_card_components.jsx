@@ -9,6 +9,7 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 import { DiscussionEmbed } from "disqus-react";
 import Linkify from "react-linkify";
+import ShareBtn from "react-share-button";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -166,8 +167,14 @@ const IdeaCard = ({ idea }) => {
 								{idea.title}
 							</h3>
 							<div className="inline-block flex-none self-start mt-2">
+								<ShareBtn
+									url={"https://ideastorm.app/explore/" + idea.id}
+									text={"Check out this cool idea: " + idea.title}
+									className="ib"
+									displayText="Share"
+								/>
 								{/* share svg */}
-								<span className="inline mr-1">
+								{/* <span className="inline mr-1">
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 512 512"
@@ -178,7 +185,7 @@ const IdeaCard = ({ idea }) => {
 											// fill="#1A1A1A"
 										/>
 									</svg>
-								</span>
+								</span> */}
 								<span
 									className={`mt-1 mb-1 ml-1 text-xs font-medium inline uppercase text-${rColor}`}
 								>
@@ -225,10 +232,10 @@ const IdeaCard = ({ idea }) => {
 				<DiscussionEmbed
 					shortname="ideastorm.app"
 					config={{
-						url: idea.title,
+						url: "https://ideastorm.app",
 						identifier: idea.id,
-						title: idea.title,
-						language: "EN"
+						title: idea.title
+						// language: "EN"
 					}}
 				/>
 			</Modal>
