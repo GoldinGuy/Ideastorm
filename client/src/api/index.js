@@ -1,8 +1,7 @@
 import axios from "axios";
-import config from "../pw_config";
 
 const api = axios.create({
-	baseURL: config.api.baseURL
+	baseURL: process.env.REACT_APP_API_BASEURL
 });
 
 // edit db
