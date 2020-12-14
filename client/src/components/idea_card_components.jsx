@@ -69,10 +69,10 @@ const IdeaCard = ({ idea }) => {
 			rColor = "indigo-600";
 			break;
 		case 4:
-			rColor = "blue-500";
+			rColor = "indigo-300";
 			break;
 		case 5:
-			rColor = "purple-500";
+			rColor = "indigo-700";
 			break;
 		default:
 			rColor = "yellow-400";
@@ -130,7 +130,7 @@ const IdeaCard = ({ idea }) => {
 								ellipsis="..."
 								trimRight
 								basedOn="letters"
-								className="mb-2 text-gray-600 "
+								className="mb-2 text-gray-600 whitespace-normal"
 							/>
 						</Linkify>
 						<h5 className="flex-wrap flex">
@@ -150,18 +150,22 @@ const IdeaCard = ({ idea }) => {
 			<Modal
 				open={modalOpen}
 				onClose={() => setModal(false)}
+				showCloseIcon={false}
+				styles={{
+					modal: { borderRadius: "0.5rem", overflow: "hidden", padding: 0 }
+				}}
 				classNames={{
-					overlay: "customOverlay",
+					overlay: `bg-opacity-75 bg-${rColor}`,
 					modal: "customModal"
 				}}
 			>
-				<div className="relative ml-0 mr-0 sm:mr-10">
-					<span
+				<div className="relative ml-0 mr-0">
+					{/* <span
 						className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
-					/>
-					<div
-						className={`relative p-5 bg-white border-2 rounded-lg border-${rColor}`}
-					>
+					/> */}
+					<div className={`relative p-5 bg-white rounded-lg `}>
+						{" "}
+						{/* border-${rColor} border-2 */}
 						<div className="flex items-center -mt-1 justify-between">
 							<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
 								{idea.title}
@@ -212,11 +216,9 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-
 						<Linkify>
 							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
 						</Linkify>
-
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
 								<span
@@ -229,6 +231,19 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
+				<div id="disqus_thread"></div>
+				{/* {
+    var disqus_config = function () {
+    this.page.url = "https://ideastorm.app";  // Replace PAGE_URL with your page's canonical URL variable
+    this.page.identifier = idea.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+    };
+    (function() { // DON'T EDIT BELOW THIS LINE
+    var d = document, s = d.createElement('script');
+    s.src = 'https://ideastorm-app.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+} */}
 				<DiscussionEmbed
 					shortname="ideastorm.app"
 					config={{
