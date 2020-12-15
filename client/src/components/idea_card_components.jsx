@@ -236,9 +236,10 @@ const IdeaCard = ({ idea }) => {
 								repo: "IdeastormComments",
 								owner: "GoldinGuy",
 								admin: "GoldinGuy",
-								id: idea.id.toString().substring(0, 50),
+								id: idea._id.toString().substring(0, 50),
 								labels: idea.tags,
 								title: idea.title,
+
 								body: idea.description
 							}}
 						/>
