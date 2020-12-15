@@ -227,7 +227,7 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-				<div className="ml-2 mr-2">
+				<div className="ml-3 mr-3 mb-2">
 					{modalOpen && (
 						<GitalkComponent
 							options={{
@@ -236,9 +236,10 @@ const IdeaCard = ({ idea }) => {
 								repo: "IdeastormComments",
 								owner: "GoldinGuy",
 								admin: "GoldinGuy",
-								id: idea.id,
-								labels: idea.tags
-								// title: idea.title
+								id: idea.id.splice(0, 50),
+								labels: idea.tags,
+								title: idea.title.splice(0, 50),
+								body: idea.description
 							}}
 						/>
 					)}
