@@ -7,9 +7,11 @@ import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { Comments } from "../components";
+// import { Comments } from "../components";
 import Linkify from "react-linkify";
-// import ShareBtn from "react-share-button";
+import { Comments } from "@saber2pr/rc-gitment";
+import "gitment/style/default.css";
+import Gitment from "gitment";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -231,7 +233,27 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-				<Comments fullUrl={"https://ideastorm.app"} id={idea.id} />
+				{/* <Comments fullUrl={"https://ideastorm.app"} id={idea.id} /> */}
+				{modalOpen &&
+					new Gitment({
+						id: idea.id, // optional
+						owner: "GoldinGuy",
+						repo: "IdeastormComments",
+						oauth: {
+							client_id: process.env.REACT_APP_GIT_OAUTH,
+							client_secret: process.env.REACT_APP_GIT_CLIENT_SECRET
+						}
+					}).render("comments")}
+
+				{/* 				
+				<Comments
+					{...{
+						username: "goldinguy",
+						repo: "ideastorm",
+						client_id: process.env.REACT_APP_GIT_OAUTH,
+						client_secret: process.env.REACT_APP_GIT_CLIENT_SECRET
+					}}
+				/> */}
 			</Modal>
 		</>
 	);
