@@ -249,11 +249,9 @@ const IdeaCard = ({ idea }) => {
 							repo: "IdeastormComments",
 							owner: "GoldinGuy",
 							admin: "GoldinGuy",
-							createIssueManually: true,
-
 							id: idea.id,
-							labels: idea.tags,
-							title: idea.title
+							labels: idea.tags
+							// title: idea.title
 						}}
 					/>
 				)}
