@@ -7,7 +7,7 @@ import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import Comments from "../components";
+import { Comments } from "../components";
 import Linkify from "react-linkify";
 // import ShareBtn from "react-share-button";
 
