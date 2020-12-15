@@ -237,8 +237,7 @@ const IdeaCard = ({ idea }) => {
 								owner: "GoldinGuy",
 								admin: "GoldinGuy",
 								id: idea.id,
-								labels: idea.tags,
-								distractionFreeMode: true
+								labels: idea.tags
 								// title: idea.title
 							}}
 						/>
