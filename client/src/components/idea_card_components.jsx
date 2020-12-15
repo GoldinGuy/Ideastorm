@@ -9,9 +9,10 @@ import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
 // import { Comments } from "../components";
 import Linkify from "react-linkify";
-import { Comments } from "@saber2pr/rc-gitment";
-import "gitment/style/default.css";
-import Gitment from "gitment";
+import GitalkComponent from "gitalk/dist/gitalk-component";
+// import { Comments } from "@saber2pr/rc-gitment";
+// import "gitment/style/default.css";
+// import Gitment from "gitment";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -233,8 +234,31 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-				{/* <Comments fullUrl={"https://ideastorm.app"} id={idea.id} /> */}
-				{modalOpen &&
+				{/* <div className="ml-2 mr-2 ">
+	
+					<Comments
+						fullUrl={"https://ideastorm.app/idea/" + idea.id}
+						id={idea.id}
+					/>
+				</div> */}
+				{modalOpen && (
+					<GitalkComponent
+						options={{
+							clientID: process.env.REACT_APP_GIT_OAUTH,
+							clientSecret: process.env.REACT_APP_GIT_CLIENT_SECRET,
+							repo: "IdeastormComments",
+							owner: "GoldinGuy",
+							admin: "GoldinGuy",
+							createIssueManually: true,
+
+							id: idea.id,
+							labels: idea.tags,
+							title: idea.title
+						}}
+					/>
+				)}
+
+				{/* {modalOpen &&
 					new Gitment({
 						id: idea.id, // optional
 						owner: "GoldinGuy",
@@ -243,17 +267,9 @@ const IdeaCard = ({ idea }) => {
 							client_id: process.env.REACT_APP_GIT_OAUTH,
 							client_secret: process.env.REACT_APP_GIT_CLIENT_SECRET
 						}
-					}).render("comments")}
-
-				{/* 				
-				<Comments
-					{...{
-						username: "goldinguy",
-						repo: "ideastorm",
-						client_id: process.env.REACT_APP_GIT_OAUTH,
-						client_secret: process.env.REACT_APP_GIT_CLIENT_SECRET
-					}}
-				/> */}
+						// ...
+						// For more available options, check out the documentation below
+					}).render("comments")} */}
 			</Modal>
 		</>
 	);
