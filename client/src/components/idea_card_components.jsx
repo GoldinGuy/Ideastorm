@@ -7,7 +7,7 @@ import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-import { DiscussionEmbed } from "disqus-react";
+import Comments from "../components";
 import Linkify from "react-linkify";
 // import ShareBtn from "react-share-button";
 
@@ -231,28 +231,7 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-				<div id="disqus_thread"></div>
-				{/* {
-    var disqus_config = function () {
-    this.page.url = "https://ideastorm.app";  // Replace PAGE_URL with your page's canonical URL variable
-    this.page.identifier = idea.id; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
-    };
-    (function() { // DON'T EDIT BELOW THIS LINE
-    var d = document, s = d.createElement('script');
-    s.src = 'https://ideastorm-app.disqus.com/embed.js';
-    s.setAttribute('data-timestamp', +new Date());
-    (d.head || d.body).appendChild(s);
-    })();
-} */}
-				<DiscussionEmbed
-					shortname="ideastorm.app"
-					config={{
-						url: "https://ideastorm.app",
-						identifier: idea.id,
-						title: idea.title
-						// language: "EN"
-					}}
-				/>
+				<Comments fullUrl={"https://ideastorm.app"} id={idea.id} />
 			</Modal>
 		</>
 	);
