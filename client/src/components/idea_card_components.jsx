@@ -7,13 +7,9 @@ import en from "javascript-time-ago/locale/en";
 import apis from "../api";
 import "react-responsive-modal/styles.css";
 import { Modal } from "react-responsive-modal";
-// import { Comments } from "../components";
 import Linkify from "react-linkify";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import "gitalk/dist/gitalk.css";
-// import { Comments } from "@saber2pr/rc-gitment";
-// import "gitment/style/default.css";
-// import Gitment from "gitment";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -164,12 +160,8 @@ const IdeaCard = ({ idea }) => {
 				}}
 			>
 				<div className="relative ml-0 mr-0">
-					{/* <span
-						className={`absolute top-0 left-0 w-full h-full mt-1 ml-1 rounded-lg bg-${rColor}`}
-					/> */}
 					<div className={`relative p-5 bg-white rounded-lg `}>
 						{" "}
-						{/* border-${rColor} border-2 */}
 						<div className="flex items-center -mt-1 justify-between">
 							<h3 className="my-2 text-lg font-bold text-gray-800 inline flex-initial">
 								{idea.title}
@@ -235,13 +227,7 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-				{/* <div className="ml-2 mr-2 ">
-	
-					<Comments
-						fullUrl={"https://ideastorm.app/idea/" + idea.id}
-						id={idea.id}
-					/>
-				</div> */}
+
 				{modalOpen && (
 					<GitalkComponent
 						options={{
@@ -256,19 +242,6 @@ const IdeaCard = ({ idea }) => {
 						}}
 					/>
 				)}
-
-				{/* {modalOpen &&
-					new Gitment({
-						id: idea.id, // optional
-						owner: "GoldinGuy",
-						repo: "IdeastormComments",
-						oauth: {
-							client_id: process.env.REACT_APP_GIT_OAUTH,
-							client_secret: process.env.REACT_APP_GIT_CLIENT_SECRET
-						}
-						// ...
-						// For more available options, check out the documentation below
-					}).render("comments")} */}
 			</Modal>
 		</>
 	);
