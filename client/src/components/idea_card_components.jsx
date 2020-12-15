@@ -227,22 +227,23 @@ const IdeaCard = ({ idea }) => {
 						</h5>
 					</div>
 				</div>
-
-				{modalOpen && (
-					<GitalkComponent
-						options={{
-							clientID: process.env.REACT_APP_GIT_OAUTH,
-							clientSecret: process.env.REACT_APP_GIT_CLIENT_SECRET,
-							repo: "IdeastormComments",
-							owner: "GoldinGuy",
-							admin: "GoldinGuy",
-							id: idea.id,
-							labels: idea.tags,
-							distractionFreeMode: true
-							// title: idea.title
-						}}
-					/>
-				)}
+				<div className="ml-2 mr-2">
+					{modalOpen && (
+						<GitalkComponent
+							options={{
+								clientID: process.env.REACT_APP_GIT_OAUTH,
+								clientSecret: process.env.REACT_APP_GIT_CLIENT_SECRET,
+								repo: "IdeastormComments",
+								owner: "GoldinGuy",
+								admin: "GoldinGuy",
+								id: idea.id,
+								labels: idea.tags,
+								distractionFreeMode: true
+								// title: idea.title
+							}}
+						/>
+					)}
+				</div>
 			</Modal>
 		</>
 	);
