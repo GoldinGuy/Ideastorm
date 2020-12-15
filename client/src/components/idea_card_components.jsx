@@ -10,6 +10,7 @@ import { Modal } from "react-responsive-modal";
 // import { Comments } from "../components";
 import Linkify from "react-linkify";
 import GitalkComponent from "gitalk/dist/gitalk-component";
+import "gitalk/dist/gitalk.css";
 // import { Comments } from "@saber2pr/rc-gitment";
 // import "gitment/style/default.css";
 // import Gitment from "gitment";
