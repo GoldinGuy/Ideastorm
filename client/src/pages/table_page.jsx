@@ -3,6 +3,7 @@ import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import api from "../api";
 import styled from "styled-components";
+import Linkify from "react-linkify";
 
 const Wrapper = styled.div`
 	padding: 0 10px 10px 10px;
@@ -71,7 +72,7 @@ class IdeasTable extends Component {
 
 		await api.getAllIdeas().then(ideas => {
 			this.setState({
-				ideas: ideas.data.data,
+				ideas: ideas.data.data.reverse(),
 				isLoading: false
 			});
 		});
@@ -86,6 +87,7 @@ class IdeasTable extends Component {
 				accessor: "_id",
 				filterable: true,
 				style: { whiteSpace: "unset" }
+				// show: this.state.isAdmin
 			},
 			{
 				Header: "Title",
@@ -98,7 +100,23 @@ class IdeasTable extends Component {
 				accessor: "description",
 				filterable: true,
 				style: { whiteSpace: "unset" },
-				width: 500
+				width: 500,
+				Cell: props => (
+					<Linkify
+						componentDecorator={(decoratedHref, decoratedText, key) => (
+							<a
+								className="underline"
+								target="blank"
+								href={decoratedHref}
+								key={key}
+							>
+								{decoratedText}
+							</a>
+						)}
+					>
+						{props.value}
+					</Linkify>
+				)
 			},
 
 			{

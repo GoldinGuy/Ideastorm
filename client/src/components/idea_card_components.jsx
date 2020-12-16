@@ -123,16 +123,35 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-						<Linkify>
-							<LinesEllipsis
-								text={idea.description}
-								maxLine="8"
-								ellipsis="..."
-								trimRight
-								basedOn="letters"
-								className="mb-2 text-gray-600 whitespace-normal"
-							/>
-						</Linkify>
+
+						<LinesEllipsis
+							text={
+								<Linkify
+									componentDecorator={(decoratedHref, decoratedText, key) => (
+										<a
+											target="blank"
+											href={decoratedHref}
+											key={key}
+											className={`underline  text-${rColor}`}
+										>
+											{decoratedText}
+										</a>
+									)}
+									textDecorator={urlString => {
+										let i = urlString.indexOf("://") + 3;
+										return urlString.substring(i, i + 25) + "...";
+									}}
+								>
+									{idea.description}
+								</Linkify>
+							}
+							maxLine="8"
+							ellipsis="..."
+							trimRight
+							basedOn="letters"
+							className="mb-2 text-gray-600 whitespace-normal"
+						/>
+
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
 								<span
@@ -212,7 +231,22 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-						<Linkify>
+						<Linkify
+							componentDecorator={(decoratedHref, decoratedText, key) => (
+								<a
+									target="blank"
+									href={decoratedHref}
+									key={key}
+									className={`underline  text-${rColor}`}
+								>
+									{decoratedText}
+								</a>
+							)}
+							textDecorator={urlString => {
+								let i = urlString.indexOf("://") + 3;
+								return urlString.substring(i, i + 25) + "...";
+							}}
+						>
 							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
 						</Linkify>
 						<h5 className="flex-wrap flex">
@@ -239,7 +273,6 @@ const IdeaCard = ({ idea }) => {
 								id: idea._id.toString().substring(0, 50),
 								labels: idea.tags,
 								title: idea.title,
-
 								body: idea.description
 							}}
 						/>
