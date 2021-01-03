@@ -10,12 +10,14 @@ import { Modal } from "react-responsive-modal";
 import Linkify from "react-linkify";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import "gitalk/dist/gitalk.css";
+import useWebShare from "react-use-web-share";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
 const IdeaCard = ({ idea, history, pageTitle }) => {
+	/* State for cookies, stormcount, modal */
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
@@ -24,6 +26,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	const [s_counted, setStormCounted] = React.useState(
 		cookies.s_counted?.split("|").includes(idea._id) ?? false
 	);
+	/* When user clicks stormcount */
 	const handleStormClick = async () => {
 		var s_arr = cookies.s_counted?.split("|") ?? [];
 		if (!s_counted) {
@@ -51,14 +54,17 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 		);
 		// console.log(cookies.s_counted);
 	};
-
-	const shareIdea = () => {};
-
+	/* Share button */
+	const { loading, isSupported, share } = useWebShare();
+	const shareIdea = () => {
+		share();
+	};
+	/* Return null if idea not loaded properly */
 	if (!idea) {
 		return null;
 	}
 	TimeAgo.addLocale(en);
-
+	/* Random color accent  */
 	let rColor;
 	switch (Math.floor(Math.random() * 4) + 1) {
 		case 1:
@@ -82,10 +88,12 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	return (
 		<>
 			<div
+				/* Size properly based on route location */
 				className={` mb-10 sm:mb-0 sm:w-1/2 ${
 					pageTitle === "Latest" || pageTitle === "Trending" ? "md:w-1/3" : ""
 				}`}
 				key={idea.title}
+				/* Open modal on double click */
 				onDoubleClick={() => {
 					setModal(!modalOpen);
 					history.push({
@@ -237,6 +245,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 					</div>
 				</div>
 				<div className="ml-3 mr-3 mb-2">
+					{/* Comments section */}
 					{modalOpen && (
 						<GitalkComponent
 							options={{
@@ -248,7 +257,6 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 								id: idea._id.toString().substring(0, 50),
 								labels: idea.tags,
 								title: idea.title,
-
 								body: idea.description
 							}}
 						/>
@@ -259,6 +267,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	);
 };
 
+/* Component that outputs row of 3 "idea-cards" */
 const Cards = ({ ideas, history, pageTitle }) => {
 	if (!ideas || ideas.length < 1) {
 		return null;
@@ -293,6 +302,7 @@ const Cards = ({ ideas, history, pageTitle }) => {
 	return cards;
 };
 
+/* Component that outputs "stream" of idea-cards */
 const IdeasStream = ({ ideas, pageTitle, topTags, history, location }) => {
 	// console.log(ideas);
 	return (
@@ -333,6 +343,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history, location }) => {
 					</div>
 				</div>
 			)}
+			{/* If on Search Page & no ideas found */}
 			{pageTitle !== "Trending" && pageTitle !== "Latest" && ideas.length < 1 && (
 				<div className="flex w-full h-full" key="404">
 					<div className="w-full h-full  text-center mt-20 font-bold">

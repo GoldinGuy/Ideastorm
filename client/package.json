@@ -31,6 +31,7 @@
 		"react-table-6": "^6.11.0",
 		"react-tagify": "^0.1.3",
 		"react-time-ago": "^6.2.0",
+		"react-use-web-share": "^1.0.2",
 		"styled-components": "^5.2.1",
 		"superagent": "^6.1.0",
 		"tailwindcss": "^1.9.6",
