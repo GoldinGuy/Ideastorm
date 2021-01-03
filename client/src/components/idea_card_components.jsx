@@ -123,37 +123,6 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-<<<<<<< HEAD
-
-						<LinesEllipsis
-							text={
-								<Linkify
-									componentDecorator={(decoratedHref, decoratedText, key) => (
-										<a
-											target="blank"
-											href={decoratedHref}
-											key={key}
-											className={`underline  text-${rColor}`}
-										>
-											{decoratedText}
-										</a>
-									)}
-									textDecorator={urlString => {
-										let i = urlString.indexOf("://") + 3;
-										return urlString.substring(i, i + 25) + "...";
-									}}
-								>
-									{idea.description}
-								</Linkify>
-							}
-							maxLine="8"
-							ellipsis="..."
-							trimRight
-							basedOn="letters"
-							className="mb-2 text-gray-600 whitespace-normal"
-						/>
-
-=======
 						<Linkify>
 							<LinesEllipsis
 								text={idea.description}
@@ -164,7 +133,6 @@ const IdeaCard = ({ idea }) => {
 								className="mb-2 text-gray-600 whitespace-normal"
 							/>
 						</Linkify>
->>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
 								<span
@@ -244,26 +212,7 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
-<<<<<<< HEAD
-						<Linkify
-							componentDecorator={(decoratedHref, decoratedText, key) => (
-								<a
-									target="blank"
-									href={decoratedHref}
-									key={key}
-									className={`underline  text-${rColor}`}
-								>
-									{decoratedText}
-								</a>
-							)}
-							textDecorator={urlString => {
-								let i = urlString.indexOf("://") + 3;
-								return urlString.substring(i, i + 25) + "...";
-							}}
-						>
-=======
 						<Linkify>
->>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
 						</Linkify>
 						<h5 className="flex-wrap flex">
@@ -290,13 +239,8 @@ const IdeaCard = ({ idea }) => {
 								id: idea._id.toString().substring(0, 50),
 								labels: idea.tags,
 								title: idea.title,
-<<<<<<< HEAD
-								body: idea.description
-								// pagerDirection: 'first'
-=======
 
 								body: idea.description
->>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 							}}
 						/>
 					)}
