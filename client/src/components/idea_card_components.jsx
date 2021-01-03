@@ -85,7 +85,7 @@ const IdeaCard = ({ idea, history, location }) => {
 				onClick={() => {
 					setModal(!modalOpen);
 					history.push({
-						pathname: `/${location.pathname}/${idea.title}`
+						pathname: `${location.pathname}/${idea.title}`
 					});
 				}}
 			>
@@ -156,8 +156,10 @@ const IdeaCard = ({ idea, history, location }) => {
 				open={modalOpen}
 				onClose={() => {
 					setModal(!modalOpen);
+					console.log(location.pathname.split("/")[0]);
+					console.log(location.pathname.split("/"));
 					history.push({
-						pathname: `/${location.pathname}`
+						pathname: ` `
 					});
 				}}
 				showCloseIcon={false}

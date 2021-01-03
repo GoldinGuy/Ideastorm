@@ -11,16 +11,7 @@ class TrendingPage extends Component {
 			ideas: [],
 			loadMore: true,
 			page: 0,
-			topTags: [
-				// { _id: "tech" },
-				// { _id: "foodies" },
-				// { _id: "app" },
-				// { _id: "tech" },
-				// { _id: "website" },
-				// { _id: "science-fair" },
-				// { _id: "lifestyle" },
-				// { _id: "fashion" }
-			]
+			topTags: []
 		};
 	}
 

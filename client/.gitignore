@@ -25,3 +25,5 @@ yarn-error.log*
 pw_config.js
 .env
 .api_data
+
+src/tailwind.output.css
