@@ -19,6 +19,7 @@ function dateFromObjectId(objectId) {
 
 const IdeaCard = ({ idea, history, pageTitle }) => {
 	/* State for cookies, stormcount, modal */
+	const [firstOpen, setFirstOpen] = React.useState(true);
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
@@ -90,6 +91,12 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 		default:
 			rColor = "indigo-500";
 	}
+
+	// /* if searching for idea, automatically open modal */
+	// if (pageTitle === idea.title || pageTitle === idea._id) {
+	// 	setModal(true);
+	// }
+
 	return (
 		<>
 			<div
@@ -101,10 +108,12 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 				/* Open modal on double click */
 				onDoubleClick={() => {
 					setModal(!modalOpen);
-					history.push({
-						pathname: `/${pageTitle.toLowerCase()}`,
-						search: `${toSlug(idea.title)}`
-					});
+					if (pageTitle === "Latest" || pageTitle === "Trending") {
+						history.push({
+							pathname: `/${pageTitle.toLowerCase()}`,
+							search: `${toSlug(idea.title)}`
+						});
+					}
 				}}
 			>
 				<div className="relative ml-0 mr-0 sm:mr-10">
@@ -188,12 +197,18 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 			</div>
 			{/* modal */}
 			<Modal
-				open={modalOpen}
+				open={
+					modalOpen ||
+					((pageTitle === idea.title || pageTitle === idea._id) && firstOpen)
+				}
 				onClose={() => {
+					setFirstOpen(false);
+					if (pageTitle === "Latest" || pageTitle === "Trending") {
+						history.push({
+							pathname: `/${pageTitle.toLowerCase()}`
+						});
+					}
 					setModal(!modalOpen);
-					history.push({
-						pathname: `/${pageTitle.toLowerCase()}`
-					});
 				}}
 				showCloseIcon={false}
 				styles={{
