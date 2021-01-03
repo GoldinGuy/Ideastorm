@@ -15,7 +15,7 @@ function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
-const IdeaCard = ({ idea, history, location }) => {
+const IdeaCard = ({ idea, history, pageTitle }) => {
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
@@ -85,7 +85,8 @@ const IdeaCard = ({ idea, history, location }) => {
 				onClick={() => {
 					setModal(!modalOpen);
 					history.push({
-						pathname: `${location.pathname}/${idea.title}`
+						pathname: `/${pageTitle.toLowerCase()}`,
+						search: `${idea.title}`
 					});
 				}}
 			>
@@ -156,10 +157,8 @@ const IdeaCard = ({ idea, history, location }) => {
 				open={modalOpen}
 				onClose={() => {
 					setModal(!modalOpen);
-					console.log(location.pathname.split("/")[0]);
-					console.log(location.pathname.split("/"));
 					history.push({
-						pathname: ` `
+						pathname: `/${pageTitle.toLowerCase()}`
 					});
 				}}
 				showCloseIcon={false}
@@ -262,7 +261,7 @@ const IdeaCard = ({ idea, history, location }) => {
 	);
 };
 
-const Cards = ({ ideas, history, location }) => {
+const Cards = ({ ideas, history, pageTitle }) => {
 	if (!ideas || ideas.length < 1) {
 		return null;
 	}
@@ -277,7 +276,7 @@ const Cards = ({ ideas, history, location }) => {
 						idea={ideas[j]}
 						key={`card-${i + j}`}
 						history={history}
-						location={location}
+						pageTitle={pageTitle}
 					/>
 				];
 			}
@@ -332,7 +331,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history, location }) => {
 			{ideas && ideas.length > 0 && (
 				<div className="flex w-full h-full" key="idea-cards">
 					<div className="w-full">
-						<Cards ideas={ideas} history={history} location={location} />
+						<Cards ideas={ideas} history={history} pageTitle={pageTitle} />
 					</div>
 				</div>
 			)}

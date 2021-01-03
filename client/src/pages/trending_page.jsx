@@ -105,7 +105,6 @@ class TrendingPage extends Component {
 					pageTitle={"Trending"}
 					topTags={this.state.topTags}
 					history={this.props.history}
-					location={this.props.location}
 				/>
 			</InfiniteScroll>
 		);
