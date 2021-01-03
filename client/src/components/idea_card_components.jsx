@@ -80,7 +80,9 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	return (
 		<>
 			<div
-				className="md:w-1/3 mb-10 sm:mb-0 sm:w-1/2"
+				className={` mb-10 sm:mb-0 sm:w-1/2 ${
+					pageTitle === "Latest" || pageTitle === "Trending" ? "md:w-1/3" : ""
+				}`}
 				key={idea.title}
 				onClick={() => {
 					setModal(!modalOpen);
