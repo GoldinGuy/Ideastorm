@@ -41,7 +41,7 @@ yarn start
 
 Created by [@GoldinGuy](https://github.com/GoldinGuy) with styling credit to [DevDojo](https://devdojo.com/t/css) for their awesome Tailwind CSS components and templates
 
-Distributed under the GNU AGPLv3 license. See [LICENSE](https://github.com/GoldinGuy/Ideastorm/blob/master/LICENSE) for more information.
+Distributed under the GNU v2 license. See [LICENSE](https://github.com/GoldinGuy/Ideastorm/blob/master/LICENSE) for more information.
 
 <!-- Markdown link & img dfn's -->
 
