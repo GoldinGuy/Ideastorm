@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 import api from "../api";
 import IdeasStream from "../components/idea_card_components";
+import toSlug from "../utils/to_slug.js";
 
 class SearchPage extends Component {
 	constructor(props) {
@@ -37,15 +38,30 @@ class SearchPage extends Component {
 	}
 
 	fetchIdeasByQuery = async () => {
-		try {
-			await api.getIdeasByText(this.state.query).then(ideas => {
-				this.setState({
-					ideas: ideas.data.data
+		/* If length of ID */
+		if (this.state.query.length === 24 && !this.state.query.includes("-")) {
+			try {
+				await api.getIdeaById(this.state.query).then(ideas => {
+					this.setState({
+						ideas: [ideas.data.data]
+					});
 				});
-			});
-		} catch (e) {
-			this.setState({ ideas: [] });
-			console.log(e);
+			} catch (e) {
+				this.setState({ ideas: [] });
+				console.log(e);
+			}
+			console.log(this.state.query, this.state.query.length);
+		} else {
+			try {
+				await api.getIdeasByText(this.state.query).then(ideas => {
+					this.setState({
+						ideas: ideas.data.data
+					});
+				});
+			} catch (e) {
+				this.setState({ ideas: [] });
+				console.log(e);
+			}
 		}
 	};
 
