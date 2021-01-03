@@ -80,7 +80,7 @@ const IdeaCard = ({ idea }) => {
 	return (
 		<>
 			<div
-				className="w-full mb-10 sm:mb-0 sm:w-1/2"
+				className="md:w-1/3 mb-10 sm:mb-0 sm:w-1/2"
 				key={idea.title}
 				onClick={() => setModal(true)}
 			>
@@ -130,7 +130,7 @@ const IdeaCard = ({ idea }) => {
 								ellipsis="..."
 								trimRight
 								basedOn="letters"
-								className="mb-2 text-gray-600 whitespace-normal"
+								className="mb-2 text-gray-600 whitespace-normal break-words "
 							/>
 						</Linkify>
 						<h5 className="flex-wrap flex">
