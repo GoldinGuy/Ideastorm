@@ -92,7 +92,9 @@ class SearchPage extends Component {
 				<IdeasStream
 					ideas={this.state.ideas}
 					pageTitle={
-						this.state.query.length === 24 && !this.state.query.includes("-")
+						this.state.query.length === 24 &&
+						!this.state.query.includes("-") &&
+						this.state.ideas.length === 1
 							? this.state.ideas[0]?.title
 							: this.state.query
 					}

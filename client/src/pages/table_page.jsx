@@ -86,8 +86,8 @@ class IdeasTable extends Component {
 				Header: "ID",
 				accessor: "_id",
 				filterable: true,
-				style: { whiteSpace: "unset" }
-				// show: this.state.isAdmin
+				style: { whiteSpace: "unset" },
+				show: this.state.isAdmin
 			},
 			{
 				Header: "Title",
