@@ -111,6 +111,13 @@ class IdeasTable extends Component {
 				style: { whiteSpace: "unset" }
 			},
 			{
+				Header: "StormCount",
+				accessor: "s_count",
+				filterable: true,
+				style: { whiteSpace: "unset" },
+				width: 100
+			},
+			{
 				Header: "",
 				accessor: "",
 				Cell: function (props) {
