@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-
+import toSlug from "../utils/to_slug";
 import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
 import "@yaireo/tagify/dist/tagify.css";
-let autocomplete = require("../assets/utils/autocomplete_words.js");
+let autocomplete = require("../app/utils/autocomplete_words.js");
 
 function titleCase(str) {
 	str = str.toLowerCase().split(" ");
@@ -51,7 +51,7 @@ export default class NewIdeaPage extends Component {
 		if (this.state.tags.length >= 3) {
 			let newTags = [];
 			for (const tag of JSON.parse(this.state.tags)) {
-				newTags.push(tag.value.toLowerCase().trim().replace(" ", "-"));
+				newTags.push(toSlug(tag.value));
 			}
 			const { title, description } = this.state;
 			const payload = {
