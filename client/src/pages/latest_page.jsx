@@ -97,6 +97,7 @@ class LatestPage extends Component {
 					pageTitle={"Latest"}
 					topTags={this.state.topTags}
 					history={this.props.history}
+					location={this.props.location}
 				/>
 			</InfiniteScroll>
 		);

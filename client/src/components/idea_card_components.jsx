@@ -15,7 +15,7 @@ function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
-const IdeaCard = ({ idea }) => {
+const IdeaCard = ({ idea, history, location }) => {
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
@@ -82,7 +82,12 @@ const IdeaCard = ({ idea }) => {
 			<div
 				className="md:w-1/3 mb-10 sm:mb-0 sm:w-1/2"
 				key={idea.title}
-				onClick={() => setModal(true)}
+				onClick={() => {
+					setModal(!modalOpen);
+					history.push({
+						pathname: `/${location.pathname}/${idea.title}`
+					});
+				}}
 			>
 				<div className="relative ml-0 mr-0 sm:mr-10">
 					<span
@@ -149,7 +154,12 @@ const IdeaCard = ({ idea }) => {
 			{/* modal */}
 			<Modal
 				open={modalOpen}
-				onClose={() => setModal(false)}
+				onClose={() => {
+					setModal(!modalOpen);
+					history.push({
+						pathname: `/${location.pathname}`
+					});
+				}}
 				showCloseIcon={false}
 				styles={{
 					modal: { borderRadius: "0.5rem", overflow: "hidden", padding: 0 }
@@ -250,7 +260,7 @@ const IdeaCard = ({ idea }) => {
 	);
 };
 
-const Cards = ({ ideas }) => {
+const Cards = ({ ideas, history, location }) => {
 	if (!ideas || ideas.length < 1) {
 		return null;
 	}
@@ -261,7 +271,12 @@ const Cards = ({ ideas }) => {
 			if (j < ideas.length) {
 				idea_cards = [
 					idea_cards,
-					<IdeaCard idea={ideas[j]} key={`card-${i + j}`} />
+					<IdeaCard
+						idea={ideas[j]}
+						key={`card-${i + j}`}
+						history={history}
+						location={location}
+					/>
 				];
 			}
 		}
@@ -279,7 +294,7 @@ const Cards = ({ ideas }) => {
 	return cards;
 };
 
-const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
+const IdeasStream = ({ ideas, pageTitle, topTags, history, location }) => {
 	// console.log(ideas);
 	return (
 		<div className="container relative flex flex-col justify-between h-full max-w-6xl px-8 mx-auto xl:px-0">
@@ -315,7 +330,7 @@ const IdeasStream = ({ ideas, pageTitle, topTags, history }) => {
 			{ideas && ideas.length > 0 && (
 				<div className="flex w-full h-full" key="idea-cards">
 					<div className="w-full">
-						<Cards ideas={ideas} />
+						<Cards ideas={ideas} history={history} location={location} />
 					</div>
 				</div>
 			)}
