@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import toSlug from "../utils/to_slug";
+import toSlug from "../utils/to_slug.js";
 import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
 import "@yaireo/tagify/dist/tagify.css";
-let autocomplete = require("../app/utils/autocomplete_words.js");
+let autocomplete = require("../utils/autocomplete_words.js");
 
 function titleCase(str) {
 	str = str.toLowerCase().split(" ");

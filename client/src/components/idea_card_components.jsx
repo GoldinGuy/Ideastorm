@@ -11,6 +11,7 @@ import Linkify from "react-linkify";
 import GitalkComponent from "gitalk/dist/gitalk-component";
 import "gitalk/dist/gitalk.css";
 import useWebShare from "react-use-web-share";
+import toSlug from "../utils/to_slug.js";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
@@ -57,7 +58,11 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	/* Share button */
 	const { loading, isSupported, share } = useWebShare();
 	const shareIdea = () => {
-		share();
+		share({
+			title: idea.title,
+			text: idea.description,
+			url: "https://ideastorm.app/search?q=" + toSlug(idea.title)
+		});
 	};
 	/* Return null if idea not loaded properly */
 	if (!idea) {
@@ -98,7 +103,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 					setModal(!modalOpen);
 					history.push({
 						pathname: `/${pageTitle.toLowerCase()}`,
-						search: `${idea.title}`
+						search: `${toSlug(idea.title)}`
 					});
 				}}
 			>

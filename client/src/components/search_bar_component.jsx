@@ -1,5 +1,5 @@
 import React from "react";
-import toSlug from "../utils/to_slug";
+import toSlug from "../utils/to_slug.js";
 
 const SearchBar = ({ history }) => {
 	const [query, setQuery] = React.useState("");
