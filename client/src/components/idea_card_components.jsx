@@ -19,7 +19,6 @@ function dateFromObjectId(objectId) {
 
 const IdeaCard = ({ idea, history, pageTitle }) => {
 	/* State for cookies, stormcount, modal */
-	const [firstOpen, setFirstOpen] = React.useState(true);
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
 	const [cookies, setCookie] = useCookies(["s_counted"], "", {
@@ -197,12 +196,8 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 			</div>
 			{/* modal */}
 			<Modal
-				open={
-					modalOpen ||
-					((pageTitle === idea.title || pageTitle === idea._id) && firstOpen)
-				}
+				open={modalOpen}
 				onClose={() => {
-					setFirstOpen(false);
 					if (pageTitle === "Latest" || pageTitle === "Trending") {
 						history.push({
 							pathname: `/${pageTitle.toLowerCase()}`
