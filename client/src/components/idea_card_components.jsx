@@ -68,6 +68,12 @@ const IdeaCard = ({ idea }) => {
 		case 3:
 			rColor = "indigo-600";
 			break;
+		case 4:
+			rColor = "indigo-300";
+			break;
+		case 5:
+			rColor = "indigo-700";
+			break;
 		default:
 			rColor = "indigo-500";
 	}
@@ -117,6 +123,7 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
+<<<<<<< HEAD
 
 						<LinesEllipsis
 							text={
@@ -146,6 +153,18 @@ const IdeaCard = ({ idea }) => {
 							className="mb-2 text-gray-600 whitespace-normal"
 						/>
 
+=======
+						<Linkify>
+							<LinesEllipsis
+								text={idea.description}
+								maxLine="8"
+								ellipsis="..."
+								trimRight
+								basedOn="letters"
+								className="mb-2 text-gray-600 whitespace-normal"
+							/>
+						</Linkify>
+>>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
 								<span
@@ -225,6 +244,7 @@ const IdeaCard = ({ idea }) => {
 						>
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
+<<<<<<< HEAD
 						<Linkify
 							componentDecorator={(decoratedHref, decoratedText, key) => (
 								<a
@@ -241,6 +261,9 @@ const IdeaCard = ({ idea }) => {
 								return urlString.substring(i, i + 25) + "...";
 							}}
 						>
+=======
+						<Linkify>
+>>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
 						</Linkify>
 						<h5 className="flex-wrap flex">
@@ -267,8 +290,13 @@ const IdeaCard = ({ idea }) => {
 								id: idea._id.toString().substring(0, 50),
 								labels: idea.tags,
 								title: idea.title,
+<<<<<<< HEAD
 								body: idea.description
 								// pagerDirection: 'first'
+=======
+
+								body: idea.description
+>>>>>>> 82cd5ae229baa5cced7a3978294651751f8311a6
 							}}
 						/>
 					)}

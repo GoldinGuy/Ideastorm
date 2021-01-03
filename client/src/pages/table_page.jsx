@@ -100,23 +100,7 @@ class IdeasTable extends Component {
 				accessor: "description",
 				filterable: true,
 				style: { whiteSpace: "unset" },
-				width: 500,
-				Cell: props => (
-					<Linkify
-						componentDecorator={(decoratedHref, decoratedText, key) => (
-							<a
-								className="underline"
-								target="blank"
-								href={decoratedHref}
-								key={key}
-							>
-								{decoratedText}
-							</a>
-						)}
-					>
-						{props.value}
-					</Linkify>
-				)
+				width: 500
 			},
 
 			{
