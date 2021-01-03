@@ -21,7 +21,7 @@ function App() {
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/trending" exact component={TrendingPage} />
-						<Route path="/trending/:idea" exact component={TrendingPage} />
+						{/* <Route path="/explore/:idea" exact component={ExplorePage} /> */}
 						<Route path="/latest" exact component={LatestPage} />
 						<Route path="/search" exact component={SearchPage} />
 						<Route path="/table" exact component={IdeasTable} />

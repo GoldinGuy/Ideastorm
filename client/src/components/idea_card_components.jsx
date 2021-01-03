@@ -58,7 +58,7 @@ const IdeaCard = ({ idea }) => {
 	TimeAgo.addLocale(en);
 
 	let rColor;
-	switch (Math.floor(Math.random() * 5) + 1) {
+	switch (Math.floor(Math.random() * 4) + 1) {
 		case 1:
 			rColor = "indigo-400";
 			break;
@@ -68,14 +68,8 @@ const IdeaCard = ({ idea }) => {
 		case 3:
 			rColor = "indigo-600";
 			break;
-		case 4:
-			rColor = "indigo-300";
-			break;
-		case 5:
-			rColor = "indigo-700";
-			break;
 		default:
-			rColor = "yellow-400";
+			rColor = "indigo-500";
 	}
 	return (
 		<>
@@ -274,6 +268,7 @@ const IdeaCard = ({ idea }) => {
 								labels: idea.tags,
 								title: idea.title,
 								body: idea.description
+								// pagerDirection: 'first'
 							}}
 						/>
 					)}
