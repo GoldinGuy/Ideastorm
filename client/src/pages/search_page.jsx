@@ -91,7 +91,11 @@ class SearchPage extends Component {
 				{this.state.query.length === 0 && <Redirect to="/trending" />}
 				<IdeasStream
 					ideas={this.state.ideas}
-					pageTitle={this.state.query}
+					pageTitle={
+						this.state.query.length === 24 && !this.state.query.includes("-")
+							? this.state.ideas[0]?.title
+							: this.state.query
+					}
 					topTags={this.state.topTags}
 					history={this.props.history}
 				/>
