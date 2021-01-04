@@ -213,10 +213,10 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 				}}
 				classNames={{
 					overlay: `bg-opacity-75 bg-${rColor}`,
-					modal: "customModal"
+					modal: "customModal overflow-y-auto"
 				}}
 			>
-				<div className="relative ml-0 mr-0">
+				<div className="relative ml-0 mr-0 overflow-y-auto">
 					<div className={`relative p-5 bg-white rounded-lg `}>
 						{" "}
 						<div className="flex items-center -mt-1 justify-between">
@@ -267,7 +267,9 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 							<ReactTimeAgo date={dateFromObjectId(idea._id)} />
 						</span>
 						<Linkify>
-							<div className="mb-5 mt-3 text-gray-600 ">{idea.description}</div>
+							<div className="mb-5 mt-3 text-gray-600 break-words">
+								{idea.description}
+							</div>
 						</Linkify>
 						<h5 className="flex-wrap flex">
 							{idea.tags.map((tag, index) => (
