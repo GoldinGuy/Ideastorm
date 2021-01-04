@@ -153,12 +153,12 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 								</span>{" "}
 								<button
 									onClick={handleStormClick}
-									className="focus:border-0 focus:outline-none"
+									className="focus:border-0 focus:outline-none mr-4 sm:mr-0"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 320 512"
-										className={`w-5 h-5 fill-current mr-3 sm:mr-0 inline text-${
+										className={`w-5 h-5 fill-current inline text-${
 											s_counted ? "yellow-500" : "indigo-600"
 										} hover:text-${s_counted ? "yellow-600" : "indigo-700"}`}
 									>
