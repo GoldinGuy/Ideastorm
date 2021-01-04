@@ -15,6 +15,7 @@
 		"classnames": "2.2.6",
 		"disqus-react": "^1.0.10",
 		"gitalk": "^1.7.0",
+		"github-create-issue": "^2.0.0",
 		"gitment": "0.0.3",
 		"javascript-time-ago": "^2.3.3",
 		"react": "^17.0.1",

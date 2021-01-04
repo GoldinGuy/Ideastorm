@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import toSlug from "../utils/to_slug.js";
 import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
-import axios from "axios";
 import "@yaireo/tagify/dist/tagify.css";
 
 let autocomplete = require("../utils/autocomplete_words.js");
+var createIssue = require("github-create-issue");
 
 function titleCase(str) {
 	str = str.toLowerCase().split(" ");
@@ -15,58 +15,27 @@ function titleCase(str) {
 	return str.join(" ");
 }
 
-function getMetaContent(name, content) {
-	/* istanbul ignore next */
-	content || (content = "content");
-	/* istanbul ignore next */
-	const el = window.document.querySelector(`meta[name='${name}']`);
-	/* istanbul ignore next */
-	return el && el.getAttribute(content);
-}
-
 async function createGithubCommentIssue(payload, id) {
-	var axiosGithub = axios.create({
-		baseURL: "https://api.github.com",
-		headers: {
-			Accept: "application/json"
-		}
-	});
-	// const { owner, repo, title, body, id, labels, url } = this.options
-	return axiosGithub
-		.post(
-			`/repos/GoldinGuy/IdeastormComments/issues`,
-			{
-				title: payload.title,
-				labels: payload.tags.concat(id.toString().substring(0, 50)),
-				body:
-					payload.description ||
-					`${window.location.href} \n\n ${
-						getMetaContent("description") ||
-						getMetaContent("description", "og:description") ||
-						""
-					}`
-			},
-			{
-				headers: {
-					Authorization: `token ${process.env.REACT_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`
-				}
-			}
-		)
-		.then(res => {
-			console.log(res.data);
-			//   return res.data
-		});
-}
+	var opts = {
+		token: `${process.env.REACT_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`,
+		body: payload.description,
+		labels: payload.tags.concat(id.toString().substring(0, 50))
+	};
 
-// async function fetchIdea(title) {
-// 	try {
-// 		await api.getIdeasByText(title).then(idea => {
-// 			createGithubCommentIssue(idea);
-// 		});
-// 	} catch (e) {
-// 		console.log(e);
-// 	}
-// }
+	createIssue("GoldinGuy/IdeastormComments", payload.title, opts, callback);
+
+	function callback(error, issue, info) {
+		if (info) {
+			console.error("Limit: %d", info.limit);
+			console.error("Remaining: %d", info.remaining);
+			console.error("Reset: %s", new Date(info.reset * 1000).toISOString());
+		}
+		if (error) {
+			throw new Error(error.message);
+		}
+		console.log(JSON.stringify(issue));
+	}
+}
 
 export default class NewIdeaPage extends Component {
 	_isMounted = false;
