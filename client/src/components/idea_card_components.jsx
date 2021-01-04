@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import TimeAgo from "javascript-time-ago";
 import ReactTimeAgo from "react-time-ago";
 import LinesEllipsis from "react-lines-ellipsis";
@@ -29,6 +29,25 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	const [s_counted, setStormCounted] = React.useState(
 		cookies.s_counted?.split("|").includes(idea._id) ?? false
 	);
+	let color;
+	/* Random color accent  */
+	switch (Math.floor(Math.random() * 4) + 1) {
+		case 1:
+			color = "indigo-300";
+			break;
+		case 2:
+			color = "indigo-400";
+			break;
+		case 3:
+			color = "indigo-500";
+			break;
+		case 4:
+			color = "indigo-600";
+			break;
+		default:
+			color = "indigo-700";
+	}
+	const [rColor, setRColor] = useState(color);
 	/* When user clicks stormcount */
 	const handleStormClick = async () => {
 		var s_arr = cookies.s_counted?.split("|") ?? [];
@@ -71,27 +90,6 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 		return null;
 	}
 	TimeAgo.addLocale(en);
-	/* Random color accent  */
-	let rColor;
-	switch (Math.floor(Math.random() * 4) + 1) {
-		case 1:
-			rColor = "indigo-400";
-			break;
-		case 2:
-			rColor = "indigo-500";
-			break;
-		case 3:
-			rColor = "indigo-600";
-			break;
-		case 4:
-			rColor = "indigo-300";
-			break;
-		case 5:
-			rColor = "indigo-700";
-			break;
-		default:
-			rColor = "indigo-500";
-	}
 
 	// /* if searching for idea, automatically open modal */
 	// if (pageTitle === idea.title || pageTitle === idea._id) {
