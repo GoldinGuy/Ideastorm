@@ -2,7 +2,9 @@ import React, { Component } from "react";
 import toSlug from "../utils/to_slug.js";
 import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
+import axios from "axios";
 import "@yaireo/tagify/dist/tagify.css";
+
 let autocomplete = require("../utils/autocomplete_words.js");
 
 function titleCase(str) {
@@ -12,6 +14,59 @@ function titleCase(str) {
 	}
 	return str.join(" ");
 }
+
+function getMetaContent(name, content) {
+	/* istanbul ignore next */
+	content || (content = "content");
+	/* istanbul ignore next */
+	const el = window.document.querySelector(`meta[name='${name}']`);
+	/* istanbul ignore next */
+	return el && el.getAttribute(content);
+}
+
+async function createGithubCommentIssue(payload, id) {
+	var axiosGithub = axios.create({
+		baseURL: "https://api.github.com",
+		headers: {
+			Accept: "application/json"
+		}
+	});
+	// const { owner, repo, title, body, id, labels, url } = this.options
+	return axiosGithub
+		.post(
+			`/repos/GoldinGuy/IdeastormComments/issues`,
+			{
+				title: payload.title,
+				labels: payload.tags.concat(id.toString().substring(0, 50)),
+				body:
+					payload.description ||
+					`${window.location.href} \n\n ${
+						getMetaContent("description") ||
+						getMetaContent("description", "og:description") ||
+						""
+					}`
+			},
+			{
+				headers: {
+					Authorization: `token ${process.env.REACT_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`
+				}
+			}
+		)
+		.then(res => {
+			console.log(res.data);
+			//   return res.data
+		});
+}
+
+// async function fetchIdea(title) {
+// 	try {
+// 		await api.getIdeasByText(title).then(idea => {
+// 			createGithubCommentIssue(idea);
+// 		});
+// 	} catch (e) {
+// 		console.log(e);
+// 	}
+// }
 
 export default class NewIdeaPage extends Component {
 	_isMounted = false;
@@ -60,9 +115,10 @@ export default class NewIdeaPage extends Component {
 				tags: newTags,
 				s_count: 1
 			};
-
-			await api.insertIdea(payload).then(res => {
+			await api.insertIdea(payload).then(async res => {
 				window.alert(`Idea shared successfully`);
+				console.log(res);
+				await createGithubCommentIssue(payload, res.data.id);
 				this.setState({
 					title: "",
 					description: "",
