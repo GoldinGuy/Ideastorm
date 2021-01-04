@@ -153,7 +153,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 								</span>{" "}
 								<button
 									onClick={handleStormClick}
-									className="focus:border-0 focus:outline-none mr-6 md:mr-0"
+									className="focus:border-0 focus:outline-none"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
@@ -247,7 +247,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 								</span>{" "}
 								<button
 									onClick={handleStormClick}
-									className="focus:border-0 focus:outline-none"
+									className="focus:border-0 focus:outline-none  mr-6 md:mr-0"
 								>
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
