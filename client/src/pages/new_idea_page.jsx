@@ -17,7 +17,7 @@ function titleCase(str) {
 
 async function createGithubCommentIssue(payload, id) {
 	var opts = {
-		token: `${process.env.REACT_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`,
+		token: `${process.env.REACT_APP_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`,
 		body: payload.description,
 		labels: payload.tags.concat(id.toString().substring(0, 50))
 	};
