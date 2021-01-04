@@ -13,7 +13,7 @@ function titleCase(str) {
 	return str.join(" ");
 }
 
-export default class UpdateIdeaPage extends Component {
+class UpdateIdeaPage extends Component {
 	_isMounted = false;
 	tagRef = React.createRef();
 
@@ -235,3 +235,4 @@ export default class UpdateIdeaPage extends Component {
 		);
 	}
 }
+export default UpdateIdeaPage;

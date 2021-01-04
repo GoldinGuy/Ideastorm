@@ -70,13 +70,6 @@ class TrendingPage extends Component {
 							loading={true}
 						/>
 					</div>
-					// 	<div class="flex  justify-center min-h-screen p-5 min-w-screen">
-					// 	<div class="flex space-x-2 animate-pulse">
-					// 		<div class="w-3 h-3 bg-gray-500 rounded-full"></div>
-					// 		<div class="w-3 h-3 bg-gray-500 rounded-full"></div>
-					// 		<div class="w-3 h-3 bg-gray-500 rounded-full"></div>
-					// 	</div>
-					// </div>
 				}
 				className="h-full overflow-y-hidden"
 				endMessage={
@@ -91,8 +84,8 @@ class TrendingPage extends Component {
 									})
 								}
 							>
-								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1 bg-black rounded  px-12" />
-								<span className="relative inline-block w-full h-full px-12  py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 hover:text-white">
+								<span className="absolute top-0 left-0 w-full h-full mt-1 ml-1  bg-black rounded  px-12" />
+								<span className="relative inline-block w-full h-full px-12 py-3 text-md font-bold transition duration-100 bg-white border-2 border-black rounded fold-bold hover:bg-indigo-500 mb-1 hover:text-white">
 									SEE MORE IDEAS!
 								</span>
 							</button>

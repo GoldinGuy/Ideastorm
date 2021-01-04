@@ -12,12 +12,14 @@ import GitalkComponent from "gitalk/dist/gitalk-component";
 import "gitalk/dist/gitalk.css";
 import useWebShare from "react-use-web-share";
 import toSlug from "../utils/to_slug.js";
+import useMobileDetect from "use-mobile-detect-hook";
 
 function dateFromObjectId(objectId) {
 	return new Date(parseInt(objectId.substring(0, 8), 16) * 1000);
 }
 
 const IdeaCard = ({ idea, history, pageTitle }) => {
+	const detectMobile = useMobileDetect();
 	/* State for cookies, stormcount, modal */
 	const [modalOpen, setModal] = React.useState(false);
 	const [s_count, setStormCount] = React.useState(idea.s_count);
@@ -156,7 +158,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 320 512"
-										className={`w-5 h-5 fill-current  inline text-${
+										className={`w-5 h-5 fill-current mr-3 sm:mr-0 inline text-${
 											s_counted ? "yellow-500" : "indigo-600"
 										} hover:text-${s_counted ? "yellow-600" : "indigo-700"}`}
 									>
@@ -205,7 +207,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 					}
 					setModal(!modalOpen);
 				}}
-				showCloseIcon={false}
+				showCloseIcon={detectMobile.isMobile() ?? false}
 				styles={{
 					modal: { borderRadius: "0.5rem", overflow: "hidden", padding: 0 }
 				}}

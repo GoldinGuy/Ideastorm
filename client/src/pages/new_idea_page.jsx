@@ -4,7 +4,7 @@ import api from "../api";
 import Tags from "@yaireo/tagify/dist/react.tagify";
 import "@yaireo/tagify/dist/tagify.css";
 
-let autocomplete = require("../utils/autocomplete_words.js");
+var autocomplete = require("../utils/autocomplete_words.js");
 var createIssue = require("github-create-issue");
 
 function titleCase(str) {
@@ -17,7 +17,7 @@ function titleCase(str) {
 
 async function createGithubCommentIssue(payload, id) {
 	var opts = {
-		token: `${process.env.REACT_APP_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`,
+		token: `${process.env.REACT_GIT_PERSONAL_ACCESS_TOKEN_PUBLICREPS}`,
 		body: payload.description,
 		labels: payload.tags.concat(id.toString().substring(0, 50))
 	};
