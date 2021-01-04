@@ -1,7 +1,7 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { CookiesProvider } from "react-cookie";
-import { NavBar, Footer, ScrollToTop } from "../components";
+import { NavBar, Footer, ScrollToTop, ScrollArrow } from "../components";
 import {
 	IdeasTable,
 	TrendingPage,
@@ -18,6 +18,7 @@ function App() {
 			<BrowserRouter basename="/">
 				<ScrollToTop>
 					<NavBar />
+
 					<Switch>
 						<Route path="/" exact component={HomePage} />
 						<Route path="/trending" exact component={TrendingPage} />
@@ -30,6 +31,7 @@ function App() {
 						<Route path="/create" exact component={NewIdeaPage} />
 						<Route path="/update/:id" exact component={UpdateIdeasPage} />
 					</Switch>
+					<ScrollArrow />
 					<Footer />
 				</ScrollToTop>
 			</BrowserRouter>

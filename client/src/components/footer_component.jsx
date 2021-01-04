@@ -53,6 +53,7 @@ class Footer extends Component {
 						</div>
 					</div>
 				</div>
+
 				<footer className="px-4 pt-12 pb-8 text-white border-none bg-black">
 					<div className="container flex flex-col justify-between max-w-6xl px-4 mx-auto overflow-hidden lg:flex-row">
 						<Link to="/" className="block w-1/3 mr-4 border-none">

@@ -9,4 +9,31 @@
 		-webkit-box-orient: vertical;
 		overflow: ellipse;
 	}
+
+	.scrollTop {
+		position: fixed;
+		width: 25%; /* 100 */
+		bottom: 20px;
+		align-items: end;
+		/* height: 20px; */
+		justify-content: end;
+		z-index: 1000;
+		cursor: pointer;
+		animation: fadeIn 0.3s;
+		transition: opacity 0.4s;
+		opacity: 0.5;
+	}
+
+	.scrollTop:hover {
+		opacity: 1;
+	}
+
+	@keyframes fadeIn {
+		0% {
+			opacity: 0;
+		}
+		100% {
+			opacity: 0.5;
+		}
+	}
 }
