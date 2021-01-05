@@ -255,7 +255,7 @@ class HomePage extends Component {
 				{/* Second Section */}
 				<div className="relative w-full px-8 py-20 bg-yellow-400 sm:py-32 md:py-40">
 					<div className="container flex flex-col items-center justify-center h-full max-w-6xl mx-auto sm:flex-row sm:justify-between">
-						<div className="relative flex flex-col items-start justify-center w-full mb-10 sm:w-5/6 sm:w-1/3 sm:mb-0 sm:pr-10">
+						<div className="relative flex flex-col items-start justify-center w-full mb-10 sm:w-5/6  sm:mb-0 sm:pr-10">
 							<h2 className="mb-5 text-2xl font-black leading-tight xl:text-4xl">
 								Together, Anything Is Possible
 							</h2>
@@ -284,7 +284,7 @@ class HomePage extends Component {
 								</span>
 							</Link>
 						</div>
-						<div className="relative flex flex-col items-center justify-center w-full -mr-0 sm:w-5/6 sm:w-2/3 sm:-mr-20">
+						<div className="relative flex flex-col items-center justify-center w-full -mr-0 sm:w-5/6  sm:-mr-20">
 							<div className="overflow-hidden border-2 border-black rounded-lg">
 								<img
 									src="https://user-images.githubusercontent.com/47064842/100407223-cfa48e00-3035-11eb-94f5-3970dea753a4.gif"
