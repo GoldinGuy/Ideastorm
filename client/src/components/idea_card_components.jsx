@@ -49,7 +49,8 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	}
 	const [rColor, setRColor] = useState(color);
 	/* When user clicks stormcount */
-	const handleStormClick = async () => {
+	const handleStormClick = async e => {
+		e.stopPropagation();
 		var s_arr = cookies.s_counted?.split("|") ?? [];
 		if (!s_counted) {
 			await apis
@@ -78,12 +79,13 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 	};
 	/* Share button */
 	const { loading, isSupported, share } = useWebShare();
-	const shareIdea = () => {
+	const shareIdea = e => {
 		share({
 			title: idea.title,
 			text: idea.description,
 			url: "https://ideastorm.app/search?q=" + idea._id
 		});
+		e.stopPropagation();
 	};
 	/* Return null if idea not loaded properly */
 	if (!idea) {
@@ -115,7 +117,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 				}`}
 				key={idea.title}
 				/* Open modal on double click */
-				onDoubleClick={() => {
+				onClick={() => {
 					setModal(!modalOpen);
 					if (pageTitle === "Latest" || pageTitle === "Trending") {
 						history.push({
@@ -145,7 +147,8 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 512 512"
-										className="w-5 h-5  text-gray-500  hover:text-gray-600 fill-current inline mr-2"
+										className="w-5 h-5  text-gray-500  fill-current inline mr-2"
+										// hover:text-gray-600
 									>
 										<path
 											d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
@@ -168,7 +171,8 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 										viewBox="0 0 320 512"
 										className={`w-5 h-5 fill-current inline text-${
 											s_counted ? "yellow-500" : "indigo-600"
-										} hover:text-${s_counted ? "yellow-600" : "indigo-700"}`}
+										} `}
+										// hover:text-${s_counted ? "yellow-600" : "indigo-700"}
 									>
 										<path d="M295.973 160H180.572L215.19 30.184C219.25 14.956 207.756 0 192 0H56C43.971 0 33.8 8.905 32.211 20.828l-31.996 240C-1.704 275.217 9.504 288 24.004 288h118.701L96.646 482.466C93.05 497.649 104.659 512 119.992 512c8.35 0 16.376-4.374 20.778-11.978l175.973-303.997c9.244-15.967-2.288-36.025-20.77-36.025z" />
 									</svg>
@@ -241,7 +245,8 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 									<svg
 										xmlns="http://www.w3.org/2000/svg"
 										viewBox="0 0 512 512"
-										className="w-5 h-5  text-gray-500  hover:text-gray-600 fill-current inline mr-2"
+										className="w-5 h-5  text-gray-500   fill-current inline mr-2"
+										// hover:text-gray-600
 									>
 										<path
 											d="M503.691 189.836L327.687 37.851C312.281 24.546 288 35.347 288 56.015v80.053C127.371 137.907 0 170.1 0 322.326c0 61.441 39.581 122.309 83.333 154.132 13.653 9.931 33.111-2.533 28.077-18.631C66.066 312.814 132.917 274.316 288 272.085V360c0 20.7 24.3 31.453 39.687 18.164l176.004-152c11.071-9.562 11.086-26.753 0-36.328z"
