@@ -2,22 +2,6 @@ import React, { Component } from "react";
 import ReactTable from "react-table-6";
 import "react-table-6/react-table.css";
 import api from "../api";
-import styled from "styled-components";
-import Linkify from "react-linkify";
-
-const Wrapper = styled.div`
-	padding: 0 10px 10px 10px;
-`;
-
-const Update = styled.div`
-	color: #ef9b0f;
-	cursor: pointer;
-`;
-
-const Delete = styled.div`
-	color: #ff0000;
-	cursor: pointer;
-`;
 
 class UpdateIdea extends Component {
 	updateUser = event => {
@@ -31,7 +15,14 @@ class UpdateIdea extends Component {
 	};
 
 	render() {
-		return <Update onClick={this.updateUser}>Update</Update>;
+		return (
+			<div
+				style={{ color: "#ef9b0f", cursor: "pointer" }}
+				onClick={this.updateUser}
+			>
+				Update
+			</div>
+		);
 	}
 }
 
@@ -50,7 +41,14 @@ class DeleteIdea extends Component {
 	};
 
 	render() {
-		return <Delete onClick={this.deleteUser}>Delete</Delete>;
+		return (
+			<div
+				style={{ color: "#ff0000", cursor: "pointer" }}
+				onClick={this.deleteUser}
+			>
+				Delete
+			</div>
+		);
 	}
 }
 
@@ -151,7 +149,7 @@ class IdeasTable extends Component {
 		}
 
 		return (
-			<Wrapper>
+			<div style={{ padding: "0 10px 10px 10px" }}>
 				{showTable && (
 					<ReactTable
 						data={ideas}
@@ -174,7 +172,7 @@ class IdeasTable extends Component {
 						}}
 					/>
 				)}
-			</Wrapper>
+			</div>
 		);
 	}
 }

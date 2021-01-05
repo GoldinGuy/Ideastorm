@@ -47,7 +47,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 		default:
 			color = "indigo-700";
 	}
-	const [rColor, setRColor] = useState(color);
+	const [rColor] = useState(color);
 	/* When user clicks stormcount */
 	const handleStormClick = async e => {
 		e.stopPropagation();
