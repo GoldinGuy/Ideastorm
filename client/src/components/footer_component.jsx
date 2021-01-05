@@ -98,7 +98,7 @@ class Footer extends Component {
 								</div>
 								<div className="flex justify-start pl-4 mt-2">
 									<a
-										className="flex items-center block mr-6 text-gray-300 no-underline hover:text-white"
+										className="  items-center block mr-6 text-gray-300 no-underline hover:text-white"
 										target="_blank"
 										rel="noopener noreferrer"
 										href="https://www.facebook.com/GoldinWebDesign/"
@@ -112,7 +112,7 @@ class Footer extends Component {
 										</svg>
 									</a>
 									<a
-										className="flex items-center block mr-6 text-gray-300 no-underline hover:text-white"
+										className="  items-center block mr-6 text-gray-300 no-underline hover:text-white"
 										target="_blank"
 										rel="noopener noreferrer"
 										href="https://twitter.com/GoldinWeb"
@@ -126,7 +126,7 @@ class Footer extends Component {
 										</svg>
 									</a>
 									<a
-										className="flex items-center block text-gray-300 no-underline hover:text-white"
+										className="  items-center block text-gray-300 no-underline hover:text-white"
 										target="_blank"
 										rel="noopener noreferrer"
 										href="https://github.com/GoldinGuy/"
@@ -143,7 +143,7 @@ class Footer extends Component {
 							</div>
 						</div>
 					</div>
-					<div className="pt-4 pt-6 mt-10 text-center border-none text-gray-600 border-t border-gray-800">
+					<div className="pt-6 mt-10 text-center border-none text-gray-600 border-t border-gray-800">
 						{" "}
 						©2020 Ideastorm.{" "}
 						<span className="sm:hidden">

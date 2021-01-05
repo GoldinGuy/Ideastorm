@@ -50,7 +50,7 @@ class NavBar extends Component {
 				<div className="container flex items-center justify-between h-full max-w-6xl mx-auto">
 					<Link
 						to="/"
-						className="relative flex items-center inline-block h-5 h-full font-black"
+						className="relative flex items-center h-full font-black"
 						key="/"
 					>
 						<img
