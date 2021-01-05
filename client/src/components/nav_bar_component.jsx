@@ -60,7 +60,9 @@ class NavBar extends Component {
 							style={{ height: "3.5rem" }}
 						/>
 
-						<span className="ml-3 text-2xl font-black">Ideastorm</span>
+						<span className="ml-3 text-2xl font-black sm:hidden lg:inline">
+							Ideastorm
+						</span>
 					</Link>
 					<div
 						id="nav"

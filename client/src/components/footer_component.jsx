@@ -67,7 +67,7 @@ class Footer extends Component {
 								<span className="ml-2 text-lg font-black">Ideastorm</span>
 							</span>
 						</Link>
-						<div className="block w-2/3 mt-6 text-sm sm:flex lg:mt-0">
+						<div className="block lg:w-2/3 mt-6 text-sm sm:flex lg:mt-0">
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<a
 									href="mailto:seth@goldinwebdesign.com"
