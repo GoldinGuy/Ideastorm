@@ -12,7 +12,10 @@ From apps and websites, to the tools that developers use to create them, to scie
 
 A collective hive-mind of potential that anyone can contribute to. That is the goal of Ideastorm. And all ideas, big or small, are welcome.
 
+[Read Article](https://goldinguy.medium.com/ideastorm-infinite-potential-ddddc68d954d)
+
 [View Site](https://ideastorm.app/)
+
 [Comments Repo](https://github.com/GoldinGuy/IdeastormComments)
 
 ## Development setup
