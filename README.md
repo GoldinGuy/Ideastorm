@@ -5,7 +5,6 @@
 [![Discuss On Discord][discord]][discord-url]
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues]][issues-url]
-
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FGoldinGuy%2FIdeastorm)
 
 <a href="https://www.producthunt.com/posts/ideastorm?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ideastorm" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=280129&theme=light" alt="Ideastorm - Find and Share Ideas | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
