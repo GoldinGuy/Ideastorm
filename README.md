@@ -6,6 +6,8 @@
 [![Contributors][contributors-shield]][contributors-url]
 [![Issues][issues]][issues-url]
 
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FGoldinGuy%2FIdeastorm)
+
 Imagine if one person shared the ideas they have but will never pursue - things that could improve their lives, or humanity as a whole? What if everyone did?
 
 From apps and websites, to the tools that developers use to create them, to science fair projects, crafts, or cool food ideas - No matter what, we'll get your wheels spinning.
