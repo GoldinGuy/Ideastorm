@@ -8,7 +8,7 @@
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https%3A%2F%2Fgithub.com%2FGoldinGuy%2FIdeastorm)
 
-<iframe style="border: none;" src="https://cards.producthunt.com/cards/posts/280129?v=1" width="500" height="405" frameborder="0" scrolling="no" allowfullscreen></iframe>
+<a href="https://www.producthunt.com/posts/ideastorm?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-ideastorm" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=280129&theme=light" alt="Ideastorm - Find and Share Ideas | Product Hunt" style="width: 250px; height: 54px;" width="250" height="54" /></a>
 
 Imagine if one person shared the ideas they have but will never pursue - things that could improve their lives, or humanity as a whole? What if everyone did?
 
