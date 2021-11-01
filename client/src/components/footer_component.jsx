@@ -78,18 +78,18 @@ class Footer extends Component {
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<a
-									href="https://www.youtube.com/watch?v=SIaFtAKnqBU&list=PLSLWyQKazD3X0W72mUUmd0hHXJvA0RNOk&index=33"
+									href="https://github.com/GoldinGuy/Ideastorm"
 									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 								>
-									Terms of Service
+									GitHub
 								</a>
 							</ul>
 							<ul className="flex flex-col w-full p-0 font-thin text-left text-gray-700 list-none">
 								<a
-									href="https://www.youtube.com/watch?v=oHg5SJYRHA0"
+									href="https://www.youtube.com/watch?v=SIaFtAKnqBU&list=PLSLWyQKazD3X0W72mUUmd0hHXJvA0RNOk&index=33"
 									className="inline-block px-3 py-2 text-gray-300 no-underline hover:text-white"
 								>
-									Join the Team
+									Terms of Service
 								</a>
 							</ul>
 							<div className="flex flex-col w-full text-gray-700">
@@ -115,7 +115,7 @@ class Footer extends Component {
 										className="  items-center block mr-6 text-gray-300 no-underline hover:text-white"
 										target="_blank"
 										rel="noopener noreferrer"
-										href="https://twitter.com/GoldinWeb"
+										href="https://twitter.com/goldinguy_"
 									>
 										<svg
 											viewBox="0 0 24 24"
@@ -150,8 +150,8 @@ class Footer extends Component {
 							<br />
 						</span>{" "}
 						Created with 💙 by{" "}
-						<a href="https://goldinwebdesign.com/" className="">
-							Goldin Web Design.
+						<a href="https://seth.goldin.io/" className="">
+							GoldinGuy.
 						</a>{" "}
 						<span className="sm:hidden">
 							<br />
