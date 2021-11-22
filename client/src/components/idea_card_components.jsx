@@ -83,7 +83,7 @@ const IdeaCard = ({ idea, history, pageTitle }) => {
 		share({
 			title: idea.title,
 			text: idea.description,
-			url: "https://ideastorm.app/search?q=" + idea._id
+			url: "https://ideastorm.goldin.io/search?q=" + idea._id
 		});
 		e.stopPropagation();
 	};

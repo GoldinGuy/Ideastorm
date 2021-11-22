@@ -17,7 +17,7 @@ A collective hive-mind of potential that anyone can contribute to. That is the g
 
 [Read Article](https://goldinguy.medium.com/ideastorm-infinite-potential-ddddc68d954d)
 
-[View Site](https://ideastorm.app/)
+[View Site](https://ideastorm.goldin.io/)
 
 [Comments Repo](https://github.com/GoldinGuy/IdeastormComments)
 

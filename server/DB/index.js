@@ -1,7 +1,8 @@
 const mongoose = require('mongoose')
+const { MongoClient } = require('mongodb');
 
 mongoose
-    .connect('mongodb://127.0.0.1:27017/ideas', { useNewUrlParser: true })
+    .connect(process.env.MONGODB_URL, { useNewUrlParser: true })
     .catch(e => {
         console.error('Connection error', e.message)
     })
