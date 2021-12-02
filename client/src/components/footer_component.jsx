@@ -145,7 +145,7 @@ class Footer extends Component {
 					</div>
 					<div className="pt-6 mt-10 text-center border-none text-gray-600 border-t border-gray-800">
 						{" "}
-						©2020 Ideastorm.{" "}
+						©2022 Goldin Web.{" "}
 						<span className="sm:hidden">
 							<br />
 						</span>{" "}
